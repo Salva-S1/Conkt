@@ -101,7 +101,7 @@
     <!-- Contenedor Principal (Rejilla de 12 columnas) -->
     <main class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <!-- LATERAL IZQUIERDO: Índice y Checklist del Agente (image_05db30.png) -->
+        <!-- LATERAL IZQUIERDO: Índice y Checklist del Agente -->
         <aside class="lg:col-span-4 lg:sticky lg:top-20 h-fit space-y-4">
             
             <!-- Tarjeta 1: ÍNDICE DE CONTENIDOS -->
@@ -114,7 +114,7 @@
                     <!-- Módulo 1 -->
                     <div>
                         <button onclick="toggleSection('seccion1')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 text-left">
-                            <span class="title-13">1. SEGURIDAD, ACCESOS Y CREDENCIALES</span>
+                            <span class="title-13">1. SEGURIDAD Y CREDENCIALES</span>
                             <i id="menu-arrow-seccion1" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
                         </button>
                         <div id="sub-menu-seccion1" class="pl-3 space-y-1.5 border-l border-slate-200 dark:border-slate-700 ml-1 mt-1 hidden">
@@ -133,7 +133,7 @@
                     <!-- Módulo 2 -->
                     <div class="pt-1">
                         <button onclick="toggleSection('seccion2')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 text-left">
-                            <span class="title-13">2. CONTRATO MULTICANAL Y ATENCIÓN REMOTA</span>
+                            <span class="title-13">2. CONTRATO MULTICANAL</span>
                             <i id="menu-arrow-seccion2" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
                         </button>
                         <div id="sub-menu-seccion2" class="pl-3 space-y-1.5 border-l border-slate-200 dark:border-slate-700 ml-1 mt-1 hidden">
@@ -152,7 +152,7 @@
                     <!-- Módulo 3 -->
                     <div class="pt-1">
                         <button onclick="toggleSection('seccion3')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 text-left">
-                            <span class="title-13">3. ECOSISTEMA DE APLICACIONES INTERNAS</span>
+                            <span class="title-13">3. APLICACIONES INTERNAS</span>
                             <i id="menu-arrow-seccion3" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
                         </button>
                         <div id="sub-menu-seccion3" class="pl-3 space-y-1.5 border-l border-slate-200 dark:border-slate-700 ml-1 mt-1 hidden">
@@ -183,7 +183,7 @@
                     <!-- Módulo 4 -->
                     <div class="pt-1">
                         <button onclick="toggleSection('seccion4')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 text-left">
-                            <span class="title-13">4. GESTIÓN DE TARJETAS Y FINANZAS</span>
+                            <span class="title-13">4. TARJETAS Y FINANZAS</span>
                             <i id="menu-arrow-seccion4" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
                         </button>
                         <div id="sub-menu-seccion4" class="pl-3 space-y-1.5 border-l border-slate-200 dark:border-slate-700 ml-1 mt-1 hidden">
@@ -204,22 +204,47 @@
 
                     <!-- Módulo 5 -->
                     <div class="pt-1">
-                        <button onclick="toggleSection('seccion5')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 hover:text-slate-600 dark:hover:text-slate-400 text-left">
-                            <span class="title-13">5. PROTOCOLOS DE CALIDAD Y GLOSARIO</span>
+                        <button onclick="toggleSection('seccion5')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 text-left">
+                            <span class="title-13">5. CUENTAS BANCARIAS</span>
                             <i id="menu-arrow-seccion5" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
                         </button>
                         <div id="sub-menu-seccion5" class="pl-3 space-y-1.5 border-l border-slate-200 dark:border-slate-700 ml-1 mt-1 hidden">
+                            <a href="#cuenta-santander-corp" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">
+                                <i class="fa-solid fa-wallet mr-1 text-[9px]"></i> 5.1 Cuenta Santander Standard
+                            </a>
+                            <a href="#cuenta-online-corp" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">
+                                <i class="fa-solid fa-globe mr-1 text-[9px]"></i> 5.2 Cuenta Online Santander
+                            </a>
+                            <a href="#cuenta-noresidente" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">
+                                <i class="fa-solid fa-passport mr-1 text-[9px]"></i> 5.3 Cuenta Online No Residentes
+                            </a>
+                            <a href="#cuenta-menores" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">
+                                <i class="fa-solid fa-child mr-1 text-[9px]"></i> 5.4 Cuenta Joven (Menores)
+                            </a>
+                            <a href="#cuenta-pago-basica" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">
+                                <i class="fa-solid fa-gavel mr-1 text-[9px]"></i> 5.5 Cuenta de Pago Básica
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 6 -->
+                    <div class="pt-1">
+                        <button onclick="toggleSection('seccion6')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 hover:text-slate-600 dark:hover:text-slate-400 text-left">
+                            <span class="title-13">6. CALIDAD Y SCRIPT DE ATENCIÓN</span>
+                            <i id="menu-arrow-seccion6" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
+                        </button>
+                        <div id="sub-menu-seccion6" class="pl-3 space-y-1.5 border-l border-slate-200 dark:border-slate-700 ml-1 mt-1 hidden">
                             <a href="#estructura-llamada" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-400">
-                                <i class="fa-solid fa-headset mr-1 text-[9px]"></i> 5.1 Estructura del Script
+                                <i class="fa-solid fa-headset mr-1 text-[9px]"></i> 6.1 Estructura del Script
                             </a>
                             <a href="#indicadores-calidad" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-400">
-                                <i class="fa-solid fa-star-half-stroke mr-1 text-[9px]"></i> 5.2 Indicadores de Calidad
+                                <i class="fa-solid fa-star-half-stroke mr-1 text-[9px]"></i> 6.2 Indicadores de Calidad
                             </a>
                             <a href="#gestion-citas" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-400">
-                                <i class="fa-solid fa-calendar-check mr-1 text-[9px]"></i> 5.3 Gestión de Citas
+                                <i class="fa-solid fa-calendar-check mr-1 text-[9px]"></i> 6.3 Gestión de Citas
                             </a>
                             <a href="#glosario" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-400">
-                                <i class="fa-solid fa-book-bookmark mr-1 text-[9px]"></i> 5.4 Glosario de Términos
+                                <i class="fa-solid fa-book-bookmark mr-1 text-[9px]"></i> 6.4 Glosario de Términos
                             </a>
                         </div>
                     </div>
@@ -259,7 +284,7 @@
                     
                     <span class="bg-black/25 text-white font-extrabold px-2.5 py-0.5 rounded-md text-[8.5px] uppercase tracking-wider mb-2.5 inline-block">MÓDULO DE SEGURIDAD</span>
                     <button onclick="toggleSection('seccion1')" class="w-full text-left focus:outline-none flex justify-between items-center group">
-                        <h1 class="text-white forced-heading-size">1. SEGURIDAD, ACCESOS Y CREDENCIALES</h1>
+                        <h1 class="text-white forced-heading-size">1. SEGURIDAD Y CREDENCIALES</h1>
                         <div class="bg-white/20 group-hover:bg-white/30 p-2 rounded-full h-7 w-7 flex items-center justify-center transition-all duration-200 shrink-0 shadow-sm">
                             <i id="arrow-seccion1" class="fa-solid fa-chevron-down text-white text-xs transition-transform duration-200"></i>
                         </div>
@@ -352,7 +377,7 @@
 
                             <!-- Alternativa 2 -->
                             <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50">
-                                <div class="bg-amber-50 dark:bg-amber-950/40 p-2.5 rounded-lg border border-amber-100 dark:border-amber-900/30 flex items-center justify-between mb-3">
+                                <div class="bg-amber-50 dark:bg-amber-950/40 p-2.5 rounded-lg border border-amber-100 dark:amber-900/30 flex items-center justify-between mb-3">
                                     <div class="flex items-center gap-1.5">
                                         <i class="fa-solid fa-phone text-amber-600 text-xs"></i>
                                         <span class="title-13 text-amber-800 dark:text-amber-400 font-extrabold uppercase">ALTERNATIVA 2: SIN MÓVIL A MANO O ERROR EN LA APP</span>
@@ -436,7 +461,7 @@
                             <span class="bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Nivel 2</span>
                         </div>
 
-                        <!-- Filtro previo de Seguridad Obligatoria reubicado correctamente -->
+                        <!-- Filtro previo de Seguridad Obligatoria -->
                         <div class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 p-3 rounded-lg mb-4 flex gap-2">
                             <div class="text-amber-600 shrink-0"><i class="fa-solid fa-user-shield text-xs"></i></div>
                             <p class="text-amber-800 dark:text-amber-300 mb-0 normal-text leading-relaxed">
@@ -566,7 +591,7 @@
                             </div>
                         </div>
 
-                        <!-- Reglas de Oro N2 (Bloque Azul Oscuro al final del apartado) -->
+                        <!-- Reglas de Oro N2 -->
                         <div class="mt-5 bg-slate-900 dark:bg-slate-950 text-slate-100 p-4 rounded-xl border border-slate-800 shadow-md">
                             <h4 class="forced-heading-size text-white border-b border-slate-800 pb-1.5 mb-2.5 flex items-center gap-2">
                                 <i class="fa-solid fa-circle-info text-blue-400"></i> Requisitos y Reglas de la Firma Electrónica (N2)
@@ -622,7 +647,7 @@
                         </div>
 
                         <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50 mb-4">
-                            <h3 class="title-13 text-slate-900 dark:text-slate-200 mb-2.5">Reglas de Validation e Identificación en Operativas</h3>
+                            <h3 class="title-13 text-slate-900 dark:text-slate-200 mb-2.5">Reglas de Validación e Identificación en Operativas</h3>
                             <ul class="space-y-1.5 list-disc pl-4 text-slate-600 dark:text-slate-400 normal-text">
                                 <li><strong>Validación Operativa por Operativa:</strong> La identificación por SK no es única para toda la llamada. El sistema enviará una notificación push independiente en cada transacción que se intente cursar para otorgarle seguridad N2 a esa operación específica.</li>
                                 <li><strong>Exención de Preguntas de Seguridad:</strong> Si el cliente tiene SK activo y valida la operación por push, tiene un margen de 5 minutos para firmar y NO es necesario realizar preguntas de seguridad reforzada ni validar si nos llama desde un teléfono registrado en bdp.</li>
@@ -697,7 +722,7 @@
                             </ul>
                         </div>
 
-                        <!-- Reglas de Oro N3 (Bloque Azul Oscuro al final del apartado) -->
+                        <!-- Reglas de Oro N3 -->
                         <div class="mt-5 bg-slate-900 dark:bg-slate-950 text-slate-100 p-4 rounded-xl border border-slate-800 shadow-md">
                             <h4 class="forced-heading-size text-white border-b border-slate-800 pb-1.5 mb-2.5 flex items-center gap-2">
                                 <i class="fa-solid fa-circle-info text-blue-400"></i> Reglas de Oro y Naturaleza de SK
@@ -723,7 +748,7 @@
                     
                     <span class="bg-black/25 text-white font-extrabold px-2.5 py-0.5 rounded-md text-[8.5px] uppercase tracking-wider mb-2.5 inline-block">MÓDULO DE CONTRATOS</span>
                     <button onclick="toggleSection('seccion2')" class="w-full text-left focus:outline-none flex justify-between items-center group">
-                        <h1 class="text-white forced-heading-size">2. CONTRATO MULTICANAL Y ATENCIÓN REMOTA</h1>
+                        <h1 class="text-white forced-heading-size">2. CONTRATO MULTICANAL</h1>
                         <div class="bg-white/20 group-hover:bg-white/30 p-2 rounded-full h-7 w-7 flex items-center justify-center transition-all duration-200 shrink-0 shadow-sm">
                             <i id="arrow-seccion2" class="fa-solid fa-chevron-down text-white text-xs transition-transform duration-200"></i>
                         </div>
@@ -854,7 +879,7 @@
                                 </div>
                                 <div class="bg-slate-50 dark:bg-slate-900/40 p-3 rounded-lg border border-slate-100 dark:border-slate-700/50">
                                     <strong class="text-amber-600 dark:text-amber-500 block mb-1">N3 / Lista Gris (Bloqueo Preventivo):</strong>
-                                    <span class="text-slate-500 dark:text-slate-400 text-[10px]">Bloqueo preventivo automático puesto por el banco. Puede activarse por movimientos poco habituales, impagos acumulados a los 15 días, marcar un PIN erróneo o por robo, extravío o deterioro.</span>
+                                    <span class="text-slate-500 dark:text-slate-400 text-[10px]">Bloqueo preventivo automático del banco. Causas: movimientos poco habituales, impagos acumulados a los 15 días, introducir PIN erróneo de forma reiterada, o por robo, extravío o deterioro.</span>
                                 </div>
                             </div>
                         </div>
@@ -971,9 +996,9 @@
                     
                     <span class="bg-black/25 text-white font-extrabold px-2.5 py-0.5 rounded-md text-[8.5px] uppercase tracking-wider mb-2.5 inline-block">SOFTWARE DE AGENTE</span>
                     <button onclick="toggleSection('seccion3')" class="w-full text-left focus:outline-none flex justify-between items-center group">
-                        <h1 class="text-white forced-heading-size">3. ECOSISTEMA DE APLICACIONES INTERNAS</h1>
+                        <h1 class="text-white forced-heading-size">3. APLICACIONES INTERNAS</h1>
                         <div class="bg-white/20 group-hover:bg-white/30 p-2 rounded-full h-7 w-7 flex items-center justify-center transition-all duration-200 shrink-0 shadow-sm">
-                            <i id="arrow-seccion3" class="fa-solid fa-chevron-down text-white text-xs transition-transform duration-200 ="></i>
+                            <i id="arrow-seccion3" class="fa-solid fa-chevron-down text-white text-xs transition-transform duration-200"></i>
                         </div>
                     </button>
                     <p class="text-white/90 mt-2 mb-0 normal-text leading-relaxed">
@@ -1072,7 +1097,7 @@
                         </div>
                         <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed">
                             • <strong>Fortitoken:</strong> Generador de claves OTP de doble factor para la autenticación y logueo diario seguro del agente en las plataformas de red corporativa.<br>
-                            • <strong>Kodin:</strong> Sistema oficial para el fichaje y control del horario laboral del agente.
+                            • <strong>Kodin:</strong> Systema oficial para el fichaje y control del horario laboral del agente.
                         </p>
                     </div>
 
@@ -1089,7 +1114,7 @@
                     
                     <span class="bg-black/25 text-white font-extrabold px-2.5 py-0.5 rounded-md text-[8.5px] uppercase tracking-wider mb-2.5 inline-block">MEDIOS DE PAGO</span>
                     <button onclick="toggleSection('seccion4')" class="w-full text-left focus:outline-none flex justify-between items-center group">
-                        <h1 class="text-white forced-heading-size">4. GESTIÓN DE TARJETAS Y FINANZAS</h1>
+                        <h1 class="text-white forced-heading-size">4. TARJETAS Y FINANZAS</h1>
                         <div class="bg-white/20 group-hover:bg-white/30 p-2 rounded-full h-7 w-7 flex items-center justify-center transition-all duration-200 shrink-0 shadow-sm">
                             <i id="arrow-seccion4" class="fa-solid fa-chevron-down text-white text-xs transition-transform duration-200"></i>
                         </div>
@@ -1155,7 +1180,7 @@
 
                         <!-- COMPONENTE OFICIAL DE PAGOLISTO -->
                         <div class="mt-4 border-t border-slate-100 dark:border-slate-700 pt-3">
-                            <div class="bg-emerald-50 dark:bg-emerald-950/20 p-3 rounded-lg border border-emerald-200 dark:border-emerald-800/30 mb-3">
+                            <div class="bg-emerald-50 dark:bg-emerald-950/20 p-3 rounded-lg border border border-emerald-200 dark:border-emerald-800/30 mb-3">
                                 <h3 class="title-13 text-emerald-800 dark:text-emerald-400 font-extrabold mb-1">PAGOLISTO (FRACCIONAR MOVIMIENTOS DE CUENTA)</h3>
                                 <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-2">
                                     Permite al cliente fraccionar el pago de movimientos y recibos cargados directamente en su cuenta corriente (tales como transferencias, recibos del hogar o Bizums) mediante el uso de una tarjeta de crédito virtual temporal sujeta a aprobación del crédito preconcedido.
@@ -1249,61 +1274,34 @@
                                 <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Extractos, Impagos, Cuotas y Pago Luego</h2>
                             </div>
                         </div>
-
-                        <!-- REORGANIZACIÓN COMPLETA DE EXTRACTOS Y NORMAS BANCARIAS -->
-                        <div class="space-y-4">
-                            <div>
-                                <h3 class="title-13 text-slate-900 dark:text-slate-200 font-bold mb-1 uppercase">I. Lógica General del Extracto Bancario</h3>
-                                <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed">
-                                    El extracto bancario (o estado de cuenta) es el documento regulatorio gratuito mediante el cual el banco informa al cliente con detalle de todos los movimientos, saldo disponible y transacciones realizadas en su cuenta bancaria durante un periodo determinado para facilitarle el seguimiento de sus finanzas personales.
-                                    <br>• <strong>Información contenida:</strong> Datos identificativos de la cuenta, nombre completo del titular o cotitulares, código IBAN, fecha de emisión y desglose cronológico de operaciones (mostrando en signo positivo los ingresos y en signo negativo los pagos/gastos) detallando fecha valor y saldo resultante.
-                                    <br>• <strong>Canales de Solicitud y Costes:</strong> Es una información 100% gratuita. Puede obtenerse online por la App/Web ("Descargar extracto mensual") o consultarse y emitirse en papel en un cajero automático. <em>Nota de aviso:</em> Si el cliente solicita el envío tradicional en papel por correo postal ordinario, el banco está facultado para cobrarle una comisión por los gastos de envío.
-                                    <br>• <strong>Quién puede solicitarlo:</strong> Únicamente el titular de la cuenta, cotitulares registrados o personas autorizadas legalmente en la base de datos para operar con la cuenta.
-                                </p>
-                            </div>
-
-                            <div>
-                                <h3 class="title-13 text-slate-900 dark:text-slate-200 font-bold mb-1 uppercase">II. Modalidades de Pago de Tarjetas de Crédito</h3>
-                                <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed">
-                                    • <strong>Pago Mensual o Total:</strong> Es la modalidad por defecto. No genera intereses de aplazamiento ni problemas adicionales. Se cobra de forma íntegra el primer día del mes (el extracto se cierra formalmente el día 30).
-                                    <br>• <strong>Pago Aplazado:</strong> Establece una cuota de devolución basada en un porcentaje del dispuesto de la tarjeta.
-                                    <br>• <strong>Cuota Fija:</strong> El cliente selecciona pagar una cantidad fija mensual estable (establecida obligatoriamente en múltiplos de 25).
-                                </p>
-                            </div>
-
+                        
+                        <div class="space-y-4 text-slate-600 dark:text-slate-400 normal-text leading-relaxed">
+                            <div>• <strong>Liquidaciones de cuenta:</strong> Cargos periódicos de comisiones de mantenimiento e intereses deudores por descubiertos técnicos en la cuenta corriente.</div>
+                            
                             <div class="bg-slate-100 dark:bg-slate-900 p-2.5 rounded border border-slate-200 dark:border-slate-700">
                                 <span class="font-bold text-slate-800 dark:text-slate-200 block mb-1 uppercase text-[10px]">III. Fórmula del Suelo del Pago Mínimo Obligatorio:</span>
                                 <div class="bg-slate-200 dark:bg-slate-950 p-2 rounded text-center font-mono font-bold text-red-600 dark:text-red-400 text-[10px] mb-2">
                                     Pago Mínimo = 3% del Dispuesto de Intereses + Comisiones + Excedidos + Impagos + Pago Fáciles Activos
                                 </div>
                                 <p class="text-slate-600 dark:text-slate-400 text-[10px] mb-0 leading-relaxed">
-                                    <strong>🚨 Protocolo de Gestión de Quejas Recuurrentes (Cuota Fija):</strong> El motivo de llamada más habitual e intenso ocurre cuando un cliente con modalidad de cuota fija (ej. tiene puesto pagar 50 € al mes) llama reclamando airadamente porque el banco le ha cobrado un recibo de cuantía superior en su cuenta.
+                                    <strong>🚨 Protocolo de Gestión de Quejas Recurrentes (Cuota Fija):</strong> El motivo de llamada más habitual e intenso ocurre cuando un cliente con modalidad de cuota fija (ej. tiene puesto pagar 50 € al mes) llama reclamando airadamente porque el banco le ha cobrado un recibo de cuantía superior en su cuenta.
                                     <br><strong>Solución Telefónica:</strong> Se le debe explicar de forma asertiva que el sistema ha aplicado de forma automática el cobro del <strong>Pago Mínimo</strong> obligatorio debido a que la suma de sus excedidos de límite, comisiones de descubierto, intereses devengados o cuotas de Pago Fácil acumuladas actuaba como suelo legal mínimo de cobro por encima de sus 50 € prefijados.
                                 </p>
                             </div>
 
                             <div class="bg-[#080d1a] text-cyan-400 p-3 rounded-lg font-mono text-[9.5px] space-y-1 border border-slate-800">
                                 <div>• <strong>Salvaguarda ante Excedidos:</strong> Si un cliente tiene un límite de 500 € y gasta 800 €, genera un excedido. Si realiza un ingreso para amortizar el exceso antes del cierre formal del extracto (día 30), se salva de sufrir penalizaciones de descubierto.</div>
-                                <div>• <strong>Comisión por Impagos (GRPD):</strong> Al llegar exactamente al <strong>sexto día natural</strong> de mantenerse un saldo deudor impagado, se liquidan de forma estricta unos Gastos de Reclamación de Posición Deudora de <strong>49 €</strong>. Esta comisión no se cobra directamente en el saldo de la cuenta corriente, sino que aparece facturada dentro del extracto de la tarjeta de crédito.</div>
+                                <div>• <strong>Comisión por Impagos (GRPD):</strong> Al llegar exactamente al <strong>sexto día natural</strong> de mantenerse un saldo deudor impagado, se liquida una comisión fija de <strong>49 €</strong> por reclamación de posición deudora. Esta comisión aparece cargada directamente dentro del extracto de la tarjeta de crédito.</div>
                             </div>
 
-                            <!-- PAGO LUEGO / APLAZAR RECIBO DESGLOSADO COMPLETO -->
+                            <!-- PAGO LUEGO -->
                             <div class="bg-slate-50 dark:bg-slate-900/60 p-3 rounded-lg border border-slate-200 dark:border-slate-700/60 mt-3">
                                 <h3 class="title-13 text-emerald-700 dark:text-emerald-400 font-extrabold mb-2 uppercase">IV. PAGO LUEGO / APLAZAR RECIBO (REFINANCIACIÓN DE EXTRACTO)</h3>
                                 <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-2">
-                                    <strong>¿En qué consiste?:</strong> Permite al cliente aplazar el extracto total que tenemos que pagar entero y partirlo en dos, pagando solo una parte del capital de la cuota del mes (con un mínimo obligatorio del 3% o 5% visible en el concepto "Pago mínimo" del extracto que ya integra intereses y comisiones).
-                                    <br>• <strong>Destino del Impago:</strong> La porción de capital que no se pague se traspasará de forma automática al extracto del mes siguiente bajo el concepto contable explícito de <strong>"Refinanciación Deuda"</strong> (esta parte refinanciada queda bloqueada y ya no admitirá acogerse a un nuevo Pago Luego o aplazamiento posterior).
-                                    <br>• <strong>Exclusiones del Servicio:</strong> Queda terminantemente prohibido para la modalidad de pago inmediato, para perfiles en pago mínimo ordinario y para carteras de tarjetas de empresa. Solo lo puede solicitar el titular de la tarjeta principal.
+                                    <strong>¿En qué consiste?:</strong> Permite al cliente aplazar el extracto total de crédito pagando solo una porción del capital (con el mínimo del 3% o 5% que indica el extracto).
+                                    <br>• <strong>Destino del Impago:</strong> El capital remanente se traspasa al mes siguiente como <strong>"Refinanciación Deuda"</strong> (esta porción queda bloqueada y ya no permite un segundo aplazamiento).
+                                    <br>• <strong>Plazos Críticos en Nimbus (SPL - N1):</strong> Asegurado hasta el día anterior al corte a las 00:00 h. Si se solicita el mismo día de corte, se graba de forma excepcional pero <strong>nunca se le debe garantizar la ejecución al cliente</strong>.
                                 </p>
-                                <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-2">
-                                    <strong>Plazos Críticos de Grabación en Nimbus (Código de Transacción SPL - Acceso N1):</strong>
-                                    <br>• <em>Fecha de Cobertura Garantizada:</em> La operación está plenamente asegurada hasta el día anterior a la fecha fin de facturación a las 00:00 h.
-                                    <br>• <em>Último Día de Corte:</em> Se puede registrar la orden en el terminal de forma excepcional, <strong>pero bajo ningún concepto se le debe garantizar al cliente su ejecución real</strong>, informándole de que se tramita fuera de plazo asegurado.
-                                    <br>• <strong>Intereses:</strong> Devenga la tasa asignada para pago aplazado, calculada de forma diaria sobre el importe remanente pendiente.
-                                </p>
-                                <div class="bg-slate-900 text-slate-100 p-2.5 rounded text-[10px] mt-2">
-                                    <strong>💡 Pauta Obligatoria de Calidad y Transparencia:</strong> Es una obligación ineludible del gestor calcular y detallar el cargo exacto que va a sufrir el día 1, aclarando con total transparencia que la medida excepcional aplica <strong>únicamente para ese mes concreto</strong>. El foco preferente del Contact Center ante estas peticiones debe ser siempre guiar paso a paso al cliente para que realice la gestión él solo en el entorno digital de su App como primera opción. Si no es posible, se cursará telefónicamente mediante la validación de su firma por huella (SK).
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -1311,8 +1309,228 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN 5 GENERAL -->
+            <!-- SECCIÓN 5 GENERAL (CUENTAS BANCARIAS) -->
             <div id="seccion5" class="searchable-section space-y-4">
+                
+                <!-- Banner de Módulo de Cuentas (Azul Cobalto) -->
+                <div class="bg-blue-700 text-white rounded-2xl p-5 shadow-sm relative overflow-hidden transition-all-200">
+                    <div class="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-blue-800 to-transparent opacity-40 pointer-events-none"></div>
+                    <div class="absolute right-[-20px] top-[-20px] w-36 h-36 bg-blue-500 rounded-full opacity-20 pointer-events-none"></div>
+                    
+                    <span class="bg-black/25 text-white font-extrabold px-2.5 py-0.5 rounded-md text-[8.5px] uppercase tracking-wider mb-2.5 inline-block">MÓDULO DE PRODUCTOS</span>
+                    <button onclick="toggleSection('seccion5')" class="w-full text-left focus:outline-none flex justify-between items-center group">
+                        <h1 class="text-white forced-heading-size">5. CUENTAS BANCARIAS</h1>
+                        <div class="bg-white/20 group-hover:bg-white/30 p-2 rounded-full h-7 w-7 flex items-center justify-center transition-all duration-200 shrink-0 shadow-sm">
+                            <i id="arrow-seccion5" class="fa-solid fa-chevron-down text-white text-xs transition-transform duration-200"></i>
+                        </div>
+                    </button>
+                    <p class="text-white/90 mt-2 mb-0 normal-text leading-relaxed">
+                        Guía completa de tipologías de cuentas de Banco Santander: requisitos, exenciones de comisiones, promociones de captación y tarifas por descubierto contable.
+                    </p>
+                </div>
+
+                <!-- Contenido Desplegable 5 (Colapsado por defecto) -->
+                <div id="content-seccion5" class="space-y-5 transition-all duration-300 hidden">
+                    
+                    <!-- 5.1 CUENTA SANTANDER -->
+                    <div id="cuenta-santander-corp" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">5.1</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Cuenta Santander (Estándar / Programa Santander)</h2>
+                            </div>
+                            <span class="bg-red-50 dark:bg-red-950/50 text-red-600 dark:text-red-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Tradicional</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-3">
+                            <strong>Perfil del Cliente:</strong> Personas físicas mayores de 18 años, tanto residentes como no residentes fiscales en España. Contratación online o en oficinas. Restricción absoluta: queda excluido de los beneficios si el cliente incurre en morosidad o actúa contra la buena fe.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-3">
+                            <strong>Comisión de Mantenimiento:</strong> Tarifa estándar de <strong>20 € al mes</strong> (240 €/año) liquidada mensualmente. Se puede reducir o eliminar por completo:
+                        </p>
+                        <div class="space-y-2 pl-2 mb-3">
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-2.5 rounded border">
+                                <strong class="text-emerald-600 block text-[10px] uppercase font-bold">A) Exención Total (0 €/mes) - Requisitos (Cumplir al menos uno):</strong>
+                                <span class="text-slate-500 dark:text-slate-400 text-[10px] leading-relaxed block mt-0.5">
+                                    • <strong>Por Edad:</strong> Tener entre 18 y 28 años (menores de 29 años), sin ninguna otra condición operativa.
+                                    <br>• <strong>Nuevos Clientes:</strong> Durante los primeros 6 meses desde la apertura del contrato (periodo de carencia general de 2 meses).
+                                    <br>• <strong>Grandes Ahorradores:</strong> Mantener un saldo conjunto &ge; 25.000 € en fondos de inversión, planes de pensiones, seguros de ahorro o depósitos.
+                                    <br>• <strong>Accionistas:</strong> Ser titular de una cuenta de valores asociada con &ge; 1.000 acciones de Banco Santander.
+                                    <br>• <strong>Combo "Ingresos + Actividad":</strong> Cumplir un criterio del Bloque 1 (Nómina/Prestación &ge; 600€, Pensión &ge; 300€, RETA o PAC &ge; 3.000€/año) Y un criterio del Bloque 2 (3 recibos domiciliados de distintos NIF en los 3 meses anteriores O usar la tarjeta 6 veces en los 3 meses anteriores).
+                                </span>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-2.5 rounded border">
+                                <strong class="text-amber-600 block text-[10px] uppercase font-bold">B) Reducción Única (10 €/mes) - Criterios (Cumplir al menos uno):</strong>
+                                <span class="text-slate-500 dark:text-slate-400 text-[10px] leading-relaxed block mt-0.5">
+                                    • Cumplir los ingresos del Bloque 1, pero fallar en la actividad del Bloque 2.
+                                    <br>• Saldo entre 5.000 € y 25.000 € en fondos de inversión, planes de pensiones o seguros de ahorro.
+                                    <br>• Saldo &ge; 25.000 € en valores negociables o productos de mercados estructurados.
+                                    <br>• Tener al corriente una hipoteca, préstamo al consumo o renting (excluye préstamos de refinanciación).
+                                    <br>• Seguros de protección de Santander Mediación con primas anuales acumuladas &ge; 120 €.
+                                    <br>• Tener contratado el Plan Santander One Senior (mayores de 65 años).
+                                </span>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed">
+                            <strong>Operativa Gratuita Incluida:</strong> Emisión y mantenimiento de Tarjeta de Débito y Crédito Santander. Retiradas de efectivo a débito gratis en los 30.000 cajeros Santander del mundo. Transferencias ordinarias en euros (nacionales y UE) gratis por internet/App/cajero. Bizum a coste cero.
+                        </p>
+                    </div>
+
+                    <!-- 5.2 CUENTA ONLINE SANTANDER -->
+                    <div id="cuenta-online-corp" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">5.2</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Cuenta Online Santander (100% Digital)</h2>
+                            </div>
+                            <span class="bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Sin Comisiones</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-3">
+                            <strong>Perfil del Cliente:</strong> Cuenta corriente exclusiva para <strong>nuevos clientes</strong> (personas físicas mayores de 18 años) sin relación previa con el banco. Contratación 100% digital. Límite estricto: máximo de 2 cuentas Online Santander por titular.
+                            <br>• <strong>Comisión de Mantenimiento:</strong> <strong>0 € de por vida</strong> sin exigencia de saldos ni condiciones operativas básicas.
+                        </p>
+
+                        <div class="bg-emerald-50/40 dark:bg-emerald-950/20 p-3 rounded-lg border border-emerald-100 dark:border-emerald-900/30 mb-3">
+                            <strong class="text-emerald-800 dark:text-emerald-400 block text-[10px] uppercase font-bold">🎁 Promoción por Nómina (Hasta 840 € en 2 años):</strong>
+                            <span class="text-slate-600 dark:text-slate-400 text-[10px] leading-relaxed block mt-1">
+                                Válida para nuevos ingresos en el banco. No tiene permanencia ni penalizaciones; si un mes fallas no cobras el incentivo, pero vuelves a generarlo al mes siguiente si cumples.
+                                <br>• <strong>Paso 1 - Ingreso Base (Obligatorio):</strong> Nómina/Pensión de 800 € a 1.499 € = <strong>10 €/mes</strong> // Nómina de 1.500 € o más = <strong>15 €/mes</strong>.
+                                <br>• <strong>Paso 2 - Extra Bizum (Opcional):</strong> Asociar Bizum a la cuenta y realizar mínimo 3 envíos al mes = <strong>+10 €/mes</strong>.
+                                <br>• <strong>Paso 3 - Extra Recibos (Opcional):</strong> Domiciliar mínimo 2 recibos mensuales en la cuenta = <strong>+10 €/mes</strong>.
+                                <br><strong>Total acumulable máximo:</strong> 35 € al mes (840 € brutos en 24 meses). Requiere inscripción en la campaña tras el alta de cuenta.
+                            </span>
+                        </div>
+
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed font-bold mb-1">✈️ Operativa Especial en Viajes:</p>
+                        <ul class="space-y-1 list-disc pl-4 text-slate-600 dark:text-slate-400 normal-text">
+                            <li><strong>Menores de 30 años:</strong> Viajan gratis sin pagar comisiones por compras internacionales en cualquier divisa y disponen de 3 retiradas gratis al mes en cualquier cajero del mundo.</li>
+                            <li><strong>Mayores de 30 años (Programa Santander Viajes Opcional):</strong> Por una suscripción de 3 € al mes, obtienen 3 retiradas internacionales gratis al mes, exención de comisión por compras en moneda extranjera y seguro de asistencia en viaje.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 5.3 CUENTA ONLINE PARA NO RESIDENTES CON PASAPORTE -->
+                    <div id="cuenta-noresidente" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">5.3</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Cuenta Online para No Residentes con Pasaporte</h2>
+                            </div>
+                            <span class="bg-teal-50 dark:bg-teal-950/50 text-teal-600 dark:text-teal-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Genérica</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-3">
+                            <strong>Perfil del Cliente:</strong> Cuenta exclusiva para nuevos clientes con residencia habitual o domicilio social en el extranjero (no residentes fiscales en España). Personas físicas mayores de 18 años. Restricción: si es extranjero pero reside fiscalmente en España, no puede optar a esta cuenta (debe aportar NIE).
+                            <br>• <strong>Comisión de Mantenimiento:</strong> <strong>0 € (Exenta de por vida)</strong>. Sin vinculaciones forzosas de nómina o recibos.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-3 font-bold">
+                            🌍 Países Autorizados para Contratación Online:
+                        </p>
+                        <p class="text-slate-500 dark:text-slate-400 text-[10px] leading-relaxed mb-3">
+                            Alemania, Argentina, Austria, Bélgica, Brasil, Canadá, Chile, Dinamarca, Eslovaquia, Finlandia, Francia, Grecia, Hungría, Irlanda, Islandia, Italia, Lituania, Noruega, Países Bajos, Polonia, Portugal, Reino Unido, República Checa, Rumanía, Suecia, Suiza y Uruguay.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed">
+                            <strong>Operativa y Formatos de Tarjeta:</strong> Tarjeta de Débito sin comisiones. Si el titular proporciona dirección en España se envía física, si no, opera de manera 100% virtual. Transferencias online en euros gratis. Emisión de transferencias hacia Reino Unido, Polonia y Portugal a 0 € de comisión. Proceso de contratación online mediante videollamada de verificación de pasaporte en vigor (o DNI para españoles en el extranjero).
+                        </p>
+                    </div>
+
+                    <!-- 5.4 CUENTA JOVEN -->
+                    <div id="cuenta-menores" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">5.4</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Cuenta Joven (Para Menores de 0 a 17 años)</h2>
+                            </div>
+                            <span class="bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Menores</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-3">
+                            <strong>Perfil del Cliente:</strong> Niños y jóvenes de 0 a 17 años de edad. Limitada a una sola cuenta por menor. <strong>Debe ser abierta obligatoriamente por el padre, madre o representante legal que ya sea cliente del banco</strong>, realizando la tramitación desde su App (Menú > Contratar).
+                            <br>• <strong>Comisión de Mantenimiento:</strong> <strong>0 € (Exenta de por vida)</strong>.
+                            <br>• <strong>🎁 Promoción de Bienvenida (+20 € de Regalo):</strong> El banco abona 20 € brutos (16,20 € netos) al contratar una nueva cuenta (o que tenga saldo inferior a 30 €) y efectuar un ingreso inicial mínimo de 20 € o más. Campaña válida del 17 de junio de 2026 al 15 de septiembre de 2026.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3 text-[10px]">
+                            <div class="bg-slate-50 dark:bg-slate-900/40 p-2.5 rounded border">
+                                <strong class="text-slate-800 dark:text-slate-200 block mb-1">A) Tramo de 0 a 11 años (Ahorro Parental)</strong>
+                                • Familiarización con el dinero. Permite a los tutores abrir fondos de inversión, carteras o ETFs a nombre del menor.
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/40 p-2.5 rounded border">
+                                <strong class="text-slate-800 dark:text-slate-200 block mb-1">B) Tramo de 12 a 17 años (Supervisión Activa)</strong>
+                                • App Adaptada: El menor accede con claves propias generadas por los padres desde el panel "Control Parental".
+                                <br>• <strong>Bizum Menores (Desde 14 años):</strong> Límites estrictos: 50 € por operación, 150 € al día y 500 € al mes. Prohibido su uso en comercios online.
+                                <br>• Viajes: Tarjeta exenta de comisiones por compras internacionales y 3 retiradas gratis al mes fuera de España.
+                            </div>
+                        </div>
+
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed">
+                            <strong>💳 Tarjeta Prepago Joven (Opcional):</strong> Sin comisiones de emisión ni mantenimiento. Carga mínima de 6 € y saldo máximo de 900 €. Los padres monitorizan movimientos en tiempo real y pueden recuperar el saldo de la tarjeta devolviéndolo a la cuenta corriente al instante.
+                        </p>
+                    </div>
+
+                    <!-- 5.5 CUENTA DE PAGO BÁSICA -->
+                    <div id="cuenta-pago-basica" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">5.5</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Cuenta de Pago Básica</h2>
+                            </div>
+                            <span class="bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Regulada</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-3">
+                            <strong>Perfil del Cliente:</strong> Uso estrictamente particular (prohibido fines comerciales). Restringida a personas físicas que residan legalmente en la UE, sean solicitantes de asilo o no tengan permiso de residencia pero no puedan ser expulsados.
+                            <br>• <strong class="text-red-600">Criterio de Exclusión Absoluto:</strong> El solicitante <strong>no puede ser titular de ninguna otra cuenta de pago</strong> en ninguna entidad bancaria dentro del territorio español.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-3">
+                            <strong>Comisión de Mantenimiento y Límites de Uso:</strong> Coste fijo cerrado de <strong>3 € al mes</strong> (36 € al año). Da derecho a un máximo de <strong>120 operaciones de pago en euros al año</strong> dentro de la UE (transferencias emitidas, adeudos o recibos). Las operaciones que excedan el límite de 120 devengarán comisiones individuales según los precios estándar generales de la entidad.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed">
+                            <strong>Proceso de Contratación:</strong> Estrictamente de forma presencial en oficinas físicas aportando documento de identidad fehaciente (DNI, pasaporte o tarjeta de asilo), certificado de registro y cumplimentando la información obligatoria de la normativa de prevención de blanqueo de capitales.
+                        </p>
+                    </div>
+
+                    <!-- COMPARTIDO: COSTES POR DESCUBIERTO Y TRATAMIENTO LEGAL -->
+                    <div id="costes-descubierto" class="searchable-card bg-slate-900 dark:bg-slate-950 text-slate-100 p-4 rounded-xl border border-slate-800 shadow-md">
+                        <h4 class="forced-heading-size text-white border-b border-slate-800 pb-1.5 mb-2.5 flex items-center gap-2">
+                            <i class="fa-solid fa-gavel text-red-500"></i> TABLA DE COSTES POR DESCUBIERTO Y CONDICIONES LEGALES (Cuentas 1, 2, 3 y 5)
+                        </h4>
+                        <div class="overflow-x-auto mb-3">
+                            <table class="w-full text-left text-[10px] text-slate-300">
+                                <thead>
+                                    <tr class="border-b border-slate-800 text-white uppercase text-[9px]">
+                                        <th class="py-1">Concepto</th>
+                                        <th class="py-1 px-2">Coste Aplicable</th>
+                                        <th class="py-1">Detalle Técnico Regulado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-slate-800/60">
+                                        <td class="py-1.5 font-bold text-white">Interés Deudor</td>
+                                        <td class="py-1.5 px-2 text-red-400">7,83% TIN (8,12% TAE)</td>
+                                        <td class="py-1.5">Se aplica directamente sobre el saldo negativo y el tiempo exacto que dure la posición deudora.</td>
+                                    </tr>
+                                    <tr class="border-b border-slate-800/60">
+                                        <td class="py-1.5 font-bold text-white">Comisión de Descubierto</td>
+                                        <td class="py-1.5 px-2 text-red-400">5% fijo (Mínimo 15 €)</td>
+                                        <td class="py-1.5">Se cobra sobre el mayor descubierto contable producido en el periodo de liquidación mensual.</td>
+                                    </tr>
+                                    <tr class="border-b border-slate-800/60">
+                                        <td class="py-1.5 font-bold text-white">Gastos de Reclamación</td>
+                                        <td class="py-1.5 px-2 text-red-400">49 € por posición</td>
+                                        <td class="py-1.5">Gasto único por comunicación y gestión de cobro. Se devenga una sola vez por cantidad reclamada y nunca superará la deuda.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ul class="space-y-1 text-slate-400 text-[10px] list-disc pl-4">
+                            <li><strong>Fondo de Garantía de Depósitos (FGD):</strong> Entidad adscrita al FGD de España. Depósitos garantizados con un importe máximo de 100.000 € por depositante.</li>
+                            <li><strong>Derecho de Desistimiento:</strong> En contratos digitales el cliente dispone de 14 días naturales desde la firma para anular el contrato sin penalización. Debe devolver los saldos deudores en un máximo de 30 días.</li>
+                            <li><strong>Modificación de Condiciones:</strong> Contrato de duración indefinida. El banco está obligado a notificar individualmente cualquier cambio con un mínimo de 2 meses de antelación.</li>
+                            <li><strong>Traslado de Cuentas:</strong> Derecho legal regulado a solicitar el traslado de cuenta corriente a otra entidad bancaria en territorio español de forma ágil.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECCIÓN 6 GENERAL -->
+            <div id="seccion6" class="searchable-section space-y-4">
                 
                 <!-- Banner de Módulo de Calidad (Gris Grafito Sobrio) -->
                 <div class="bg-slate-700 text-white rounded-2xl p-5 shadow-sm relative overflow-hidden transition-all-200">
@@ -1320,10 +1538,10 @@
                     <div class="absolute right-[-20px] top-[-20px] w-36 h-36 bg-slate-500 rounded-full opacity-20 pointer-events-none"></div>
                     
                     <span class="bg-black/25 text-white font-extrabold px-2.5 py-0.5 rounded-md text-[8.5px] uppercase tracking-wider mb-2.5 inline-block">CALIDAD DE SERVICIO</span>
-                    <button onclick="toggleSection('seccion5')" class="w-full text-left focus:outline-none flex justify-between items-center group">
-                        <h1 class="text-white forced-heading-size">5. PROTOCOLOS DE ATENCIÓN, CALIDAD Y ATENCIÓN AL CLIENTE</h1>
+                    <button onclick="toggleSection('seccion6')" class="w-full text-left focus:outline-none flex justify-between items-center group">
+                        <h1 class="text-white forced-heading-size">6. CALIDAD Y SCRIPT DE ATENCIÓN</h1>
                         <div class="bg-white/20 group-hover:bg-white/30 p-2 rounded-full h-7 w-7 flex items-center justify-center transition-all duration-200 shrink-0 shadow-sm">
-                            <i id="arrow-seccion5" class="fa-solid fa-chevron-down text-white text-xs transition-transform duration-200"></i>
+                            <i id="arrow-seccion6" class="fa-solid fa-chevron-down text-white text-xs transition-transform duration-200"></i>
                         </div>
                     </button>
                     <p class="text-white/90 mt-2 mb-0 normal-text leading-relaxed">
@@ -1331,31 +1549,70 @@
                     </p>
                 </div>
 
-                <div id="content-seccion5" class="space-y-5 transition-all duration-300 hidden">
+                <div id="content-seccion6" class="space-y-5 transition-all duration-300 hidden">
                     
-                    <!-- 5.1 Estructura de la Llamada -->
+                    <!-- 6.1 ESTRUCTURA DE LA LLAMADA (SCRIPT OFICIAL MODIFICADO) -->
                     <div id="estructura-llamada" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
                         <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
                             <div class="flex items-center gap-2">
-                                <span class="bg-slate-50 dark:bg-slate-950/40 text-slate-600 dark:text-slate-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">5.1</span>
-                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Estructura de la Llamada (Script Oficial)</h2>
+                                <span class="bg-slate-50 dark:bg-slate-950/40 text-slate-600 dark:text-slate-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">6.1</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Estructura del Script de Atención Obligatorio</h2>
                             </div>
                         </div>
-                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed">
-                            Es obligatorio estructurar todas las conversaciones bajo el flujo de calidad oficial:<br>
-                            1. <strong>Bienvenida:</strong> Saludo cordial de marca Santander e identificación del agente.<br>
-                            2. <strong>Identificación/IVR:</strong> Validación de credenciales de seguridad e identidad del cliente en el sistema.<br>
-                            3. <strong>Resolución:</strong> Diagnóstico de la consulta técnica u operativa con sondeo de calidad activo.<br>
-                            4. <strong>Venta Cruzada (Cross-selling):</strong> Identificación de oportunidades comerciales o ventajas de Santander Key.<br>
-                            5. <strong>Cierre:</strong> Agradecimiento, sondeo de dudas finales y despedida corporativa de marca.
-                        </p>
+                        
+                        <div class="space-y-4 text-slate-600 dark:text-slate-400 normal-text leading-relaxed">
+                            <div class="border-l-2 border-slate-400 pl-3 bg-slate-50 dark:bg-slate-900/50 p-2 rounded">
+                                <span class="font-bold text-slate-800 dark:text-slate-200 block mb-1">🗣️ 1. APERTURA Y BIENVENIDA REGLAMENTARIA:</span>
+                                <p class="italic text-slate-700 dark:text-slate-300">
+                                    "Hola, ¿qué tal? Una disculpa por la demora, soy [Tu Nombre] de Banco Santander, ¿cuál es el motivo de tu consulta?"
+                                </p>
+                            </div>
+
+                            <div class="border-l-2 border-slate-400 pl-3">
+                                <span class="font-bold text-slate-800 dark:text-slate-200 block mb-1">🔍 2. IDENTIFICACIÓN / IVR & DIAGNÓSTICO:</span>
+                                Cursar la validación de credenciales reglamentarias de seguridad en los paneles de Nimbus o ADN según corresponda a la llamada.
+                            </div>
+
+                            <div class="border-l-2 border-slate-400 pl-3">
+                                <span class="font-bold text-slate-800 dark:text-slate-200 block mb-1">🛠️ 3. RESOLUCIÓN OPERATIVA:</span>
+                                Ejecución de los procesos técnicos de soporte o aclaraciones en terminal de producción manteniendo el sondeo activo.
+                            </div>
+
+                            <div class="border-l-2 border-slate-400 pl-3">
+                                <span class="font-bold text-slate-800 dark:text-slate-200 block mb-1">🚀 4. VENTA CRUZADA (CROSS-SELLING):</span>
+                                Ofrecimiento de ventajas del ecosistema digital, activaciones de Santander Key o promociones vigentes de cuentas.
+                            </div>
+
+                            <div class="border-l-2 border-red-600 pl-3 bg-red-50/20 dark:bg-red-950/10 p-2 rounded">
+                                <span class="font-bold text-red-600 dark:text-red-400 block mb-1">📌 5. CIERRE Y CONFIRMACIÓN IMPERATIVA (REGLA DE LA SOLUCIÓN):</span>
+                                <p class="text-slate-700 dark:text-slate-300 mb-2">
+                                    Es una regla de calidad crítica e ineludible formular la pregunta de cierre utilizando obligatoriamente el término <strong>"solución"</strong>:
+                                </p>
+                                <p class="italic text-slate-800 dark:text-slate-200 font-bold mb-2">
+                                    "¿Podría indicarme si su consulta ha sido solucionada?"
+                                </p>
+                                <p class="text-slate-700 dark:text-slate-300 mb-2">
+                                    Tras la respuesta afirmativa del cliente, realizar el halago promocional y el preaviso de métricas:
+                                </p>
+                                <p class="italic text-slate-700 dark:text-slate-300">
+                                    "Perfecto [Nombre de pila del cliente], me alegro de haberlo resuelto. Bueno, ahora a continuación recibirá por email una encuesta de satisfacción de esta llamada, por mi parte, usted ha sido un 10 en todo este proceso."
+                                </p>
+                            </div>
+
+                            <div class="border-l-2 border-slate-400 pl-3 bg-slate-50 dark:bg-slate-900/50 p-2 rounded">
+                                <span class="font-bold text-slate-800 dark:text-slate-200 block mb-1">👋 6. DESPEDIDA CORPORATIVA:</span>
+                                <p class="italic text-slate-700 dark:text-slate-300">
+                                    "Para cualquier otra consulta no dude en llamar. Tenga un buen día."
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 5.2 Indicadores de Calidad -->
+                    <!-- 6.2 Indicadores de Calidad -->
                     <div id="indicadores-calidad" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
                         <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
                             <div class="flex items-center gap-2">
-                                <span class="bg-slate-50 dark:bg-slate-950/40 text-slate-600 dark:text-slate-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">5.2</span>
+                                <span class="bg-slate-50 dark:bg-slate-950/40 text-slate-600 dark:text-slate-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">6.2</span>
                                 <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Indicadores de Calidad (Métricas)</h2>
                             </div>
                         </div>
@@ -1365,11 +1622,11 @@
                         </p>
                     </div>
 
-                    <!-- 5.3 Gestión de Citas -->
+                    <!-- 6.3 Gestión de Citas -->
                     <div id="gestion-citas" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
                         <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
                             <div class="flex items-center gap-2">
-                                <span class="bg-slate-50 dark:bg-slate-950/40 text-slate-600 dark:text-slate-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">5.3</span>
+                                <span class="bg-slate-50 dark:bg-slate-950/40 text-slate-600 dark:text-slate-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">6.3</span>
                                 <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Gestión de Citas</h2>
                             </div>
                         </div>
@@ -1379,11 +1636,11 @@
                         </p>
                     </div>
 
-                    <!-- 5.4 Glosario -->
+                    <!-- 6.4 Glosario -->
                     <div id="glosario" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
                         <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
                             <div class="flex items-center gap-2">
-                                <span class="bg-slate-50 dark:bg-slate-950/40 text-slate-600 dark:text-slate-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">5.4</span>
+                                <span class="bg-slate-50 dark:bg-slate-950/40 text-slate-600 dark:text-slate-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">6.4</span>
                                 <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Glosario de Términos Bancarios</h2>
                             </div>
                         </div>
@@ -1515,8 +1772,10 @@
                     sectionId = 'seccion3';
                 } else if (['#activacion-tarjetas', '#tarjetas-prepago', '#retenciones-saldo', '#impagos-comisiones'].includes(hash)) {
                     sectionId = 'seccion4';
-                } else if (['#estructura-llamada', '#indicadores-calidad', '#gestion-citas', '#glosario'].includes(hash)) {
+                } else if (['#cuenta-santander-corp', '#cuenta-online-corp', '#cuenta-noresidente', '#cuenta-menores', '#cuenta-pago-basica', '#costes-descubierto'].includes(hash)) {
                     sectionId = 'seccion5';
+                } else if (['#estructura-llamada', '#indicadores-calidad', '#gestion-citas', '#glosario'].includes(hash)) {
+                    sectionId = 'seccion6';
                 }
 
                 if (sectionId) {
@@ -1541,8 +1800,10 @@
                     sectionId = 'seccion3';
                 } else if (['#activacion-tarjetas', '#tarjetas-prepago', '#retenciones-saldo', '#impagos-comisiones'].includes(hash)) {
                     sectionId = 'seccion4';
-                } else if (['#estructura-llamada', '#indicadores-calidad', '#gestion-citas', '#glosario'].includes(hash)) {
+                } else if (['#cuenta-santander-corp', '#cuenta-online-corp', '#cuenta-noresidente', '#cuenta-menores', '#cuenta-pago-basica', '#costes-descubierto'].includes(hash)) {
                     sectionId = 'seccion5';
+                } else if (['#estructura-llamada', '#indicadores-calidad', '#gestion-citas', '#glosario'].includes(hash)) {
+                    sectionId = 'seccion6';
                 }
 
                 if (sectionId) {
@@ -1554,20 +1815,24 @@
             }
         });
 
-        // Filtro y Buscador Dinámico (Expande las secciones automáticamente al buscar)
+        // CORRECCIÓN DEL FILTRO Y BUSCADOR DINÁMICO (Soluciona el fallo de desaparición de secciones)
         function filterManual() {
             const query = document.getElementById('manualSearch').value.toLowerCase().trim();
-            const sections = ['seccion1', 'seccion2', 'seccion3', 'seccion4', 'seccion5'];
+            const sections = ['seccion1', 'seccion2', 'seccion3', 'seccion4', 'seccion5', 'seccion6'];
             const cards = document.querySelectorAll('.searchable-card');
 
             if (query === '') {
+                // Restablecer todas las secciones y tarjetas a su estado visible por defecto
                 sections.forEach(id => {
+                    const sec = document.getElementById(id);
+                    if (sec) sec.classList.remove('hidden');
+                    
                     const content = document.getElementById('content-' + id);
                     const arrow = document.getElementById('arrow-' + id);
                     const subMenu = document.getElementById('sub-menu-' + id);
                     const menuArrow = document.getElementById('menu-arrow-' + id);
 
-                    content.classList.add('hidden');
+                    if (content) content.classList.add('hidden');
                     if (arrow) {
                         arrow.classList.remove('fa-chevron-up');
                         arrow.classList.add('fa-chevron-down');
@@ -1582,14 +1847,14 @@
                 return;
             }
 
-            // Desplegar todo automáticamente para mostrar resultados
+            // Desplegar todo automáticamente para mostrar resultados activos de búsqueda
             sections.forEach(id => {
                 const content = document.getElementById('content-' + id);
                 const arrow = document.getElementById('arrow-' + id);
                 const subMenu = document.getElementById('sub-menu-' + id);
                 const menuArrow = document.getElementById('menu-arrow-' + id);
 
-                content.classList.remove('hidden');
+                if (content) content.classList.remove('hidden');
                 if (arrow) {
                     arrow.classList.remove('fa-chevron-down');
                     arrow.classList.add('fa-chevron-up');
@@ -1601,7 +1866,7 @@
                 }
             });
 
-            // Resaltar coincidencias
+            // Resaltar coincidencias de texto
             cards.forEach(card => {
                 const text = card.textContent.toLowerCase();
                 if (text.includes(query)) {
@@ -1613,14 +1878,16 @@
                 }
             });
 
-            // Ocultar sección si no hay tarjetas visibles
+            // Ocultar o mostrar el contenedor del bloque completo según los resultados
             sections.forEach(id => {
                 const sec = document.getElementById(id);
-                const visibleCards = sec.querySelectorAll('.searchable-card:not(.hidden)');
-                if (visibleCards.length > 0) {
-                    sec.classList.remove('hidden');
-                } else {
-                    sec.classList.add('hidden');
+                if (sec) {
+                    const visibleCards = sec.querySelectorAll('.searchable-card:not(.hidden)');
+                    if (visibleCards.length > 0) {
+                        sec.classList.remove('hidden');
+                    } else {
+                        sec.classList.add('hidden');
+                    }
                 }
             });
         }
