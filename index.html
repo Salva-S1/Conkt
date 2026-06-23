@@ -32,26 +32,27 @@
 </head>
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-200 min-h-screen">
 
-    <header class="bg-red-600 text-white sticky top-0 z-50 shadow-md">
+    <header class="bg-red-600 text-white border-b border-red-700 sticky top-0 z-50 shadow-md">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center gap-3">
-                <div class="bg-white text-red-600 p-2 rounded-lg flex items-center justify-center shadow-md">
+                <div class="bg-white text-red-600 p-2 rounded-lg flex items-center justify-center shadow-md shrink-0">
                     <i class="fa-solid fa-building-columns text-sm"></i>
                 </div>
                 <div>
                     <span class="font-extrabold tracking-wider block forced-heading-size">SANTANDER BANCA DIGITAL</span>
-                    <span class="text-[9.5px] opacity-90 block">Manual de Procedimientos Dinámico</span>
+                    <span class="text-[9.5px] opacity-90 block">Manual de Procedimientos Optimizado</span>
                 </div>
             </div>
-            <div class="flex items-center gap-2 flex-grow sm:flex-grow-0 w-full sm:w-auto">
+
+            <div class="flex items-center gap-2 flex-grow sm:flex-grow-0 sm:w-auto w-full">
                 <div class="relative w-full sm:w-64">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
                         <i class="fa-solid fa-magnifying-glass text-xs"></i>
                     </span>
-                    <input type="text" id="manualSearch" onkeyup="filterManual()" placeholder="Buscar procedimiento..." 
-                           class="w-full pl-8 pr-4 py-1 bg-white dark:bg-slate-800 border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 text-xs text-slate-800 dark:text-slate-100">
+                    <input type="text" id="manualSearch" onkeyup="filterManual()" placeholder="Buscar en el manual..." 
+                           class="w-full pl-8 pr-4 py-1 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-red-500 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 text-xs">
                 </div>
-                <button onclick="toggleTheme()" class="p-2 bg-red-700 hover:bg-red-800 text-white border border-red-500 rounded-lg flex items-center justify-center">
+                <button onclick="toggleTheme()" class="p-2 bg-red-700 hover:bg-red-800 text-white border border-red-500 rounded-lg flex items-center justify-center shadow-sm" title="Cambiar Tema">
                     <i id="themeIcon" class="fa-solid fa-moon text-xs"></i>
                 </button>
             </div>
@@ -64,19 +65,25 @@
             <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm">
                 <div class="flex items-center gap-2 border-b border-slate-100 dark:border-slate-700 pb-2 mb-3">
                     <i class="fa-solid fa-list-ul text-red-600"></i>
-                    <h2 class="forced-heading-size">ÍNDICE DE CONTENIDOS</h2>
+                    <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">ÍNDICE DE CONTENIDOS</h2>
                 </div>
                 <nav id="dynamic-nav" class="space-y-3"></nav>
             </div>
 
-            <div class="bg-[#0c1a30] dark:bg-[#070f21] border border-slate-800 rounded-xl p-4 shadow-sm text-slate-200">
-                <div class="flex items-center gap-2 border-b border-slate-800 pb-2 mb-3">
+            <div class="bg-[#0c1a30] dark:bg-[#070f21] border border-slate-800 rounded-xl p-4 shadow-sm text-slate-200 relative overflow-hidden">
+                <div class="absolute right-[-15px] bottom-[-15px] opacity-10 text-[80px] pointer-events-none">
+                    <i class="fa-solid fa-headset text-white"></i>
+                </div>
+                <div class="flex items-center gap-2 border-b border-slate-800 pb-2 mb-3 relative z-10">
                     <div class="bg-red-600 text-white rounded-full w-4 h-4 flex items-center justify-center text-[9px] font-bold">i</div>
                     <h2 class="forced-heading-size text-white">CHECKLIST DEL AGENTE</h2>
                 </div>
-                <button onclick="clearAllChecks()" class="w-full py-1.5 border border-slate-700 bg-transparent hover:bg-slate-800 rounded-lg text-white font-semibold text-[10px] tracking-wider">
-                    REINICIAR CHECKLISTS
-                </button>
+                <p class="text-slate-300 mb-4 z-10 relative">Marca las tareas completadas durante la interacción para asegurar la calidad.</p>
+                <div class="relative z-10">
+                    <button onclick="clearAllChecks()" class="w-full py-1.5 border border-slate-700 bg-transparent hover:bg-slate-800 rounded-lg text-white font-semibold text-center tracking-wider text-[10px]">
+                        REINICIAR CHECKLISTS
+                    </button>
+                </div>
             </div>
         </aside>
 
@@ -86,58 +93,22 @@
     <script>
         let datosManual = {};
 
-        // Cargar datos e inicializar
+        // Función de inicialización del motor dinámico
         async function inicializarApp() {
             try {
-                // Puedes cambiar esta línea por un fetch si usas un servidor local:
-                // const respuesta = await fetch('manual_data.json');
-                // datosManual = await respuesta.json();
-                
-                // DATA ENLACE LOCAL PROVISIONAL (Para pruebas inmediatas sin problemas de CORS)
-                datosManual = {
-                    "modulos": [
-                        {
-                            "id": "seccion1",
-                            "titulo": "1. SEGURIDAD Y CREDENCIALES",
-                            "tag_modulo": "MÓDULO DE SEGURIDAD",
-                            "color": "red",
-                            "descripcion": "Protocolos de verificación de identidad, generación, reemisión y activación de credenciales operativas.",
-                            "tarjetas": [
-                                {
-                                    "id": "clave-acceso",
-                                    "num": "1.1",
-                                    "titulo": "CLAVE DE ACCESO (N1)",
-                                    "badge": "ACCESO CONSULTIVO",
-                                    "intro": "La clave de acceso (CA) es una contraseña numérica que permite al cliente el acceso consultivo a sus productos contratados mediante canales a distancia.",
-                                    "reglas_oro": [
-                                        "<strong>Formato de la clave:</strong> Debe ser de exactamente 8 dígitos, solo números.",
-                                        "<strong>Restricciones:</strong> No puede ser consecutiva ni ascendente.",
-                                        "<strong>Seguimiento:</strong> Es obligatorio agendar una llamada de seguimiento a los 15 minutos."
-                                    ],
-                                    "bloques": [
-                                        {
-                                          "tipo": "prioritario",
-                                          "titulo": "VÍA PRINCIPAL (INSTRUIR POR LA APP)",
-                                          "subtexto": "Siempre debe ser nuestra primera opción para empoderar al cliente.",
-                                          "checklist": [
-                                            "Guiar al cliente a la pantalla de inicio de la App.",
-                                            "Indicarle que pulse en 'Recuperar clave de acceso'.",
-                                            "Resolver el Captcha de verificación en pantalla."
-                                          ],
-                                          "nota_alerta": "El sistema enviará un código por SMS para establecer la nueva clave de 8 números."
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                };
-
+                // Intento de carga nativa del JSON externo
+                const respuesta = await fetch('manual_data.json');
+                datosManual = await respuesta.json();
+            } catch (error) {
+                console.log("CORS o Servidor Local ausente. Cargando datos desde el módulo de contingencia integrado...");
+                // Contingencia para que funcione directamente abriendo el archivo local sin montar un servidor http://
+                datosManual = { "modulos": document.getElementById('backup-data') ? JSON.parse(document.getElementById('backup-data').textContent).modulos : [] };
+            }
+            
+            if(datosManual.modulos) {
                 renderizarMenu();
                 renderizarContenido();
-                cargarEstadoCheckboxes();
-            } catch (error) {
-                console.error("Error cargando los datos del manual:", error);
+                restaurarEstadoCheckboxes();
             }
         }
 
@@ -145,14 +116,14 @@
             const nav = document.getElementById('dynamic-nav');
             nav.innerHTML = datosManual.modulos.map(m => `
                 <div>
-                    <button onclick="toggleSection('${m.id}')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 text-left">
+                    <button onclick="toggleSection('${m.id}')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 text-left">
                         <span class="title-13">${m.titulo}</span>
                         <i id="menu-arrow-${m.id}" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
                     </button>
                     <div id="sub-menu-${m.id}" class="pl-3 space-y-1.5 border-l border-slate-200 dark:border-slate-700 ml-1 mt-1 hidden">
                         ${m.tarjetas.map(t => `
-                            <a href="#${t.id}" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-red-600">
-                                <i class="fa-solid fa-file-lines mr-1 text-[9px]"></i> ${t.num} ${t.titulo}
+                            <a href="#${t.id}" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400">
+                                <i class="fa-solid fa-file-invoice mr-1 text-[9px]"></i> ${t.num} ${t.titulo}
                             </a>
                         `).join('')}
                     </div>
@@ -166,9 +137,9 @@
                 <div id="${m.id}" class="searchable-section space-y-4">
                     <div class="bg-${m.color}-700 text-white rounded-2xl p-5 shadow-sm relative overflow-hidden">
                         <span class="bg-black/25 text-white font-extrabold px-2.5 py-0.5 rounded-md text-[8.5px] uppercase tracking-wider mb-2.5 inline-block">${m.tag_modulo}</span>
-                        <button onclick="toggleSection('${m.id}')" class="w-full text-left flex justify-between items-center">
+                        <button onclick="toggleSection('${m.id}')" class="w-full text-left flex justify-between items-center group">
                             <h1 class="text-white forced-heading-size">${m.titulo}</h1>
-                            <div class="bg-white/20 p-2 rounded-full h-7 w-7 flex items-center justify-center">
+                            <div class="bg-white/20 group-hover:bg-white/30 p-2 rounded-full h-7 w-7 flex items-center justify-center shrink-0">
                                 <i id="arrow-${m.id}" class="fa-solid fa-chevron-down text-white text-xs"></i>
                             </div>
                         </button>
@@ -183,36 +154,129 @@
                                         <span class="bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">${t.num}</span>
                                         <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">${t.titulo}</h2>
                                     </div>
-                                    <span class="bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase">${t.badge}</span>
+                                    <span class="bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">${t.badge}</span>
                                 </div>
 
                                 <div class="border-l-4 border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900/50 p-3 rounded-r-lg mb-4">
                                     <p class="text-slate-600 dark:text-slate-400 mb-0">${t.intro}</p>
                                 </div>
 
-                                ${t.bloques ? t.bloques.map((b, idx) => `
+                                ${t.nota_alerta ? `<div class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 p-3 rounded-lg mb-4 text-amber-800 dark:text-amber-300">${t.nota_alerta}</div>` : ''}
+
+                                ${t.cards ? `
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+                                        ${t.cards.map(c => `
+                                            <div class="bg-slate-50 dark:bg-slate-900/40 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
+                                                <span class="text-slate-400 text-[8px] font-extrabold uppercase block tracking-wider mb-1">${c.meta}</span>
+                                                <div class="font-bold text-slate-800 dark:text-slate-200 mb-1">${c.titulo}</div>
+                                                <p class="text-slate-500 dark:text-slate-400 text-[10px] leading-relaxed mb-0">${c.desc}</p>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                ` : ''}
+
+                                ${t.bloques ? t.bloques.map((b, bIdx) => `
                                     <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50 mb-3">
-                                        <div class="bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-lg flex items-center justify-between mb-3">
-                                            <span class="title-13 text-emerald-800 dark:text-emerald-400 font-extrabold">${b.titulo}</span>
+                                        <div class="${b.tipo === 'prioritario' ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-100' : b.tipo === 'advertencia' ? 'bg-amber-50 dark:bg-amber-950/40 border-amber-100' : 'bg-slate-100 dark:bg-slate-700 border-slate-200'} p-2.5 rounded-lg border flex items-center justify-between mb-3">
+                                            <span class="title-13 font-extrabold">${b.titulo}</span>
                                         </div>
-                                        <p class="text-slate-500 italic mb-3">${b.subtexto}</p>
-                                        <div class="space-y-2 mb-4">
-                                            ${b.checklist.map((item, chIdx) => `
-                                                <div class="flex items-start gap-2.5">
-                                                    <input type="checkbox" id="${t.id}-cb-${idx}-${chIdx}" class="cb-checklist mt-0.5 rounded border-slate-300 text-red-600 h-3.5 w-3.5 shrink-0">
-                                                    <label for="${t.id}-cb-${idx}-${chIdx}" class="text-slate-600 dark:text-slate-400">${item}</label>
-                                                </div>
-                                            `).join('')}
-                                        </div>
-                                        ${b.nota_alerta ? `<div class="bg-[#fffcf0] dark:bg-[#2d2a1a] p-3 rounded-lg text-yellow-800 dark:text-yellow-300 text-[10px]">${b.nota_alerta}</div>` : ''}
+                                        ${b.subtexto ? `<p class="text-slate-500 dark:text-slate-400 mb-3 italic">${b.subtexto}</p>` : ''}
+                                        
+                                        ${b.checklist ? `
+                                            <div class="space-y-2 mb-3 pl-1">
+                                                ${b.checklist.map((ch, chIdx) => `
+                                                    <div class="flex items-start gap-2.5">
+                                                        <input type="checkbox" id="${t.id}-b${bIdx}-ch${chIdx}" class="cb-checklist mt-0.5 rounded border-slate-300 text-red-600 h-3.5 w-3.5 shrink-0">
+                                                        <label for="${t.id}-b${bIdx}-ch${chIdx}" class="text-slate-600 dark:text-slate-400">${ch}</label>
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        ` : ''}
+
+                                        ${b.proceso_ordenado ? `
+                                            <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden mb-3">
+                                                ${b.proceso_ordenado.map(po => `
+                                                    <div class="border-b border-slate-100 dark:border-slate-700 p-3 flex gap-3">
+                                                        <div class="shrink-0 w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center font-extrabold">${po.letra}</div>
+                                                        <div class="space-y-1 flex-1">
+                                                            <div class="font-bold text-slate-800 dark:text-slate-200">${po.titulo}</div>
+                                                            <p class="text-slate-600 dark:text-slate-400 mb-0 leading-relaxed">${po.desc}</p>
+                                                        </div>
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        ` : ''}
+
+                                        ${b.tabla_comisiones ? `
+                                            <div class="overflow-x-auto my-3 bg-white dark:bg-slate-800 p-2 rounded border">
+                                                <table class="w-full text-left text-[10px]">
+                                                    <thead>
+                                                        <tr class="border-b font-bold text-slate-700 dark:text-slate-300">
+                                                            ${b.tabla_comisiones.columnas.map(col => `<th class="py-1 px-2">${col}</th>`).join('')}
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        ${b.tabla_comisiones.filas.map(fila => `
+                                                            <tr class="border-b border-slate-100 dark:border-slate-700">
+                                                                ${fila.map(celda => `<td class="py-1.5 px-2">${celda}</td>`).join('')}
+                                                            </tr>
+                                                        `).join('')}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        ` : ''}
+
+                                        ${b.terminal ? `
+                                            <div class="bg-[#080d1a] text-emerald-400 p-3 rounded-lg font-mono text-[9.5px] space-y-1 border border-slate-800 my-3">
+                                                ${b.terminal.map(linea => `<div>${linea}</div>`).join('')}
+                                            </div>
+                                        ` : ''}
+
+                                        ${b.doble_resultado ? `
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+                                                <div class="bg-red-50 dark:bg-red-950/20 border border-red-100 p-2.5 rounded text-red-800 dark:text-red-300">${b.doble_resultado.ko}</div>
+                                                <div class="bg-green-50 dark:bg-green-950/20 border border-green-100 p-2.5 rounded text-green-800 dark:text-green-300">${b.doble_resultado.ok}</div>
+                                            </div>
+                                        ` : ''}
+
+                                        ${b.nota_alerta ? `<div class="bg-[#fffcf0] dark:bg-[#2d2a1a] border border-[#fdf1ca] p-3 rounded-lg text-yellow-800 dark:text-yellow-300">${b.nota_alerta}</div>` : ''}
+                                        ${b.nota_azul ? `<div class="bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-500 p-3 rounded-r text-slate-700 dark:text-slate-300">${b.nota_azul}</div>` : ''}
                                     </div>
                                 `).join('') : ''}
 
+                                ${t.tabla_comisiones ? `
+                                    <div class="overflow-x-auto mb-3 bg-slate-900 p-4 rounded-xl border border-slate-800 shadow-md">
+                                        <table class="w-full text-left text-[10px] text-slate-300">
+                                            <thead>
+                                                <tr class="border-b border-slate-800 text-white uppercase text-[9px]">
+                                                    ${t.tabla_comisiones.columnas.map(col => `<th class="py-1 px-2">${col}</th>`).join('')}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ${t.tabla_comisiones.filas.map(fila => `
+                                                    <tr class="border-b border-slate-800/60">
+                                                        <td class="py-1.5 font-bold text-white">${fila[0]}</td>
+                                                        <td class="py-1.5 px-2 text-red-400">${fila[1]}</td>
+                                                        <td class="py-1.5">${fila[2]}</td>
+                                                    </tr>
+                                                `).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                ` : ''}
+
                                 ${t.reglas_oro ? `
-                                    <div class="mt-5 bg-slate-900 dark:bg-slate-950 text-slate-100 p-4 rounded-xl border border-slate-800">
-                                        <h4 class="forced-heading-size text-white border-b border-slate-800 pb-1.5 mb-2.5">Reglas de Oro Obligatorias</h4>
+                                    <div class="mt-5 bg-slate-900 dark:bg-slate-950 text-slate-100 p-4 rounded-xl border border-slate-800 shadow-md">
+                                        <h4 class="forced-heading-size text-white border-b border-slate-800 pb-1.5 mb-2.5 flex items-center gap-2">
+                                            <i class="fa-solid fa-circle-info text-blue-400"></i> Reglas Obligatorias de Operativa
+                                        </h4>
                                         <ul class="space-y-1.5">
-                                            ${t.reglas_oro.map(r => `<li class="flex items-start gap-2 text-slate-300"><i class="fa-solid fa-circle-check text-blue-400 mt-1"></i><span>${r}</span></li>`).join('')}
+                                            ${t.reglas_oro.map(r => `
+                                                <li class="flex items-start gap-2 text-slate-300">
+                                                    <i class="fa-solid fa-circle-check text-blue-400 mt-1 shrink-0"></i>
+                                                    <span>${r}</span>
+                                                </li>
+                                            `).join('')}
                                         </ul>
                                     </div>
                                 ` : ''}
@@ -222,13 +286,12 @@
                 </div>
             `).join('');
 
-            // Re-vincular eventos para guardar checklists dinámicos
+            // Asignar escuchadores para persistencia de checkboxes dinámicos
             document.querySelectorAll('.cb-checklist').forEach(cb => {
                 cb.addEventListener('change', () => localStorage.setItem(cb.id, cb.checked));
             });
         }
 
-        // Control de Colapsables
         function toggleSection(id) {
             const content = document.getElementById('content-' + id);
             const arrow = document.getElementById('arrow-' + id);
@@ -250,33 +313,41 @@
             }
         }
 
-        // Buscador Inteligente
         function filterManual() {
             const query = document.getElementById('manualSearch').value.toLowerCase().trim();
             const cards = document.querySelectorAll('.searchable-card');
-            
-            datosManual.modulos.forEach(m => {
-                const content = document.getElementById('content-' + m.id);
-                if (query !== '' && content) content.classList.remove('hidden');
+            const sections = document.querySelectorAll('.searchable-section');
+
+            if (query === '') {
+                sections.forEach(sec => sec.classList.remove('hidden'));
+                cards.forEach(card => {
+                    card.classList.remove('hidden', 'border-red-500', 'ring-1', 'ring-red-500');
+                    card.parentElement.classList.add('hidden');
+                });
+                return;
+            }
+
+            sections.forEach(sec => {
+                const contentId = 'content-' + sec.id;
+                document.getElementById(contentId).classList.remove('hidden');
             });
 
             cards.forEach(card => {
                 const text = card.textContent.toLowerCase();
                 if (text.includes(query)) {
                     card.classList.remove('hidden');
-                    if (query !== '') card.classList.add('border-red-500', 'ring-1', 'ring-red-500');
-                    else card.classList.remove('border-red-500', 'ring-1', 'ring-red-500');
+                    card.classList.add('border-red-500', 'ring-1', 'ring-red-500');
                 } else {
                     card.classList.add('hidden');
+                    card.classList.remove('border-red-500', 'ring-1', 'ring-red-500');
                 }
             });
         }
 
-        // Guardado de persistencia local
-        function cargarEstadoCheckboxes() {
+        function restaurarEstadoCheckboxes() {
             document.querySelectorAll('.cb-checklist').forEach(cb => {
-                const estado = localStorage.getItem(cb.id);
-                if (estado !== null) cb.checked = (estado === 'true');
+                const saved = localStorage.getItem(cb.id);
+                if (saved !== null) cb.checked = (saved === 'true');
             });
         }
 
@@ -289,12 +360,12 @@
 
         function toggleTheme() {
             const html = document.documentElement;
-            const themeIcon = document.getElementById('themeIcon');
+            const icon = document.getElementById('themeIcon');
             if (html.classList.contains('dark')) {
-                html.classList.remove('dark'); themeIcon.className = 'fa-solid fa-moon text-xs';
+                html.classList.remove('dark'); icon.className = 'fa-solid fa-moon text-xs';
                 localStorage.setItem('theme', 'light');
             } else {
-                html.classList.add('dark'); themeIcon.className = 'fa-solid fa-sun text-xs';
+                html.classList.add('dark'); icon.className = 'fa-solid fa-sun text-xs';
                 localStorage.setItem('theme', 'dark');
             }
         }
@@ -306,6 +377,498 @@
             }
             inicializarApp();
         });
+    </script>
+
+    <script type="application/json" id="backup-data">
+        {
+            "modulos": [
+                {
+                    "id": "seccion1",
+                    "titulo": "1. SEGURIDAD Y CREDENCIALES",
+                    "tag_modulo": "MÓDULO DE SEGURIDAD",
+                    "color": "red",
+                    "descripcion": "Protocolos de verificación de identidad, generación, reemisión y activación de credenciales operativas del cliente.",
+                    "tarjetas": [
+                        {
+                            "id": "clave-acceso", "num": "1.1", "titulo": "CLAVE DE ACCESO (N1)", "badge": "ACCESO CONSULTIVO",
+                            "intro": "La clave de acceso (CA) es una contraseña numérica que permite al cliente el acceso de carácter estrictamente consultivo a sus productos contratados mediante los canales a distancia.",
+                            "bloques": [
+                                {
+                                    "tipo": "prioritario", "titulo": "ALTERNATIVA 1: VÍA PRINCIPAL (INSTRUIR AL CLIENTE POR LA APP)", "subtexto": "Siempre debe ser nuestra primera opción para empoderar al cliente en los canales digitales y fomentar la autogestión.",
+                                    "checklist": [
+                                        "Guiar al cliente a la pantalla de inicio de la App de Banco Santander.",
+                                        "Indicarle que vaya a la parte inferior y pulse en la opción 'Recuperar clave de acceso'.",
+                                        "El cliente deberá resolver un recuadro de verificación humana (Captcha) en pantalla.",
+                                        "Solicitarle que introduzca su documento de identidad registrado (DNI / NIE / Pasaporte)."
+                                    ],
+                                    "cards": [
+                                        {"titulo": "Por Biometría", "desc": "Reconocimiento facial o huella dactilar si el dispositivo está previamente vinculado.", "meta": "OPCIÓN A"},
+                                        {"titulo": "Por Tarjeta Activa", "desc": "Validar utilizando los datos de alguna de sus tarjetas activas actuales.", "meta": "OPCIÓN B"}
+                                    ],
+                                    "nota_alerta": "<strong>Paso de confirmación:</strong> Tras superar la validación elegida, el sistema enviará un código por SMS al teléfono móvil asociado para confirmar el proceso y proceder al establecimiento de su nueva clave, que debe constar de <strong>8 números</strong>."
+                                },
+                                {
+                                    "tipo": "advertencia", "titulo": "ALTERNATIVA 2: SIN MÓVIL A MANO O ERROR EN LA APP", "subtexto": "Si el cliente no puede realizar el proceso autónomamente, validaremos su identidad con los datos de su tarjeta física para derivarlo a la locución segura.",
+                                    "checklist": [ "Solicitar al cliente el PAN (los 16 dígitos de la tarjeta) y el PIN (código de 4 dígitos para cajeros/compras)." ],
+                                    "nota_azul": "<strong>Nota técnica sobre el proceso:</strong> Una vez confirmes que posee estos datos, se le transferirá a la locución segura (el sistema automatizado que protege sus datos) para que realice el cambio de contraseña de forma confidencial."
+                                },
+                                {
+                                    "tipo": "estandar", "titulo": "ALTERNATIVA 3: FILTRO POR PREGUNTAS DE SEGURIDAD", "subtexto": "Si el cliente no dispone ni de PIN ni de PAN, es obligatorio realizar el cuestionario completo de seguridad. Debes formular las siguientes preguntas exactas:",
+                                    "checklist": [
+                                        "Fecha de nacimiento (Cumpleaños).",
+                                        "Últimos dígitos de su cuenta (IBAN).",
+                                        "¿Tiene contratado algún préstamo con el banco? (Sí / No).",
+                                        "¿Tiene tarjeta de Crédito? En caso afirmativo, solicitar los últimos 6 dígitos.",
+                                        "¿Tiene tarjeta de Débito? En caso afirmativo, solicitar los últimos 6 dígitos."
+                                    ],
+                                    "doble_resultado": {
+                                        "ko": "❌ Si NO supera el filtro: Se le deniega la gestión a distancia y se le remite obligatoriamente a una oficina física.",
+                                        "ok": "✔ Si supera el filtro: Se le transfiere de igual manera al sistema/agente seguro para que la locución automatizada le guíe."
+                                    }
+                                }
+                            ],
+                            "reglas_oro": [
+                                "<strong>Formato de la clave:</strong> Debe ser de exactamente 8 dígitos, solo números.",
+                                "<strong>Restricciones:</strong> No puede ser una de sus últimas 6 claves, no puede contener números consecutivos o en orden ascendente (ej. 12345678), ni utilizar datos personales.",
+                                "<strong>Compromiso FCR (Llamada de seguimiento):</strong> Es obligatorio agendar una llamada de seguimiento al cliente 15 minutos después de finalizar la atención."
+                            ]
+                        },
+                        {
+                            "id": "firma-electronica", "num": "1.2", "titulo": "Firma Electrónica (N2 / FE)", "badge": "Nivel 2",
+                            "intro": "La Firma Electrónica habilita la capacidad operativa transaccional completa del cliente en todos los entornos remotos del banco.",
+                            "nota_alerta": "<strong>Verificación de Seguridad Obligatoria (E. Verificación de Seguridad):</strong> Antes de procesar nada, se siguen estos pasos en orden estricto:<ol class='mt-1.5 space-y-0.5 pl-4 list-decimal'><li><strong>Solicitar 2 números de la Clave de Acceso</strong> (N1) — primer paso siempre, antes de entrar a sistemas.</li><li>Verificar el número de teléfono del cliente en Santander Go, debe estar asociado a su contrato CMC.</li></ol><p class='mt-1.5 mb-0'>⚠️ Si el número de teléfono no es correcto, el cliente debe ir a oficina para cambiarlo, ya que el cambio de teléfono en el CMC requiere firma electrónica activa.</p>",
+                            "bloques": [
+                                {
+                                    "tipo": "estandar", "titulo": "BLOQUE A: SOLICITAR / GENERAR UNA NUEVA FIRMA ELECTRÓNICA (Por bloqueo o pérdida)",
+                                    "subtexto": "Cuando el cliente no puede operar porque su firma está bloqueada, revocada o no la recuerda, se debe generar un envío de una FE provisional.",
+                                    "checklist": [ "<strong>Alternativa 1: Autogestión por App / NHB:</strong> Guiar al cliente en su App o Web (NHB) entrando a: Seguridad -> Cambio de claves -> Recuperar firma." ]
+                                },
+                                {
+                                    "tipo": "estandar", "titulo": "Alternativa 2: Gestión por el Agente en Sistemas (Si no puede por la App)",
+                                    "subtexto": "Sigue rigurosamente el orden del proceso completo:",
+                                    "proceso_ordenado": [
+                                        {"letra": "A", "titulo": "Verificar 2 números de la Clave de Acceso", "desc": "Antes de cualquier gestión, solicitar al cliente 2 posiciones concretas de su Clave de Acceso (N1)."},
+                                        {"letra": "B", "titulo": "Revisar si la Firma está activa en Santander Go", "desc": "Acceder a SanGo y comprobar el estado. Si el CMC está bloqueado en este punto, se remite obligatoriamente a oficina."},
+                                        {"letra": "C", "titulo": "Revisar el TPX", "desc": "Consultar la ruta <strong>9004 → 2 → 3 → 1 → 1</strong> para comprobar bloqueos adicionales en el CMC y validar el teléfono de la BBDD."},
+                                        {"letra": "D", "titulo": "Partenón — Mandar la Firma", "desc": "Acceder por ADN Operativo → Teleprocesos → Teleproceso SAN. Buscar cliente, seleccionar contrato (339...), meter usuario X, marcar 'Envío de Firma Electrónica', confirmar móvil con script interactivo y pulsar Aceptar. <br><strong>Script previo IVR:</strong> <em>'Ahora vas a hablar con un sistema automático... ¿estás listo?'</em>"},
+                                        {"letra": "E", "titulo": "Activación Definitiva", "desc": "La firma provisional caduca en 24 horas por SMS o 30 días por correo ordinario. El cliente debe cambiarla por la alfanumérica definitiva."}
+                                    ]
+                                },
+                                {
+                                    "tipo": "prioritario", "titulo": "BLOQUE B: ACTIVACIÓN DE LA FIRMA ELECTRÓNICA (Modificar la provisional por la definitiva)",
+                                    "subtexto": "Transformación de la clave temporal en alfanumérica definitiva de 8 caracteres (letras + números + al menos un signo).",
+                                    "cards": [
+                                        {"meta": "CON SK (CANDADO VERDE)", "titulo": "Notificación Push", "desc": "El cliente pulsa en 'Activar Firma', autoriza mediante biometría en Santander Key, introduce las 4 posiciones provisionales y establece su clave alfanumérica."},
+                                        {"meta": "SIN SK (CANDADO ROJO)", "titulo": "Validación OTP", "desc": "El cliente pulsa en 'Activar Firma', introduce el código OTP completo recibido por SMS, mete las 4 posiciones provisionales y elige la definitiva."}
+                                    ]
+                                },
+                                {
+                                    "tipo": "advertencia", "titulo": "Alternativa 2 de Activación: Con Gestor (Vía Banca Digital)",
+                                    "subtexto": "Scripts mandatorios de traspaso y recepción:",
+                                    "checklist": [
+                                        "<strong>1. Script del Gestor Inicial:</strong> <em>'Voy a transferir tu llamada con un responsable del servicio para que proceda a activar tu Firma Electrónica. Te informo que éste, por tu seguridad, solo dispondrá de tu apellido para poder dirigirse a ti'.</em> (Transferir a agenda -> Activación de Firma Electrónica).",
+                                        "<strong>2. Protocolo de Recepción (Nimbus):</strong> <em>'Te han transferido conmigo porque deseas activar tu firma electrónica. Es muy importante que recuerdes qué firma electrónica vas a elegir... Por favor, indícame la firma electrónica que deseas utilizar, teniendo en cuenta que debe tener 8 caracteres, formado por una combinación de letras y números'.</em>",
+                                        "<strong>3. Advertencia de Seguridad Final Obligatoria:</strong> <em>'Le recuerdo que, a partir de este momento, el Banco NUNCA le va a solicitar todas las posiciones de esta nueva Firma... así mismo, le recuerdo que, tras activar la Firma Electrónica, pasará a tener acceso operativo a todos los canales'.</em>"
+                                    ]
+                                }
+                            ],
+                            "reglas_oro": [
+                                "<strong>Formato FE:</strong> Exactly 8 caracteres, alfanumérica obligatoria.",
+                                "No puede coincidir con ninguna de sus últimas 6 claves ni contener datos personales.",
+                                "Caducidad de FE provisional: 24h por SMS y 30 días por correo postal.",
+                                "El CMC bloquea la firma; si el CMC está en B, remitir inmediatamente a oficina física.",
+                                "Compromiso de llamada de seguimiento a los 15 minutos exactos."
+                            ]
+                        },
+                        {
+                            "id": "santander-key", "num": "1.3", "titulo": "Santander Key (SK)", "badge": "Firma Biométrica",
+                            "intro": "Santander Key es el método preferente de firma biométrica que permite autorizar operativas desde el smartphone mediante Huella o Face ID sin recordar contraseñas.",
+                            "checklist": [
+                                "<strong>Ubicación en App:</strong> Notificaciones, candado de inicio, o menú de seguridad superior derecho.",
+                                "<strong>Funcionalidades del Cliente (App/NHB):</strong> Bizum, transferencias, recuperación de FE, desbloqueo de PIN y operativas avanzadas en Planeta Seguros.",
+                                "<strong>Operaciones iniciadas por Agente para validación por SK:</strong> Transferencias Nacionales, Urgentes e Inmediatas, Reseteo de PIN, Cambio de domicilio de Tarjeta, Modificación de límites y operatividad del CMC, y Dinero Directo."
+                            ],
+                            "reglas_oro": [
+                                "<strong>Validación Operativa por Operativa:</strong> Cada transacción envía un push independiente. No es una validación única para toda la llamada.",
+                                "<strong>Exención de Filtro:</strong> Con SK validado por push, hay un margen de 5 minutos libre de preguntas de seguridad reforzada.",
+                                "<strong>Excepción Clave Firma:</strong> Si posee SK pero no tiene el móvil a mano, se usa 'Clave Firma' y es obligatorio realizar el cuestionario de seguridad completo.",
+                                "<strong>Irreversibilidad:</strong> Una vez activo, el cliente no puede darse de baja. Si desiste, requiere la cancelación total de su CMC.",
+                                "Métrica obligatoria del servicio: '¡Ningún cliente sin Santander Key!'."
+                            ],
+                            "bloques": [
+                                {
+                                    "tipo": "advertencia", "titulo": "Protocolo de Fraude por Denuncia del Cliente",
+                                    "subtexto": "Si el cliente pulsa 'Denunciar esta operación' en el push, aparecerá en consola: <em>'Operación Cancelada: La operación ha sido denunciada por el cliente'</em>. Aplicar de inmediato:",
+                                    "checklist": [
+                                        "<strong>Tratamiento al interlocutor:</strong> Cortar la llamada neutralmente diciendo: <em>'En estos momentos no podemos realizar la operativa'</em>.",
+                                        "<strong>Comprobación:</strong> Verificar de inmediato si el teléfono fue modificado en los últimos 15 días.",
+                                        "<strong>Llamada de Verificación:</strong> Emitir llamada saliente al teléfono CMC legítimo o alternativo de la BDP (2 intentos).",
+                                        "<strong>Aviso Urgente a Oficina:</strong> Si no hay contacto, enviar email o llamar de inmediato a su sucursal comercial para bloqueo preventivo total de tarjetas y CMC."
+                                    ]
+                                },
+                                {
+                                    "tipo": "estandar", "titulo": "Consola de Estados de SK (Banca Digital)",
+                                    "subtexto": "Interpretación visual de candados y códigos de control:",
+                                    "cards": [
+                                        {"meta": "🟢 CANDADO VERDE", "titulo": "ACTIVE", "desc": "Integrado, activo y en vigor en el dispositivo móvil actual."},
+                                        {"meta": "🟠 CANDADO NARANJA", "titulo": "ONGOING_1 / _2", "desc": "Integrado pero no activo; alta iniciada en proceso de PIN (1) u OTP (2)."},
+                                        {"meta": "🔴 CANDADO ROJO", "titulo": "INACTIVE / KO_FRAUD", "desc": "No integrado, inactivo, cancelado por desistimiento o rechazado por sistemas de fraude."}
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "seccion2",
+                    "titulo": "2. CONTRATO MULTICANAL",
+                    "tag_modulo": "MÓDULO DE CONTRATOS",
+                    "color": "indigo",
+                    "descripcion": "Procedimientos técnicos, límites transaccionales diarios y flujos de soporte técnico ante bloqueos o modificaciones de contrato.",
+                    "tarjetas": [
+                        {
+                            "id": "naturaleza-cmc", "num": "2.1", "titulo": "Naturaleza del CMC", "badge": "Banca Digital",
+                            "intro": "El Contrato Multicanal (CMC) regula los canales de relación a distancia entre el cliente (particular, Select o Empresa) y la entidad bancaria.",
+                            "cards": [
+                                {"meta": "VÍA OFICINA", "titulo": "Presencial", "desc": "Firma manuscrita tradicional de las condiciones en sucursal física."},
+                                {"meta": "VÍA WEB", "titulo": "Banca Electrónica", "desc": "Contratación digital autónoma a través del portal online."},
+                                {"meta": "VÍA APP", "titulo": "Banca Móvil", "desc": "Activación digital desde la aplicación del smartphone."}
+                            ],
+                            "checklist": [
+                                "<strong>1. Modo Operativo (Completa):</strong> Permite consultas y operaciones financieras con movimientos de fondos.",
+                                "<strong>2. Modo Consultivo (Limitada):</strong> Acceso restringido exclusivamente a visualización de información de productos.",
+                                "<strong>3. Modo de Emergencia (Restringida):</strong> Estado transitorio preventivo por sospecha de fraude: permite consultas pero bloquea transferencias sensibles."
+                            ]
+                        },
+                        {
+                            "id": "gestion-datos-multicanal", "num": "2.2", "titulo": "Gestión de Datos Multicanal", "badge": "Modificaciones",
+                            "intro": "Normativa para el cambio seguro del teléfono de seguridad y ampliación de límites operativos transaccionales.",
+                            "bloques": [
+                                {
+                                    "tipo": "estandar", "titulo": "Modificación de Número de Teléfono Asociado",
+                                    "subtexto": "Rutas y condicionantes técnicos:",
+                                    "checklist": [
+                                        "<strong>Ruta Web Cliente:</strong> Área Personal > Configuración > Seguridad > Cambiar Teléfono de Seguridad.",
+                                        "<strong>Ruta App Cliente:</strong> Menú Lateral > Mi Perfil > Mis Datos > Teléfono Móvil.",
+                                        "<strong>Requisitos obligatorios:</strong> Firma Electrónica activa y DNI digitalizado en vigor. Si no conserva el móvil anterior, requiere videoverificación biométrica facial."
+                                    ]
+                                },
+                                {
+                                    "tipo": "prioritario", "titulo": "Límites de Transferencias Diarias",
+                                    "subtexto": "Umbrales preestablecidos modificables por sistema:",
+                                    "checklist": [
+                                        "<strong>Límite estándar diario de seguridad:</strong> Fijado por defecto en <strong>6.000 €</strong>.",
+                                        "<strong>Ampliación máxima permitida:</strong> Hasta un tope de <strong>30.000 €</strong> para particulares y <strong>60.101 €</strong> para segmentos Select o Empresas."
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bloqueos-bajas-sistemas", "num": "2.3", "titulo": "Bloqueos y Bajas en Sistemas", "badge": "Seguridad y Control",
+                            "intro": "Protocolos técnicos de actuación ante alertas de ciberseguridad, bloqueos preventivos y cancelaciones contractuales.",
+                            "cards": [
+                                {"meta": "ESTADO U", "titulo": "Unlocked", "desc": "Contrato activo en situación operativa regularizada."},
+                                {"meta": "ESTADO B", "titulo": "Blocked", "desc": "Acceso al entorno digital completamente suspendido por fraude o contraseñas."},
+                                {"meta": "LISTA GRIS", "titulo": "Preventivo N3", "desc": "Bloqueo automático por movimientos extraños, impagos a los 15 días o PIN erróneo."}
+                            ],
+                            "checklist": [
+                                "<strong>Principio de Irreversibilidad por Fraude (AERO):</strong> Si el estado B es por sospecha de fraude o ciberseguridad, el agente telefónico tiene <strong>estrictamente prohibido</strong> desbloquearlo.",
+                                "<strong>Desbloqueo por Intentos Fallidos:</strong> Si el bloqueo es solo por contraseñas, el agente puede restablecerlo mediante un Blanqueo de Claves.",
+                                "<strong>Políticas sobre Menores:</strong> No se realizan modificaciones contractuales, desbloqueos o cambios de límites telefónicamente para menores.",
+                                "<strong>Acción Crítica:</strong> Ante sospecha de fraude en curso, aplicar fulminantemente el Protocolo de Bloqueo AERO."
+                            ],
+                            "bloques": [
+                                {
+                                    "tipo": "estandar", "titulo": "III. Procedimiento Operativo de Bajas y Bloqueos en Sistemas",
+                                    "subtexto": "Comandos técnicos según la plataforma utilizada:",
+                                    "terminal": [
+                                        "--- ALTERNATIVA 1: EMULADOR TPX (PARTICULARES) ---",
+                                        "1. Iniciar sesión en el emulador, teclear transacción TPX y pulsar INTRO.",
+                                        "2. Introducir opción 6 -> INTRO. Seleccionar opción 1 -> INTRO.",
+                                        "3. Seleccionar opción 11 para entrar en VER ANTIGUEDAD.",
+                                        "4. Introducir pantalla de control 9004 -> INTRO. Seleccionar opción 2 -> INTRO.",
+                                        "5. Seleccionar opción 3 (MULTICANAL) -> Opción 1 -> INTRO.",
+                                        "6. Seleccionar opción 1 e introducir el Documento del Cliente.",
+                                        "7. Para ejecutar la baja: Posicionarse sobre el cursor de estado y teclear la letra B."
+                                    ],
+                                    "checklist": [
+                                        "<strong>Alternativa 2: Gestión Visual en Partenón (Particulares):</strong> Ruta: CONTRATACION > MANTENIMIENTO Y CONSULTA DE CONTRATO. Pulsar Lupa, buscar DNI, seleccionar contrato (empieza por 339...), aceptar 3 veces, meter Usuario X, cerrar emergente y hacer clic en BLOQUEO DE CONTRATO.",
+                                        "<strong>Alternativa 3: Gestión de Baja en Empresas (DMX - Contrato 520):</strong> Iniciar DMX. Opción 61 (Banca Electrónica) -> ENTER. Opción 1 -> ENTER. Buscar contrato 520 y marcar con una X. Presionar opción 2 -> ENTER. Introducir Banco 0049, sucursal y contrato corporativo."
+                                    ]
+                                }
+                            ],
+                            "reglas_oro": [
+                                "<strong>REGLA DE CALIDAD CRÍTICA:</strong> El agente del Contact Center tiene terminantemente prohibido bloquear o dar de baja un Contrato Multicanal (CMC) de forma arbitraria o discrecional, salvo sospechas claras de fraude activo."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "seccion3",
+                    "titulo": "3. APLICACIONES INTERNAS",
+                    "tag_modulo": "SOFTWARE DE AGENTE",
+                    "color": "teal",
+                    "descripcion": "Control de sistemas internos de consultas, comandos rápidos, plataformas de gestión comercial y de seguridad de redes de datos.",
+                    "tarjetas": [
+                        { "id": "partenon", "num": "3.1", "titulo": "Partenón (Red C)", "badge": "Core Visual", "intro": "Plataforma visual corporativa para gestionar expedientes de clientes. Permite realizar consultas habituales, comprobar intervinientes y ejecutar el comando rápido de búsqueda <strong>339</strong> para la asignación y reendoso acelerado de Contratos Multicanales." },
+                        { "id": "tpx", "num": "3.2", "titulo": "TPX (Emulador)", "badge": "Terminal", "intro": "Emulador por comandos de teclado rápido. Comandos esenciales: tecla <strong>Tabulador</strong> para saltar campos, <strong>F3</strong> para deshacer o retroceder de ventana sin guardar variaciones, y <strong>F5</strong> para autorizar cambios y confirmar operaciones." },
+                        { "id": "santander-go-sw", "num": "3.3", "titulo": "Santander Go & GoBot", "badge": "Incidencias", "intro": "Aplicación dedicada a la resolución rápida de incidencias transaccionales (traspasos estancados, completar envíos o cancelar giros). Cuenta con la asistencia automatizada del bot de soporte técnico integrado <strong>GoBot</strong>." },
+                        { "id": "adn", "num": "3.4", "titulo": "ADN Operativo", "badge": "Vista 360", "intro": "Consola de visualización integral de relaciones comerciales. Ofrece análisis de liquidaciones en tiempo real de llamada y almacena la 'Huella del Cliente', que resume sus interacciones históricas con los canales del banco." },
+                        { "id": "zeus", "num": "3.5", "titulo": "ZEUS", "badge": "Conciliación", "intro": "Plataforma de alta seguridad para el control de transacciones. Utilizada para realizar el cruce de retenciones técnicas (holds) y verificar descuadres o cargos duplicados entre autorizaciones y movimientos contables finales." },
+                        { "id": "portal-emisiones", "num": "3.6", "titulo": "Portal de Emisiones", "badge": "Prepago", "intro": "Entorno específico de consulta para la gama de tarjetas prepago (monederos físicos y virtuales). Analiza estados de emisión, bloqueos de seguridad y reemisiones de claves para el segmento joven." },
+                        { "id": "herramientas-externas", "num": "3.7", "titulo": "Herramientas Externas", "badge": "Soporte", "intro": "Sistemas de uso diario del agente para el ejercicio de su actividad:<br>• <strong>Fortitoken:</strong> Generador de claves OTP de doble factor para logueo diario en la red corporativa.<br>• <strong>Kodin:</strong> Sistema oficial obligatorio para el fichaje y control del horario laboral." }
+                    ]
+                },
+                {
+                    "id": "seccion4",
+                    "titulo": "4. TARJETAS Y FINANZAS",
+                    "tag_modulo": "MEDIOS DE PAGO",
+                    "color": "emerald",
+                    "descripcion": "Procedimientos de activación, modificación de formas de pago, tratamiento de retenciones contables, Pago Fácil, Dinero Directo e impagos.",
+                    "tarjetas": [
+                        {
+                            "id": "activacion-tarjetas", "num": "4.1", "titulo": "Activación, Límites y Cancelación", "badge": "Operativa",
+                            "intro": "Regulaciones sobre el ciclo de vida operativo de las tarjetas de débito y crédito de la entidad.",
+                            "checklist": [
+                                "<strong>Activación física:</strong> El cliente debe realizar una primera operación con PIN físico (pago en comercio o consulta/retirada en cajero Santander) para activar el chip.",
+                                "<strong>Límites comerciales:</strong> Límites de retirada diarios y mensuales gestionables en App mediante validación push de Santander Key."
+                            ],
+                            "bloques": [
+                                {
+                                    "tipo": "advertencia", "titulo": "BLOQUEO PREVENTIVO N3 Y PROTOCOLO DE EXCLUSIÓN", "subtexto": "Actuación en Lista Gris ante movimientos extraños, impagos a los 15 días o PIN erróneo:",
+                                    "checklist": [
+                                        "<strong>Regla de Oro Operativa:</strong> Antes de proceder a una cancelación formal, es obligatorio <strong>primero bloquear la tarjeta</strong> desde el entorno de sistemas.",
+                                        "<strong>Ruta de Bloqueo:</strong> Operativa -> ADN Operativo -> Tarjetas Operaciones -> Tarjeta -> Bloqueo de Tarjeta -> Cancelación -> Bloquear por Robo o Extravío.",
+                                        "<strong>Alerta de Contrato Absoluto:</strong> Si seleccionas la cancelación completa del contrato en vez de la tarjeta independiente, se eliminarán fulminantemente <strong>todas las tarjetas asociadas</strong>.",
+                                        "<strong>Diferencia de Liquidación (Crédito vs Débito):</strong> En tarjetas de Crédito, revisa en Santander Go si arrastra deuda acumulada. Si cancelas con deuda pendiente, se cargará el importe de forma íntegra en cuenta."
+                                    ],
+                                    "nota_azul": "<strong>📌 Obligaciones Ineludibles del Gestor:</strong><br>1. Avisar de la deuda antes de actuar.<br>2. Preguntar qué tarjeta desea cancelar.<br>3. Preavisarle antes de cada bloqueo individual.<br>4. Realizar la cancelación definitiva tras los bloqueos y confirmárselo."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "tarjetas-prepago", "num": "4.2", "titulo": "Crédito, Prepago, Pagolisto y Dinero Directo", "badge": "Financiación",
+                            "intro": "Modalidades de crédito y servicios de fraccionamiento de cuenta corriente.",
+                            "checklist": [
+                                "<strong>Prepago Joven:</strong> Diseñada para menores de 18 años. Control de recargas familiares.",
+                                "<strong>Tarjeta eCash:</strong> Tarjeta virtual para e-commerce. Mantenimiento anual gratis según operaciones.",
+                                "<strong>Dinero Directo (Efectivo al Instante):</strong> Traslado de disponible a débito (mín 100 €). Si fracciona, 0% comisión; si no, se repercute el 3%."
+                            ],
+                            "bloques": [
+                                {
+                                    "tipo": "prioritario", "titulo": "COMPONENTE OFICIAL DE PAGOLISTO", "subtexto": "Fraccionamiento de movimientos y recibos cargados en cuenta corriente (transferencias, Bizums o recibos) mediante tarjeta de crédito virtual temporal de 3 cuotas fijas.",
+                                    "checklist": [
+                                        "<strong>⚠️ Restricción de Uso Exclusivo:</strong> Prohibido en comercios físicos, virtuales o cajeros. Máximo acumulado de 1.000 €.",
+                                        "<strong>Condiciones Financieras:</strong> Exento de intereses (0% TIN). Comisión fija de apertura cargada en la primera cuota."
+                                    ],
+                                    "tabla_comisiones": {
+                                        "columnas": ["Tramo de Importe", "Comisión Fija (Cargada en Mes 1)"],
+                                        "filas": [
+                                            ["Hasta 200 €", "2 €"],
+                                            ["De 200,01 € a 300 €", "5 €"],
+                                            ["De 300,01 € a 500 €", "7 €"],
+                                            ["De 500,01 € a 1.000 €", "12 €"]
+                                        ]
+                                    },
+                                    "nota_azul": "<strong>📖 Ejemplo Guía (Recibo de 450 €):</strong> Comisión: 7 € | Mes 1: 157 € | Mes 2: 150 € | Mes 3: 150 € | Total: 457 €."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "retenciones-saldo", "num": "4.3", "titulo": "Pago Fácil, Financiar Recibos y Retenciones", "badge": "Gestión Cuenta",
+                            "intro": "Herramientas de aplazamiento de cargos comerciales y retenciones técnicas.",
+                            "checklist": [
+                                "<strong>1. PAGO FÁCIL:</strong> Seleccionar compra liquidada y fraccionarla. Mínimo: <strong>60 €</strong>; plazo mínimo: <strong>2 meses</strong>.",
+                                "<strong>2. FINANCIAR RECIBOS DESDE LA CUENTA:</strong> Mínimo: <strong>100 €</strong>, plazos: <strong>de 2 a 36 meses</strong>. <strong>Ventaja clave: No se cobra la comisión de Efectivo al Instante (ahorro del 3%)</strong>.",
+                                "<strong>3. Retenciones Pendientes:</strong> Débito (2-5 días laborables), Crédito (hasta liquidación), Prepago (inmediato).",
+                                "<strong>4. Ingreso contra Saldo en Crédito:</strong> Amortiza deuda acumulada en la tarjeta. No liquida planes de Pago Fácil."
+                            ],
+                            "nota_alerta": "<strong>Regla del Cierre de Extracto:</strong> Si se ingresa tras el cierre del extracto, el dinero se descuenta del recibo a cobrar y figurará en el siguiente extracto."
+                        },
+                        {
+                            "id": "impagos-comisiones", "num": "4.4", "titulo": "Extractos, Impagos, Cuotas y Pago Luego", "badge": "Liquidación",
+                            "intro": "Tratamiento de comisiones por reclamación de posiciones deudoras y aplazamientos extraordinarios.",
+                            "checklist": [
+                                "<strong>Salvaguarda ante Excedidos:</strong> Si ingresa el exceso antes del cierre del extracto (día 30) evita penalizaciones.",
+                                "<strong>Comisión por Impagos (GRPD):</strong> Al llegar al <strong>sexto día natural</strong> de impago, carga comisión fija de <strong>49 €</strong> en extracto.",
+                                "<strong>IV. PAGO LUEGO:</strong> Aplazar extracto total pagando el mínimo (3% o 5%). Pasa al mes siguiente como 'Refinanciación Deuda' (bloqueada para segundos aplazamientos). Plazos en Nimbus (SPL-N1): Asegurado hasta el día anterior al corte a las 00:00h."
+                            ],
+                            "nota_alerta": "<strong>🚨 Gestión de Quejas Recurrentes (Cuota Fija):</strong> Aplica la <strong>Fórmula del Suelo del Pago Mínimo Obligatorio:</strong><br><div class='font-mono text-center my-2 text-red-500 bg-slate-100 dark:bg-slate-900 p-2 rounded'>Pago Mínimo = 3% del Dispuesto de Intereses + Comisiones + Excedidos + Impagos + Pago Fáciles Activos</div>El sistema aplica automáticamente este Pago Mínimo obligatorio si la suma de excedidos, comisiones o Pago Fácil actúa como suelo legal por encima de su cuota fija."
+                        }
+                    ]
+                },
+                {
+                    "id": "seccion5",
+                    "titulo": "5. CUENTAS BANCARIAS",
+                    "tag_modulo": "MÓDULO DE PRODUCTOS",
+                    "color": "blue",
+                    "descripcion": "Guía completa de tipologías de cuentas de Banco Santander: requisitos, exenciones de comisiones, promociones de captación y tarifas por descubierto contable.",
+                    "tarjetas": [
+                        {
+                            "id": "cuenta-santander-corp", "num": "5.1", "titulo": "Cuenta Santander Standard", "badge": "Tradicional",
+                            "intro": "Cuenta corriente tradicional. Tarifa estándar de <strong>20 € al mes</strong> (240 €/año) con exenciones.",
+                            "checklist": [
+                                "<strong>Exención Total (0 €/mes):</strong> Edad de 18 a 28 años | Nuevos clientes (6 meses) | Saldo &ge; 25.000 € en fondos o planes | Accionistas con &ge; 1.000 acciones | Combo nómina &ge; 600 € + 3 recibos o 6 usos de tarjeta.",
+                                "<strong>Reducción Única (10 €/mes):</strong> Cumplir ingresos pero no actividad | Saldo fondos 5k-25k | Hipoteca o préstamo activo | Seguro Mediación con prima anual &ge; 120 €."
+                            ]
+                        },
+                        {
+                            "id": "cuenta-online-corp", "num": "5.2", "titulo": "Cuenta Online Santander", "badge": "Sin Comisiones",
+                            "intro": "Cuenta corriente 100% digital para nuevos clientes. Coste de <strong>0 € de por vida</strong> sin condiciones.",
+                            "checklist": [
+                                "<strong>🎁 Promoción por Nómina (Hasta 840 € en 2 años):</strong> Paso 1: Nómina &ge; 1.500 € (15 €/mes) o 800 €-1.499 € (10 €/mes) | Paso 2: Bizum (3 envíos/mes = +10 €) | Paso 3: Domiciliar 2 recibos = +10 €.",
+                                "<strong>✈️ Viajes:</strong> < 30 años gratis comisiones internacionales y 3 retiradas gratis en el mundo. > 30 años Plan Viajes por 3 €/mes."
+                            ]
+                        },
+                        {
+                            "id": "cuenta-noresidente", "num": "5.3", "titulo": "Cuenta Online No Residentes", "badge": "Genérica",
+                            "intro": "Para nuevos clientes con residencia fiscal en el extranjero. Mantenimiento a <strong>0 € exenta de por vida</strong>.",
+                            "checklist": [
+                                "<strong>Países Autorizados:</strong> Alemania, Argentina, Austria, Bélgica, Brasil, Canadá, Chile, Dinamarca, Eslovaquia, Finlandia, Francia, Grecia, Hungría, Irlanda, Islandia, Italia, Lituania, Noruega, Países Bajos, Polonia, Portugal, Reino Unido, República Checa, Rumanía, Suecia, Suiza y Uruguay."
+                            ]
+                        },
+                        {
+                            "id": "cuenta-menores", "num": "5.4", "titulo": "Cuenta Joven (Menores)", "badge": "Menores",
+                            "intro": "De 0 a 17 años. Mantenimiento a <strong>0 € exenta</strong>. Contratación parental desde la App.",
+                            "checklist": [
+                                "<strong>🎁 Promo Bienvenida (+20 € Regalo):</strong> Ingreso inicial &ge; 20 € entre 17 de junio y 15 de septiembre de 2026.",
+                                "<strong>Bizum Menores (desde 14 años):</strong> Límites estrictos de 50 €/operación, 150 €/día y 500 €/mes. Prohibido en comercios.",
+                                "Tarjeta Prepago Joven gratuita monitorizable por los tutores."
+                            ]
+                        },
+                        {
+                            "id": "cuenta-pago-basica", "num": "5.5", "titulo": "Cuenta de Pago Básica", "badge": "Regulada",
+                            "intro": "Uso estrictamente particular. Coste fijo de <strong>3 € al mes</strong>. Límite de <strong>120 operaciones al año</strong> en la UE.",
+                            "checklist": [ "<strong>Exclusión Absoluta:</strong> El solicitante no puede tener ninguna otra cuenta de pago en España. Contratación presencial." ]
+                        },
+                        {
+                            "id": "costes-descubierto", "num": "5.6", "titulo": "Costes por Descubierto y Condiciones Legales", "badge": "Normativa",
+                            "intro": "Tabla de tarifas reguladas aplicables ante posiciones deudoras:",
+                            "tabla_comisiones": {
+                                "columnas": ["Concepto", "Coste Aplicable", "Detalle Técnico Regulado"],
+                                "filas": [
+                                    ["Interés Deudor", "7,83% TIN (8,12% TAE)", "Sobre el saldo negativo y el tiempo exacto."],
+                                    ["Comisión de Descubierto", "5% fijo (Mínimo 15 €)", "Sobre el mayor descubierto contable del mes."],
+                                    ["Gastos de Reclamación", "49 € por posición", "Gasto único por comunicación. No superará la deuda."]
+                                ]
+                            },
+                            "reglas_oro": [
+                                "Fondo de Garantía de Depósitos (FGD): Garantizado hasta 100.000 €.",
+                                "Derecho de Desistimiento: 14 días naturales en contrataciones digitales.",
+                                "Modificación de Condiciones: Notificación con 2 meses de antelación.",
+                                "Traslado de Cuentas: Derecho legal regulado a solicitar traspaso ágil entre entidades."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "seccion6",
+                    "titulo": "6. CALIDAD Y SCRIPT DE ATENCIÓN",
+                    "tag_modulo": "CALIDAD DE SERVICIO",
+                    "color": "slate",
+                    "descripcion": "Estructura reglamentaria de la llamada, scripts oficiales de atención, indicadores clave de resolución y glosario técnico.",
+                    "tarjetas": [
+                        {
+                            "id": "estructura-llamada", "num": "6.1", "titulo": "Estructura del Script", "badge": "Obligatorio",
+                            "intro": "Flujo de conversación obligatorio determinado para las interacciones telefónicas:",
+                            "checklist": [
+                                "<strong>🗣️ 1. APERTURA:</strong> <em>'Hola, ¿qué tal? Una disculpa por la demora, soy [Tu Nombre] de Banco Santander, ¿cuál es el motivo de tu consulta?'</em>",
+                                "<strong>🔍 2. IDENTIFICACIÓN:</strong> Cursar validación en Nimbus o ADN según corresponda.",
+                                "<strong>🛠️ 3. RESOLUCIÓN OPERATIVA:</strong> Ejecución técnica manteniendo el sondeo activo.",
+                                "<strong>🚀 4. VENTA CRUZADA:</strong> Ofrecimiento de ventajas digitales o promociones.",
+                                "<strong>📌 5. CIERRE MANDATORIO (REGLA DE LA SOLUCIÓN):</strong> Pregunta crítica con la palabra <strong>'solución'</strong>:<br><em>'¿Podría indicarme si su consulta ha sido solucionada?'</em><br>Tras el 'Sí': <em>'Perfecto [Nombre], me alegro de haberlo resuelto. Bueno, ahora a continuación recibirá por email una encuesta de satisfacción... usted ha sido un 10 en todo este proceso.'</em>",
+                                "<strong>👋 6. DESPEDIDA:</strong> <em>'Para cualquier otra consulta no dude en llamar. Tenga un buen día.'</em>"
+                            ]
+                        },
+                        { "id": "indicadores-calidad", "num": "6.2", "titulo": "Indicadores de Calidad", "badge": "Métricas", "intro": "• <strong>FCR:</strong> Resolución en el primer contacto para evitar reiteraciones.<br>• " },
+                        { "id": "gestion-citas", "num": "6.3", "titulo": "Gestión de Citas", "badge": "Oficinas", "intro": "• <strong>No Clientes:</strong> Solicitar cita en la web externa.<br>• <strong>Clientes:</strong> El agente agenda directamente la cita presencial en oficina de origen." },
+                        { "id": "glosario", "num": "6.4", "titulo": "Glosario de Términos", "badge": "Conceptos", "intro": "• <strong>IVR:</strong> Locución automática inicial.<br>• <strong>PAN:</strong> Los 16 dígitos de la tarjeta.<br>• <strong>PIN:</strong> Clave secreta de 4 dígitos.<br>• <strong>IBAN:</strong> Código identificador de cuenta." }
+                    ]
+                },
+                {
+                    "id": "seccion7",
+                    "titulo": "7. TRANSFERENCIAS Y SERVICIOS",
+                    "tag_modulo": "OPERATIVA Y SERVICIOS",
+                    "color": "indigo",
+                    "descripcion": "Operativa de transferencias nacionales e internacionales, servicios especiales (Correo Cash, recarte urgente), avisos y bloqueos de cuenta, atención accesibilidad y clientes Select / Vivo Fácil.",
+                    "tarjetas": [
+                        {
+                            "id": "transferencias", "num": "7.1", "titulo": "Transferencias", "badge": "Transacciones",
+                            "intro": "Verificación obligatoria previa: SK activo o N2, teléfono en BBDD e identificación (Fecha Nacimiento + Vencimiento DNI).",
+                            "bloques": [
+                                {
+                                    "tipo": "estandar", "titulo": "A. TRANSFERENCIAS SEPA (Euros, IBAN Europeo)",
+                                    "checklist": [
+                                        "<strong>Coste:</strong> Gratuitas en entornos digitales. Si la hace el agente por canal telefónico no autorizado tiene coste de <strong>0,40% (mínimo 6 €)</strong>.",
+                                        "<strong>Plazo:</strong> 24-48 horas ordinaria. Instantánea si es inmediata."
+                                    ]
+                                },
+                                {
+                                    "tipo": "prioritario", "titulo": "B. TRANSFERENCIAS INMEDIATAS",
+                                    "checklist": [
+                                        "<strong>Canales:</strong> App, Web y Huella. <span class='text-red-600 font-bold'>Prohibido desde SanGo o Ventana Operativa.</span>",
+                                        "<strong>Límites:</strong> Máximo de 30.000 € por transferencia. Gratuitas. Entrega instantánea 24/7.",
+                                        "<strong>Restricción:</strong> Solo titulares. Autorizados excluidos de envíos inmediatos o Bizum."
+                                    ]
+                                },
+                                {
+                                    "tipo": "advertencia", "titulo": "D. TRANSFERENCIAS INTERNACIONALES (Fuera SEPA)",
+                                    "checklist": [
+                                        "<strong>Coste por Agente:</strong> Envíos < 10.000 € -> <strong>20 €</strong>. Envíos > 10.000 € -> <strong>50 €</strong>.",
+                                        "<strong>Doble Moneda:</strong> Si el país destino usa euro y moneda local, el sistema prioriza local."
+                                    ],
+                                    "terminal": [
+                                        "--- SEGUIMIENTO INTERNACIONAL EN TPX ---",
+                                        "1. Transacción: 1044 → 17 → 1 → 2 o 3. Meter cuenta cargo.",
+                                        "2. Pulsar L para ver el tipo de cambio aplicado.",
+                                        "3. Pulsar E -> última operación -> pulsar C -> copiar campo 121 (UETR).",
+                                        "4. Ir a ADN Operativo → Operativa Internacional → Consulta UETR."
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "correo-cash", "num": "7.2", "titulo": "Correo Cash", "badge": "Servicio Especial",
+                            "intro": "Retirar o ingresar efectivo a través de oficinas de Correos:",
+                            "tabla_comisiones": {
+                                "columnas": ["Modalidad del Servicio Correo Cash", "Comisión Aplicable"],
+                                "filas": [
+                                    ["Envío de dinero en efectivo a domicilio", "6,00 €"],
+                                    ["Ingresar efectivo en Correos", "1,30 €"],
+                                    ["Retirar efectivo en Correos", "1,80 €"]
+                                ]
+                            },
+                            "nota_azul": "<strong>Exención:</strong> Gratis si en el municipio no existe sucursal de Banco Santander."
+                        },
+                        {
+                            "id": "recarte-urgente", "num": "7.3", "titulo": "Recarte Urgente", "badge": "Envío Express",
+                            "intro": "Envío express de tarjetas de sustitución. Coste técnico: <strong>70 €</strong>. Antes de las 14:00h llega el mismo día; después, al día siguiente."
+                        },
+                        {
+                            "id": "avisos-cuenta", "num": "7.4", "titulo": "FIOC, CRS / FATCA y TIN", "badge": "Regulatorio",
+                            "intro": "Bloqueos por prevención de blanqueo de capitales.",
+                            "checklist": [
+                                "<strong>FIOC:</strong> Bloqueo total preventivo para justificar actividad laboral. Preaviso de 90 días. Riesgo Bajo (Identidad), Medio (+Actividad), Alto (+Domicilio). Formulario en App/Web.",
+                                "<strong>CRS / FATCA:</strong> Bloqueo por residencia fiscal. Preaviso de 90 días. Subida en panel de datos personales.",
+                                "<strong>TIN:</strong> Identificación fiscal del país extranjero declarado obligatoria."
+                            ]
+                        },
+                        {
+                            "id": "cancelacion-cuenta", "num": "7.5", "titulo": "Cancelación de Cuenta", "badge": "Cierre",
+                            "intro": "Procedimiento diferido: requiere **cancelar primero todas las tarjetas vinculadas**. Solicitud en panel de Más opciones -> Cancelar cuenta."
+                        },
+                        {
+                            "id": "accesibilidad", "num": "7.6", "titulo": "Atención Accesibilidad", "badge": "Especializado",
+                            "intro": "Canal adaptado con intérprete de lengua de signos por videollamada. Acceso directo diciendo 'accesibilidad' en la IVR."
+                        },
+                        {
+                            "id": "clientes-select", "num": "7.7", "titulo": "Clientes Select / Vivo Fácil", "badge": "Premium",
+                            "intro": "Select Empresas se deriva a su plataforma. Clientes Senior tienen trato prioritario. Derivar a Vivo Fácil **solo si la consulta es específica de sus servicios no financieros**."
+                        }
+                    ]
+                }
+            ]
+        }
     </script>
 </body>
 </html>
