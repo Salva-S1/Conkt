@@ -227,6 +227,37 @@
                         </div>
                     </div>
 
+                    <!-- Módulo 7 -->
+                    <div class="pt-1">
+                        <button onclick="toggleSection('seccion7')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 text-left">
+                            <span class="title-13">7. TRANSFERENCIAS Y SERVICIOS</span>
+                            <i id="menu-arrow-seccion7" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
+                        </button>
+                        <div id="sub-menu-seccion7" class="pl-3 space-y-1.5 border-l border-slate-200 dark:border-slate-700 ml-1 mt-1 hidden">
+                            <a href="#transferencias" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                <i class="fa-solid fa-paper-plane mr-1 text-[9px]"></i> 7.1 Transferencias
+                            </a>
+                            <a href="#correo-cash" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                <i class="fa-solid fa-envelope mr-1 text-[9px]"></i> 7.2 Correo Cash
+                            </a>
+                            <a href="#recarte-urgente" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                <i class="fa-solid fa-credit-card mr-1 text-[9px]"></i> 7.3 Recarte Urgente
+                            </a>
+                            <a href="#avisos-cuenta" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                <i class="fa-solid fa-triangle-exclamation mr-1 text-[9px]"></i> 7.4 FIOC / CRS / TIN
+                            </a>
+                            <a href="#cancelacion-cuenta" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                <i class="fa-solid fa-xmark mr-1 text-[9px]"></i> 7.5 Cancelación de Cuenta
+                            </a>
+                            <a href="#accesibilidad" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                <i class="fa-solid fa-universal-access mr-1 text-[9px]"></i> 7.6 Atención Accesibilidad
+                            </a>
+                            <a href="#clientes-select" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                <i class="fa-solid fa-star mr-1 text-[9px]"></i> 7.7 Clientes Select / Vivo Fácil
+                            </a>
+                        </div>
+                    </div>
+
                     <!-- Módulo 6 -->
                     <div class="pt-1">
                         <button onclick="toggleSection('seccion6')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 hover:text-slate-600 dark:hover:text-slate-400 text-left">
@@ -464,9 +495,14 @@
                         <!-- Filtro previo de Seguridad Obligatoria -->
                         <div class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 p-3 rounded-lg mb-4 flex gap-2">
                             <div class="text-amber-600 shrink-0"><i class="fa-solid fa-user-shield text-xs"></i></div>
-                            <p class="text-amber-800 dark:text-amber-300 mb-0 normal-text leading-relaxed">
-                                <strong>Verificación de Seguridad Obligatoria:</strong> Antes de procesar nada o confirmar la incidencia asociada a la Firma Electrónica, es imprescindible verificar la legitimidad del usuario preguntándole de forma directa su <strong>fecha de nacimiento</strong> y el campo exacto en el que <strong>termina su DNI / NIE</strong>.
-                            </p>
+                            <div class="text-amber-800 dark:text-amber-300 normal-text leading-relaxed">
+                                <strong>Verificación de Seguridad Obligatoria (E. Verificación de Seguridad):</strong> Antes de procesar nada, se siguen estos pasos en orden estricto:
+                                <ol class="mt-1.5 space-y-0.5 pl-4 list-decimal">
+                                    <li><strong>Solicitar 2 números de la Clave de Acceso</strong> (N1) — primer paso siempre, antes de entrar a sistemas.</li>
+                                    <li>Verificar el número de teléfono del cliente en Santander Go, debe estar asociado a su contrato CMC (debe coincidir con el de la BBDD, pues ahí se enviará el SMS).</li>
+                                </ol>
+                                <p class="mt-1.5 mb-0">⚠️ Si el número de teléfono no es correcto, el cliente debe ir a oficina para cambiarlo, ya que el cambio de teléfono en el CMC requiere firma electrónica activa.</p>
+                            </div>
                         </div>
 
                         <!-- BLOQUE A -->
@@ -491,36 +527,95 @@
 
                             <!-- Alternativa 2 -->
                             <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50">
-                                <h4 class="title-13 text-slate-900 dark:text-slate-200 flex items-center gap-1.5 mb-2">
+                                <h4 class="title-13 text-slate-900 dark:text-slate-200 flex items-center gap-1.5 mb-3">
                                     <span class="bg-red-600 text-white rounded-full w-4 h-4 inline-flex items-center justify-center text-[9px]">2</span> 
                                     Alternativa 2: Gestión por el Agente en Sistemas (Si no puede por la App)
                                 </h4>
-                                <p class="text-slate-600 dark:text-slate-400 mb-3 normal-text leading-relaxed">
-                                    Antes de realizar el envío, el agente debe comprobar los estados en las herramientas.
-                                </p>
-                                <div class="space-y-2.5 pl-3 border-l-2 border-red-600/30">
-                                    <div class="text-slate-600 dark:text-slate-400 normal-text">
-                                        <strong class="text-red-600 dark:text-red-400">Verificación previa:</strong> Comprobar si la FE está bloqueada/revocada en los sistemas y verificar en TPX que el Contrato Multicanal no esté bloqueado.
+
+                                <!-- ORDEN COMPLETO DEL PROCESO -->
+                                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden mb-3">
+                                    <div class="bg-red-600 text-white px-3 py-1.5 flex items-center gap-2">
+                                        <i class="fa-solid fa-list-ol text-xs"></i>
+                                        <span class="font-extrabold uppercase tracking-wider" style="font-size:11px">ORDEN COMPLETO DEL PROCESO — FIRMA ELECTRÓNICA</span>
                                     </div>
-                                    <div class="text-slate-600 dark:text-slate-400 normal-text">
-                                        <strong class="text-red-600 dark:text-red-400">Ruta de acceso a Partenón:</strong> Acceder a través de <strong>ADN Operativo -> Teleprocesos -> Teleproceso SAN</strong>.
+
+                                    <!-- PASO A -->
+                                    <div class="border-b border-slate-100 dark:border-slate-700 p-3 flex gap-3">
+                                        <div class="shrink-0 w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center font-extrabold" style="font-size:10px">A</div>
+                                        <div class="space-y-1 flex-1">
+                                            <div class="font-bold text-slate-800 dark:text-slate-200 normal-text">Verificar 2 números de la Clave de Acceso</div>
+                                            <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-0">
+                                                Antes de cualquier gestión, solicitar al cliente <strong>2 posiciones concretas de su Clave de Acceso</strong> (N1). Esto es el primer paso siempre, antes de entrar a ningún sistema.
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-3 rounded-lg space-y-1.5">
-                                        <div class="font-bold border-b pb-1 mb-1.5 text-slate-700 dark:text-slate-300 normal-text">Gestión paso a paso en Partenón:</div>
-                                        <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600">1.</span> Iniciar sesión en Partenón.</div>
-                                        <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600">2.</span> Presionar en la opción "Mantenimiento y consulta de contratos".</div>
-                                        <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600">3.</span> Pulsar el icono de la lupa para buscar al cliente e introducir su documento de identidad.</div>
-                                        <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600">4.</span> Seleccionar el contrato de CMC del cliente (identificable porque comienza por los dígitos <strong>339...</strong>).</div>
-                                        <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600">5.</span> Una vez seleccionado el contrato, pulsar en "Aceptar".</div>
-                                        <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600">6.</span> Introducir nuestro usuario X y volver a pulsar en "Aceptar".</div>
-                                        <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600">7.</span> Cerrar el mensaje emergente que aparezca en pantalla.</div>
-                                        <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600">8.</span> Seleccionar la opción "Envío de Firma Electrónica".</div>
-                                        <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600">9.</span> Realizar la comprobación y confirmación del número de móvil con el cliente.</div>
-                                        <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600">10.</span> Decir: <em>"Sr/a [Apellido], nos solicita el envío de una nueva Firma Electrónica a su teléfono móvil. ¿Está usted de acuerdo?"</em></div>
-                                        <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600">11.</span> Cuando el cliente te confirme que el número es correcto, pulsar en "Aceptar" y la firma se enviará.</div>
+
+                                    <!-- PASO B -->
+                                    <div class="border-b border-slate-100 dark:border-slate-700 p-3 flex gap-3">
+                                        <div class="shrink-0 w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center font-extrabold" style="font-size:10px">B</div>
+                                        <div class="space-y-1 flex-1">
+                                            <div class="font-bold text-slate-800 dark:text-slate-200 normal-text">Revisar si la Firma está activa en Santander Go</div>
+                                            <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-0">
+                                                Acceder a <strong>Santander Go (SanGo)</strong> y comprobar el estado de la firma electrónica del cliente. Verificar si está activa, bloqueada o revocada antes de continuar con cualquier acción.
+                                            </p>
+                                            <div class="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/30 rounded p-2 normal-text text-amber-800 dark:text-amber-300">
+                                                <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+                                                <strong>Importante:</strong> Si el CMC está bloqueado en este punto, se debe remitir al cliente directamente a oficina. No se puede continuar el proceso de forma remota.
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-500 p-2.5 rounded-r text-slate-700 dark:text-slate-300 normal-text leading-relaxed">
-                                        <strong>💡 Nota de Calidad antes de transferir a la IVR:</strong> Explica muy bien al cliente lo que va a ocurrir usando este sondeo: <em>"Ahora vas a hablar con un sistema automático que te va a ayudar a conseguir una nueva firma… ¿Vas a querer recibirla por SMS?.... ¿Tienes alguna duda? ¿Estás listo?"</em>
+
+                                    <!-- PASO C -->
+                                    <div class="border-b border-slate-100 dark:border-slate-700 p-3 flex gap-3">
+                                        <div class="shrink-0 w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center font-extrabold" style="font-size:10px">C</div>
+                                        <div class="space-y-1 flex-1">
+                                            <div class="font-bold text-slate-800 dark:text-slate-200 normal-text">Revisar el TPX</div>
+                                            <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-0">
+                                                Consultar el <strong>TPX</strong> para verificar el estado del contrato multicanal (CMC) y confirmar que el cliente no tiene ningún bloqueo adicional que impida el envío de la firma. Comprobar que el teléfono registrado en la base de datos (BBDD) es el correcto, ya que será el destino del SMS con la firma provisional. La ruta en TPX es: <strong>9004 → 2 → 3 → 1 → 1</strong>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- PASO D -->
+                                    <div class="border-b border-slate-100 dark:border-slate-700 p-3 flex gap-3">
+                                        <div class="shrink-0 w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center font-extrabold" style="font-size:10px">D</div>
+                                        <div class="space-y-1 flex-1">
+                                            <div class="font-bold text-slate-800 dark:text-slate-200 normal-text">Partenón — Mandar la Firma</div>
+                                            <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-1">
+                                                Acceder a Partenón a través de <strong>ADN Operativo → Teleprocesos → Teleproceso SAN</strong> y seguir los pasos:
+                                            </p>
+                                            <div class="space-y-1.5 pl-1">
+                                                <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600 shrink-0">1.</span> Iniciar sesión en Partenón.</div>
+                                                <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600 shrink-0">2.</span> Presionar en la opción "Mantenimiento y consulta de contratos".</div>
+                                                <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600 shrink-0">3.</span> Pulsar el icono de la lupa para buscar al cliente e introducir su documento de identidad.</div>
+                                                <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600 shrink-0">4.</span> Seleccionar el contrato CMC del cliente (comienza por <strong>339...</strong>).</div>
+                                                <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600 shrink-0">5.</span> Pulsar en "Aceptar".</div>
+                                                <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600 shrink-0">6.</span> Introducir nuestro usuario X y volver a pulsar "Aceptar".</div>
+                                                <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600 shrink-0">7.</span> Cerrar el mensaje emergente que aparezca en pantalla.</div>
+                                                <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600 shrink-0">8.</span> Seleccionar "Envío de Firma Electrónica".</div>
+                                                <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600 shrink-0">9.</span> Confirmar el número de móvil con el cliente.</div>
+                                                <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600 shrink-0">10.</span> Decir: <em>"Sr/a [Apellido], nos solicita el envío de una nueva Firma Electrónica a su teléfono móvil. ¿Está usted de acuerdo?"</em></div>
+                                                <div class="flex items-start gap-2 normal-text"><span class="font-bold text-red-600 shrink-0">11.</span> Cuando el cliente confirme, pulsar "Aceptar". La firma provisional se enviará por SMS.</div>
+                                            </div>
+                                            <div class="bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-500 p-2.5 rounded-r text-slate-700 dark:text-slate-300 normal-text leading-relaxed mt-2">
+                                                <strong>💡 Nota antes de transferir a la IVR:</strong> <em>"Ahora vas a hablar con un sistema automático que te va a ayudar a conseguir una nueva firma… ¿Vas a querer recibirla por SMS?.... ¿Tienes alguna duda? ¿Estás listo?"</em>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PASO E -->
+                                    <div class="p-3 flex gap-3">
+                                        <div class="shrink-0 w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center font-extrabold" style="font-size:10px">E</div>
+                                        <div class="space-y-1 flex-1">
+                                            <div class="font-bold text-slate-800 dark:text-slate-200 normal-text">Activación — El cliente cambia la firma provisional por la definitiva</div>
+                                            <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-1">
+                                                Una vez recibida la firma provisional, el cliente debe activarla convirtiéndola en una firma alfanumérica definitiva (8 caracteres, letras + números + al menos un signo). Ver <strong>Bloque B</strong> para las alternativas de activación detalladas.
+                                            </p>
+                                            <div class="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800/30 rounded p-2 normal-text text-green-800 dark:text-green-300">
+                                                <i class="fa-solid fa-circle-check mr-1"></i>
+                                                <strong>Recuerda:</strong> La firma provisional caduca en <strong>24 horas</strong> si se recibe por SMS, o en <strong>30 días</strong> si es por correo postal. Informar siempre al cliente.
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1656,6 +1751,322 @@
                 </div>
             </div>
 
+            <!-- SECCIÓN 7: OPERATIVA DE TRANSFERENCIAS Y SERVICIOS -->
+            <div id="seccion7" class="searchable-section space-y-4">
+
+                <!-- Banner -->
+                <div class="bg-indigo-700 text-white rounded-2xl p-5 shadow-sm relative overflow-hidden transition-all-200">
+                    <div class="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-indigo-800 to-transparent opacity-40 pointer-events-none"></div>
+                    <div class="absolute right-[-20px] top-[-20px] w-36 h-36 bg-indigo-500 rounded-full opacity-20 pointer-events-none"></div>
+                    <span class="bg-black/25 text-white font-extrabold px-2.5 py-0.5 rounded-md text-[8.5px] uppercase tracking-wider mb-2.5 inline-block">OPERATIVA Y SERVICIOS</span>
+                    <button onclick="toggleSection('seccion7')" class="w-full text-left focus:outline-none flex justify-between items-center group">
+                        <h1 class="text-white forced-heading-size">7. TRANSFERENCIAS, SERVICIOS Y AVISOS DE CUENTA</h1>
+                        <div class="bg-white/20 group-hover:bg-white/30 p-2 rounded-full h-7 w-7 flex items-center justify-center transition-all duration-200 shrink-0 shadow-sm">
+                            <i id="arrow-seccion7" class="fa-solid fa-chevron-down text-white text-xs transition-transform duration-200"></i>
+                        </div>
+                    </button>
+                    <p class="text-white/90 mt-2 mb-0 normal-text leading-relaxed">
+                        Operativa de transferencias nacionales e internacionales, servicios especiales (Correo Cash, recarte urgente), avisos y bloqueos de cuenta, atención accesibilidad y clientes Select / Vivo Fácil.
+                    </p>
+                </div>
+
+                <div id="content-seccion7" class="space-y-5 transition-all duration-300 hidden">
+
+                    <!-- 7.1 TRANSFERENCIAS -->
+                    <div id="transferencias" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">7.1</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Transferencias</h2>
+                            </div>
+                            <span class="bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Nacionales e Internacionales</span>
+                        </div>
+
+                        <!-- Verificación previa -->
+                        <div class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 p-3 rounded-lg mb-4 flex gap-2">
+                            <div class="text-amber-600 shrink-0 mt-0.5"><i class="fa-solid fa-user-shield text-xs"></i></div>
+                            <div class="text-amber-800 dark:text-amber-300 normal-text leading-relaxed">
+                                <strong>Verificación obligatoria antes de operar (cualquier canal):</strong>
+                                <ul class="mt-1 space-y-0.5 pl-3 list-disc">
+                                    <li>Santander Key (SK) activo <strong>y/o</strong> cliente verificado en N2.</li>
+                                    <li>Teléfono actualizado en la base de datos (BBDD).</li>
+                                    <li>Identificación en llamada (SPL): Fecha de Nacimiento + Caducidad del documento. Si no es válida → 3 preguntas de seguridad o derivar a Web/App.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Transferencias SEPA -->
+                        <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50 mb-3">
+                            <h3 class="title-13 text-indigo-700 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
+                                <i class="fa-solid fa-euro-sign text-xs"></i> A. TRANSFERENCIAS SEPA (Euros, IBAN Europeo)
+                            </h3>
+                            <div class="space-y-1.5 normal-text text-slate-600 dark:text-slate-400">
+                                <div class="flex items-start gap-2"><span class="font-bold text-indigo-600 shrink-0">Coste:</span> 100% gratuitas (ordinaria e inmediata por normativa).</div>
+                                <div class="flex items-start gap-2"><span class="font-bold text-indigo-600 shrink-0">Plazo:</span> 24-48 horas en ordinaria. Instantánea si se elige la opción inmediata.</div>
+                                <div class="flex items-start gap-2"><span class="font-bold text-indigo-600 shrink-0">Datos necesarios:</span> Nombre del destinatario, IBAN, importe y concepto. Todo en N2, con las dos preguntas de seguridad (nacimiento + vencimiento DNI/NIE).</div>
+                                <div class="flex items-start gap-2"><span class="font-bold text-indigo-600 shrink-0">Preferencia:</span> La idea principal es que el cliente la haga por la App o la Web. Si la hace el agente (huella digital), sale gratuita. Si la hace el agente por otro medio, tiene coste: <strong>0,40 € (mínimo 6 €)</strong>. Solo se gestiona por el agente cuando el cliente lo ha intentado en App y hay error.</div>
+                                <div class="flex items-start gap-2 mt-1">
+                                    <span class="font-bold text-indigo-600 shrink-0">Ruta agente:</span>
+                                    <span>Canales Remotos → Ventana Operativa → Transferencias → elegir cuenta de origen → datos del destinatario → script de confirmación.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transferencias inmediatas -->
+                        <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50 mb-3">
+                            <h3 class="title-13 text-indigo-700 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
+                                <i class="fa-solid fa-bolt text-xs"></i> B. TRANSFERENCIAS INMEDIATAS
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+                                <div class="space-y-1 normal-text text-slate-600 dark:text-slate-400">
+                                    <div><span class="font-bold text-indigo-600">Canales:</span> App, Web y Huella. <span class="text-red-600 font-bold">NO desde SanGo/Ventana Operativa.</span></div>
+                                    <div><span class="font-bold text-indigo-600">Límite:</span> 30.000 € por transferencia.</div>
+                                    <div><span class="font-bold text-indigo-600">Coste:</span> Gratuitas.</div>
+                                    <div><span class="font-bold text-indigo-600">Entrega:</span> Instantánea 24/7 todos los días (sin restricción de horario ni festivos).</div>
+                                </div>
+                                <div class="space-y-1 normal-text text-slate-600 dark:text-slate-400">
+                                    <div><span class="font-bold text-indigo-600">Seguridad:</span> Santander Key o N2 + llamada desde teléfono de BBDD + fecha nacimiento + caducidad documento.</div>
+                                    <div><span class="font-bold text-indigo-600">Restricción:</span> Solo titulares (los autorizados NO pueden hacer transferencias inmediatas ni Bizum).</div>
+                                    <div><span class="font-bold text-indigo-600">Aviso:</span> Siempre aparece un aviso de seguridad que confirma o alerta sobre la coincidencia de titulares.</div>
+                                    <div><span class="font-bold text-indigo-600">Justificante:</span> PDF resumen disponible al finalizar. Notificación al destinatario por mail opcional.</div>
+                                </div>
+                            </div>
+                            <div class="bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-500 p-2.5 rounded-r text-slate-700 dark:text-slate-300 normal-text mt-1">
+                                <strong>Nota:</strong> Las transferencias entre cuentas de una misma persona son siempre inmediatas independientemente de la opción elegida. Esto se llama <strong>traspaso</strong> (opción en la App junto a "Transferencia"). La opción de transferencia también funciona para traspasos.
+                            </div>
+                        </div>
+
+                        <!-- Transferencias periódicas y diferidas -->
+                        <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50 mb-3">
+                            <h3 class="title-13 text-indigo-700 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
+                                <i class="fa-solid fa-calendar-days text-xs"></i> C. TRANSFERENCIAS PERIÓDICAS Y DIFERIDAS
+                            </h3>
+                            <div class="space-y-1.5 normal-text text-slate-600 dark:text-slate-400">
+                                <div><span class="font-bold text-indigo-600">Diferida:</span> Envío único en un día concreto programado.</div>
+                                <div><span class="font-bold text-indigo-600">Periódica:</span> Envío recurrente con la periodicidad que elija el cliente (semanal, mensual, trimestral, etc.) hasta cuando quiera.</div>
+                                <div><span class="font-bold text-indigo-600">Modificación:</span> Se puede modificar desde la App o por Huella (agente).</div>
+                                <div class="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/30 rounded p-2 mt-1">
+                                    <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1"></i>
+                                    <strong>Aviso:</strong> Si no hay saldo suficiente, el banco espera 3-4 días para reintentar. El cliente debe tener cuidado de no hacer la transferencia manualmente él mismo en ese periodo, porque se duplicaría el envío.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transferencias internacionales -->
+                        <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50 mb-3">
+                            <h3 class="title-13 text-indigo-700 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
+                                <i class="fa-solid fa-globe text-xs"></i> D. TRANSFERENCIAS INTERNACIONALES
+                            </h3>
+                            <div class="space-y-1.5 normal-text text-slate-600 dark:text-slate-400">
+                                <div><span class="font-bold text-indigo-600">Plazo:</span> 6 días hábiles.</div>
+                                <div><span class="font-bold text-indigo-600">Coste habitual:</span> Sin comisión, solo comisión por cambio de moneda (si aplica). El tipo de cambio en Web es orientativo; el coste real se fija en el momento de ejecución. Si el importe es menor de 3.000 €, el cambio se procesa de inmediato con el último cambio registrado.</div>
+                                <div><span class="font-bold text-indigo-600">Coste si hace el agente (Súper Línea/Oficina/Cajero):</span> Menos de 10.000 € → <strong>20 €</strong>. Más de 10.000 € → <strong>50 €</strong>.</div>
+                                <div><span class="font-bold text-indigo-600">Recomendación:</span> Lo ideal es que las haga el cliente desde la App o Web. Evitar hacerlas nosotros; si se hace es desde la ventana operativa.</div>
+                                <div class="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/30 rounded p-2 mt-1">
+                                    <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1"></i>
+                                    <strong>Doble moneda:</strong> Hay países con doble moneda donde una es el euro. En ese caso el sistema usa la moneda local; si ocurre, comentarlo al coordinador.
+                                </div>
+                            </div>
+                            <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-3 mt-3">
+                                <div class="font-bold text-slate-700 dark:text-slate-300 normal-text mb-1.5 border-b pb-1">Seguimiento de transferencias internacionales en TPX:</div>
+                                <div class="space-y-1 normal-text text-slate-600 dark:text-slate-400">
+                                    <div class="flex items-start gap-2"><span class="font-bold text-indigo-600 shrink-0">1.</span> En TPX: <strong>1044 → 17 → 1 → 2 o 3</strong> (probar ambos) → poner en cuenta de cargo el IBAN o cuenta.</div>
+                                    <div class="flex items-start gap-2"><span class="font-bold text-indigo-600 shrink-0">2.</span> Pulsar <strong>L</strong> para ver información detallada y tipo de cambio.</div>
+                                    <div class="flex items-start gap-2"><span class="font-bold text-indigo-600 shrink-0">3.</span> Pulsar <strong>E</strong> para buscar por fechas → ir a la última operación → pulsar <strong>C</strong> → copiar el código del campo 121 (código UETR).</div>
+                                    <div class="flex items-start gap-2"><span class="font-bold text-indigo-600 shrink-0">4.</span> En ADN Operativo → Operativa Internacional → "Seguimiento de Transferencias Internacionales" → Consulta → pegar el código UETR → ver toda la información.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Anulación -->
+                        <div class="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40 p-3 rounded-lg normal-text text-slate-700 dark:text-slate-300">
+                            <i class="fa-solid fa-ban text-red-600 mr-1"></i>
+                            <strong class="text-red-600">Anulación de transferencias:</strong> No podemos cancelar transferencias salvo que sea por sospecha de fraude.
+                        </div>
+                    </div>
+
+                    <!-- 7.2 CORREO CASH -->
+                    <div id="correo-cash" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">7.2</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Correo Cash</h2>
+                            </div>
+                            <span class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Servicio Especial</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-3">
+                            Servicio que permite a los clientes <strong>retirar e ingresar dinero en efectivo a través de Correos</strong>, incluyendo envío a domicilio. Se gestiona desde la App (opción "Correo Cash").
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div class="bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-center">
+                                <div class="font-bold text-indigo-600 dark:text-indigo-400 normal-text mb-1"><i class="fa-solid fa-house mr-1"></i>Envío a domicilio</div>
+                                <div class="text-2xl font-extrabold text-slate-800 dark:text-slate-200">6 €</div>
+                                <div class="text-slate-500 dark:text-slate-400 normal-text mt-0.5">comisión por llevártelo a casa</div>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-center">
+                                <div class="font-bold text-indigo-600 dark:text-indigo-400 normal-text mb-1"><i class="fa-solid fa-arrow-down mr-1"></i>Ingresar en oficina</div>
+                                <div class="text-2xl font-extrabold text-slate-800 dark:text-slate-200">1,30 €</div>
+                                <div class="text-slate-500 dark:text-slate-400 normal-text mt-0.5">en oficina Correos</div>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-center">
+                                <div class="font-bold text-indigo-600 dark:text-indigo-400 normal-text mb-1"><i class="fa-solid fa-arrow-up mr-1"></i>Sacar en oficina</div>
+                                <div class="text-2xl font-extrabold text-slate-800 dark:text-slate-200">1,80 €</div>
+                                <div class="text-slate-500 dark:text-slate-400 normal-text mt-0.5">en oficina Correos</div>
+                            </div>
+                        </div>
+                        <div class="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800/30 rounded p-2.5 mt-3 normal-text text-green-800 dark:text-green-300">
+                            <i class="fa-solid fa-circle-check mr-1"></i>
+                            <strong>Sin comisión</strong> si en el municipio del cliente no hay oficina Santander.
+                        </div>
+                    </div>
+
+                    <!-- 7.3 RECARTE URGENTE DE TARJETA -->
+                    <div id="recarte-urgente" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">7.3</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Recarte Urgente de Tarjeta</h2>
+                            </div>
+                            <span class="bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Envío Express</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 normal-text leading-relaxed mb-3">
+                            No se suele ofrecer proactivamente, pero existe la opción de solicitar un envío urgente de tarjeta.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div class="bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-center">
+                                <div class="font-bold text-red-600 dark:text-red-400 normal-text mb-1">Coste</div>
+                                <div class="text-2xl font-extrabold text-slate-800 dark:text-slate-200">70 €</div>
+                            </div>
+                            <div class="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800/30 rounded-lg p-3 text-center">
+                                <div class="font-bold text-green-700 dark:text-green-400 normal-text mb-1"><i class="fa-solid fa-sun mr-1"></i>Antes de las 14:00 h</div>
+                                <div class="font-bold text-slate-700 dark:text-slate-300 normal-text">Llega el <strong>mismo día</strong></div>
+                            </div>
+                            <div class="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/30 rounded-lg p-3 text-center">
+                                <div class="font-bold text-amber-700 dark:text-amber-400 normal-text mb-1"><i class="fa-solid fa-moon mr-1"></i>A partir de las 14:00 h</div>
+                                <div class="font-bold text-slate-700 dark:text-slate-300 normal-text">Llega el <strong>día siguiente</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7.4 AVISOS DE CUENTA: FIOC, CRS/FATCA, TIN -->
+                    <div id="avisos-cuenta" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">7.4</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Avisos de Cuenta: FIOC, CRS / FATCA y TIN</h2>
+                            </div>
+                            <span class="bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Bloqueos Regulatorios</span>
+                        </div>
+
+                        <!-- FIOC -->
+                        <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50 mb-3">
+                            <h3 class="title-13 text-indigo-700 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
+                                <i class="fa-solid fa-file-shield text-xs"></i> A. FIOC (Formulario de Información de Cliente)
+                            </h3>
+                            <div class="space-y-1.5 normal-text text-slate-600 dark:text-slate-400">
+                                <div><span class="font-bold text-indigo-600">Qué es:</span> Bloqueo total de la cuenta (entra y sale dinero bloqueado) porque el cliente debe justificar su actividad laboral. Es obligatorio.</div>
+                                <div><span class="font-bold text-indigo-600">Duración del aviso:</span> 90 días de preaviso antes del bloqueo.</div>
+                                <div><span class="font-bold text-indigo-600">Niveles de riesgo y documentación requerida:</span></div>
+                                <div class="pl-3 space-y-0.5">
+                                    <div>• <strong>Riesgo Bajo:</strong> Identidad.</div>
+                                    <div>• <strong>Riesgo Medio:</strong> Identidad + actividad laboral.</div>
+                                    <div>• <strong>Riesgo Alto:</strong> Identidad + actividad laboral + domicilio.</div>
+                                </div>
+                                <div><span class="font-bold text-indigo-600">Cómo hacerlo:</span> El cliente lo hace desde la App o Web → Área Personal → Datos Personales → Formulario FIOC. Se desbloquea en 24/48 horas hábiles.</div>
+                                <div><span class="font-bold text-indigo-600">Titulares:</span> Cada titular debe completar el formulario. Los autorizados no son necesarios.</div>
+                                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded p-2 mt-1">
+                                    <span class="font-bold text-slate-700 dark:text-slate-300">Verificar en ADN:</span> Presionar en "Gestión Documental" → "Herramienta de Gestión Documental" → ver qué documentos faltan y el estado de cada uno.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CRS / FATCA -->
+                        <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50 mb-3">
+                            <h3 class="title-13 text-indigo-700 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
+                                <i class="fa-solid fa-earth-europe text-xs"></i> B. CRS / FATCA (Declaración de Residencia Fiscal)
+                            </h3>
+                            <div class="space-y-1.5 normal-text text-slate-600 dark:text-slate-400">
+                                <div><span class="font-bold text-indigo-600">Qué es:</span> El cliente debe justificar su residencia fiscal. No deja entrar ni salir dinero hasta que lo complete.</div>
+                                <div><span class="font-bold text-indigo-600">Preaviso:</span> 90 días de antelación.</div>
+                                <div><span class="font-bold text-indigo-600">Cómo hacerlo:</span> El cliente lo sube él mismo. Ruta: App/Web → Datos Personales → "Datos de residencia fiscal" (al final) → añadir residencia fiscal.</div>
+                            </div>
+                        </div>
+
+                        <!-- TIN -->
+                        <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50">
+                            <h3 class="title-13 text-indigo-700 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
+                                <i class="fa-solid fa-id-badge text-xs"></i> C. TIN (Tax Identification Number)
+                            </h3>
+                            <div class="normal-text text-slate-600 dark:text-slate-400">
+                                Número de identificación fiscal del país de residencia fiscal declarada. Se solicita cuando el cliente tiene residencia fiscal en un país distinto a España. Si no dispone de él, debe indicarlo así en el formulario.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7.5 CANCELACIÓN DE CUENTA -->
+                    <div id="cancelacion-cuenta" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">7.5</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Cancelación de Cuenta</h2>
+                            </div>
+                            <span class="bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Proceso No Inmediato</span>
+                        </div>
+                        <div class="space-y-2.5 pl-3 border-l-2 border-indigo-600/30 normal-text text-slate-600 dark:text-slate-400">
+                            <div class="flex items-start gap-2"><span class="font-bold text-indigo-600 shrink-0">1.</span> Primero se deben <strong>cancelar todas las tarjetas</strong> asociadas a la cuenta.</div>
+                            <div class="flex items-start gap-2"><span class="font-bold text-indigo-600 shrink-0">2.</span> La cancelación de cuenta se abre como una <strong>solicitud</strong>, no es inmediata.</div>
+                            <div class="flex items-start gap-2"><span class="font-bold text-indigo-600 shrink-0">3.</span> Ruta en la App: acceder a su cuenta → abajo del todo en "Más opciones" → "Cancelar cuenta" → elegir cuál → completar la información solicitada → confirmar con un formulario final.</div>
+                        </div>
+                    </div>
+
+                    <!-- 7.6 ATENCIÓN ACCESIBILIDAD -->
+                    <div id="accesibilidad" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">7.6</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Atención Accesibilidad</h2>
+                            </div>
+                            <span class="bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Atención Especializada</span>
+                        </div>
+                        <div class="space-y-1.5 normal-text text-slate-600 dark:text-slate-400">
+                            <p class="mb-2">Existe un servicio especializado para clientes con alguna discapacidad, que incluye:</p>
+                            <div class="flex items-start gap-2"><i class="fa-solid fa-hands-asl-interpreting text-indigo-600 mt-0.5"></i> Intérprete de lengua de signos mediante videollamada.</div>
+                            <div class="flex items-start gap-2"><i class="fa-solid fa-calendar-check text-indigo-600 mt-0.5"></i> Posibilidad de cita previa.</div>
+                            <div class="flex items-start gap-2"><i class="fa-solid fa-person-walking text-indigo-600 mt-0.5"></i> Atención directa sin cita.</div>
+                            <div class="bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-500 p-2.5 rounded-r mt-2">
+                                <strong>Cómo acceder:</strong> Desde la web del banco buscando "Accesibilidad". En el IVR el cliente dice "accesibilidad" y se le deriva al servicio especializado.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7.7 CLIENTES SELECT Y VIVO FÁCIL -->
+                    <div id="clientes-select" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm transition-colors duration-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">7.7</span>
+                                <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">Clientes Select y Vivo Fácil</h2>
+                            </div>
+                            <span class="bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider">Segmento Premium</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-slate-50 dark:bg-slate-900/40 p-3 rounded-lg border border-slate-100 dark:border-slate-700/50 space-y-1.5 normal-text text-slate-600 dark:text-slate-400">
+                                <div class="font-bold text-indigo-700 dark:text-indigo-400 border-b pb-1 mb-1.5 normal-text uppercase tracking-wider">Clientes Select — General</div>
+                                <div>• <strong>Empresas:</strong> Hay que transferirlas (tienen trato propio).</div>
+                                <div>• <strong>Clientes Senior:</strong> Trato prioritario obligatorio.</div>
+                                <div>• Los clientes Select reciben <strong>ofertas no financieras</strong> a través de Vivo Fácil.</div>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/40 p-3 rounded-lg border border-slate-100 dark:border-slate-700/50 space-y-1.5 normal-text text-slate-600 dark:text-slate-400">
+                                <div class="font-bold text-indigo-700 dark:text-indigo-400 border-b pb-1 mb-1.5 normal-text uppercase tracking-wider">Vivo Fácil — Protocolo</div>
+                                <div>• Solo se transfiere a Vivo Fácil cuando el motivo de la consulta <strong>es específico de Vivo Fácil</strong>. Para el resto, lo gestionamos nosotros.</div>
+                                <div>• <strong>Antes de transferir a Vivo Fácil:</strong> revisar siempre las alertas del usuario.</div>
+                                <div>• El cliente necesita <strong>documento + contraseña alfanumérica con al menos un signo</strong> para acceder a Vivo Fácil.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             <!-- Pie de página informativo / Descargo de responsabilidad -->
             <footer class="mt-12 border-t border-slate-200 dark:border-slate-800 py-6 text-center text-slate-400 dark:text-slate-600 transition-colors duration-200">
                 <p class="text-[9px] uppercase tracking-wider font-bold mb-1">⚠️ Recursos y Apuntes de Operativa No Oficiales</p>
@@ -1776,6 +2187,8 @@
                     sectionId = 'seccion5';
                 } else if (['#estructura-llamada', '#indicadores-calidad', '#gestion-citas', '#glosario'].includes(hash)) {
                     sectionId = 'seccion6';
+                } else if (['#transferencias', '#correo-cash', '#recarte-urgente', '#avisos-cuenta', '#cancelacion-cuenta', '#accesibilidad', '#clientes-select'].includes(hash)) {
+                    sectionId = 'seccion7';
                 }
 
                 if (sectionId) {
@@ -1804,6 +2217,8 @@
                     sectionId = 'seccion5';
                 } else if (['#estructura-llamada', '#indicadores-calidad', '#gestion-citas', '#glosario'].includes(hash)) {
                     sectionId = 'seccion6';
+                } else if (['#transferencias', '#correo-cash', '#recarte-urgente', '#avisos-cuenta', '#cancelacion-cuenta', '#accesibilidad', '#clientes-select'].includes(hash)) {
+                    sectionId = 'seccion7';
                 }
 
                 if (sectionId) {
@@ -1818,7 +2233,7 @@
         // CORRECCIÓN DEL FILTRO Y BUSCADOR DINÁMICO (Soluciona el fallo de desaparición de secciones)
         function filterManual() {
             const query = document.getElementById('manualSearch').value.toLowerCase().trim();
-            const sections = ['seccion1', 'seccion2', 'seccion3', 'seccion4', 'seccion5', 'seccion6'];
+            const sections = ['seccion1', 'seccion2', 'seccion3', 'seccion4', 'seccion5', 'seccion6', 'seccion7'];
             const cards = document.querySelectorAll('.searchable-card');
 
             if (query === '') {
