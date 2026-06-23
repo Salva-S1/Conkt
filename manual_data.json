@@ -1,0 +1,64 @@
+{
+  "modulos": [
+    {
+      "id": "seccion1",
+      "titulo": "1. SEGURIDAD Y CREDENCIALES",
+      "tag_modulo": "MÓDULO DE SEGURIDAD",
+      "color": "red",
+      "descripcion": "Protocolos de verificación de identidad, generación, reemisión y activación de credenciales operativas del cliente.",
+      "tarjetas": [
+        {
+          "id": "clave-acceso",
+          "num": "1.1",
+          "titulo": "CLAVE DE ACCESO (N1)",
+          "badge": "ACCESO CONSULTIVO",
+          "intro": "La clave de acceso (CA) es una contraseña numérica que permite al cliente el acceso de carácter estrictamente consultivo a sus productos contratados mediante los canales a distancia.",
+          "reglas_oro": [
+            "<strong>Formato de la clave:</strong> Debe ser de exactamente 8 dígitos, solo números.",
+            "<strong>Restricciones:</strong> No puede ser una de sus últimas 6 claves, no puede contener números consecutivos o en orden ascendente (ej. 12345678), ni utilizar datos personales.",
+            "<strong>Compromiso FCR (Llamada de seguimiento):</strong> Es obligatorio agendar una llamada de seguimiento al cliente 15 minutos después de finalizar la atención."
+          ],
+          "bloques": [
+            {
+              "tipo": "prioritario",
+              "titulo": "ALTERNATIVA 1: VÍA PRINCIPAL (INSTRUIR AL CLIENTE POR LA APP)",
+              "subtexto": "Siempre debe ser nuestra primera opción para empoderar al cliente.",
+              "checklist": [
+                "Guiar al cliente a la pantalla de inicio de la App de Banco Santander.",
+                "Indicarle que vaya a la parte inferior y pulse en la opción 'Recuperar clave de acceso'.",
+                "El cliente deberá resolver un recuadro de verificación humana (Captcha) en pantalla.",
+                "Solicitarle que introduzca su documento de identidad registrado (DNI / NIE / Pasaporte)."
+              ],
+              "nota_alerta": "<strong>Paso de confirmación:</strong> Tras superar la validación elegida, el sistema enviará un código por SMS al teléfono móvil asociado para confirmar el proceso, que debe constar de 8 números."
+            },
+            {
+              "tipo": "advertencia",
+              "titulo": "ALTERNATIVA 2: SIN MÓVIL A MANO O ERROR EN LA APP",
+              "subtexto": "Si el cliente no puede realizar el proceso autónomamente, validaremos su identidad con los datos de su tarjeta física.",
+              "checklist": [
+                "Solicitar al cliente el PAN (los 16 dígitos de la tarjeta) y el PIN (código de 4 dígitos para cajeros/compras)."
+              ],
+              "nota_azul": "<strong>Nota técnica sobre el proceso:</strong> Una vez confirmes que posee estos datos, se le transferirá a la locución segura para que realice el cambio de contraseña de forma confidencial."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seccion2",
+      "titulo": "2. CONTRATO MULTICANAL",
+      "tag_modulo": "MÓDULO DE CONTRATOS",
+      "color": "indigo",
+      "descripcion": "Procedimientos técnicos, límites transaccionales diarios y flujos de soporte técnico ante bloqueos o modificaciones de contrato.",
+      "tarjetas": [
+        {
+          "id": "naturaleza-cmc",
+          "num": "2.1",
+          "titulo": "Naturaleza del CMC",
+          "badge": "Banca Digital",
+          "intro": "El Contrato Multicanal (CMC) o Contrato de Banca Digital constituye el soporte contractual unificado que regula los canales de relación a distancia entre el cliente y la entidad."
+        }
+      ]
+    }
+  ]
+}
