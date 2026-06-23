@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Procedimientos y Operativa - Banco Santander</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: { colors: { santander: '#ec0000', santanderDark: '#b30000' } }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body, p, li, td, th, span, a, input, button, label {
+            font-family: 'Inter', sans-serif; font-size: 11px !important; line-height: 1.5 !important;
+        }
+        h1, h2, h3, h4, h5, h6, .forced-heading-size, .title-13 {
+            font-size: 13px !important; font-weight: 800 !important; letter-spacing: 0.05em !important; text-transform: uppercase !important;
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        .light ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-200 min-h-screen">
+
+    <header class="bg-red-600 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-white text-red-600 p-2 rounded-lg flex items-center justify-center shadow-md">
+                    <i class="fa-solid fa-building-columns text-sm"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold tracking-wider block forced-heading-size">SANTANDER BANCA DIGITAL</span>
+                    <span class="text-[9.5px] opacity-90 block">Manual de Procedimientos Dinámico</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 flex-grow sm:flex-grow-0 w-full sm:w-auto">
+                <div class="relative w-full sm:w-64">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                    </span>
+                    <input type="text" id="manualSearch" onkeyup="filterManual()" placeholder="Buscar procedimiento..." 
+                           class="w-full pl-8 pr-4 py-1 bg-white dark:bg-slate-800 border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 text-xs text-slate-800 dark:text-slate-100">
+                </div>
+                <button onclick="toggleTheme()" class="p-2 bg-red-700 hover:bg-red-800 text-white border border-red-500 rounded-lg flex items-center justify-center">
+                    <i id="themeIcon" class="fa-solid fa-moon text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <aside class="lg:col-span-4 lg:sticky lg:top-20 h-fit space-y-4">
+            <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm">
+                <div class="flex items-center gap-2 border-b border-slate-100 dark:border-slate-700 pb-2 mb-3">
+                    <i class="fa-solid fa-list-ul text-red-600"></i>
+                    <h2 class="forced-heading-size">ÍNDICE DE CONTENIDOS</h2>
+                </div>
+                <nav id="dynamic-nav" class="space-y-3"></nav>
+            </div>
+
+            <div class="bg-[#0c1a30] dark:bg-[#070f21] border border-slate-800 rounded-xl p-4 shadow-sm text-slate-200">
+                <div class="flex items-center gap-2 border-b border-slate-800 pb-2 mb-3">
+                    <div class="bg-red-600 text-white rounded-full w-4 h-4 flex items-center justify-center text-[9px] font-bold">i</div>
+                    <h2 class="forced-heading-size text-white">CHECKLIST DEL AGENTE</h2>
+                </div>
+                <button onclick="clearAllChecks()" class="w-full py-1.5 border border-slate-700 bg-transparent hover:bg-slate-800 rounded-lg text-white font-semibold text-[10px] tracking-wider">
+                    REINICIAR CHECKLISTS
+                </button>
+            </div>
+        </aside>
+
+        <section id="manual-content" class="lg:col-span-8 space-y-6 pb-20"></section>
+    </main>
+
+    <script>
+        let datosManual = {};
+
+        // Cargar datos e inicializar
+        async function inicializarApp() {
+            try {
+                // Puedes cambiar esta línea por un fetch si usas un servidor local:
+                // const respuesta = await fetch('manual_data.json');
+                // datosManual = await respuesta.json();
+                
+                // DATA ENLACE LOCAL PROVISIONAL (Para pruebas inmediatas sin problemas de CORS)
+                datosManual = {
+                    "modulos": [
+                        {
+                            "id": "seccion1",
+                            "titulo": "1. SEGURIDAD Y CREDENCIALES",
+                            "tag_modulo": "MÓDULO DE SEGURIDAD",
+                            "color": "red",
+                            "descripcion": "Protocolos de verificación de identidad, generación, reemisión y activación de credenciales operativas.",
+                            "tarjetas": [
+                                {
+                                    "id": "clave-acceso",
+                                    "num": "1.1",
+                                    "titulo": "CLAVE DE ACCESO (N1)",
+                                    "badge": "ACCESO CONSULTIVO",
+                                    "intro": "La clave de acceso (CA) es una contraseña numérica que permite al cliente el acceso consultivo a sus productos contratados mediante canales a distancia.",
+                                    "reglas_oro": [
+                                        "<strong>Formato de la clave:</strong> Debe ser de exactamente 8 dígitos, solo números.",
+                                        "<strong>Restricciones:</strong> No puede ser consecutiva ni ascendente.",
+                                        "<strong>Seguimiento:</strong> Es obligatorio agendar una llamada de seguimiento a los 15 minutos."
+                                    ],
+                                    "bloques": [
+                                        {
+                                          "tipo": "prioritario",
+                                          "titulo": "VÍA PRINCIPAL (INSTRUIR POR LA APP)",
+                                          "subtexto": "Siempre debe ser nuestra primera opción para empoderar al cliente.",
+                                          "checklist": [
+                                            "Guiar al cliente a la pantalla de inicio de la App.",
+                                            "Indicarle que pulse en 'Recuperar clave de acceso'.",
+                                            "Resolver el Captcha de verificación en pantalla."
+                                          ],
+                                          "nota_alerta": "El sistema enviará un código por SMS para establecer la nueva clave de 8 números."
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                renderizarMenu();
+                renderizarContenido();
+                cargarEstadoCheckboxes();
+            } catch (error) {
+                console.error("Error cargando los datos del manual:", error);
+            }
+        }
+
+        function renderizarMenu() {
+            const nav = document.getElementById('dynamic-nav');
+            nav.innerHTML = datosManual.modulos.map(m => `
+                <div>
+                    <button onclick="toggleSection('${m.id}')" class="w-full flex items-center justify-between py-1 font-bold text-slate-800 dark:text-slate-200 text-left">
+                        <span class="title-13">${m.titulo}</span>
+                        <i id="menu-arrow-${m.id}" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
+                    </button>
+                    <div id="sub-menu-${m.id}" class="pl-3 space-y-1.5 border-l border-slate-200 dark:border-slate-700 ml-1 mt-1 hidden">
+                        ${m.tarjetas.map(t => `
+                            <a href="#${t.id}" class="block py-0.5 text-slate-600 dark:text-slate-400 hover:text-red-600">
+                                <i class="fa-solid fa-file-lines mr-1 text-[9px]"></i> ${t.num} ${t.titulo}
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderizarContenido() {
+            const contenedor = document.getElementById('manual-content');
+            contenedor.innerHTML = datosManual.modulos.map(m => `
+                <div id="${m.id}" class="searchable-section space-y-4">
+                    <div class="bg-${m.color}-700 text-white rounded-2xl p-5 shadow-sm relative overflow-hidden">
+                        <span class="bg-black/25 text-white font-extrabold px-2.5 py-0.5 rounded-md text-[8.5px] uppercase tracking-wider mb-2.5 inline-block">${m.tag_modulo}</span>
+                        <button onclick="toggleSection('${m.id}')" class="w-full text-left flex justify-between items-center">
+                            <h1 class="text-white forced-heading-size">${m.titulo}</h1>
+                            <div class="bg-white/20 p-2 rounded-full h-7 w-7 flex items-center justify-center">
+                                <i id="arrow-${m.id}" class="fa-solid fa-chevron-down text-white text-xs"></i>
+                            </div>
+                        </button>
+                        <p class="text-white/90 mt-2 mb-0">${m.descripcion}</p>
+                    </div>
+
+                    <div id="content-${m.id}" class="space-y-5 hidden">
+                        ${m.tarjetas.map(t => `
+                            <div id="${t.id}" class="searchable-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm">
+                                <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3 mb-4">
+                                    <div class="flex items-center gap-2">
+                                        <span class="bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 rounded-full w-5 h-5 inline-flex items-center justify-center font-bold text-[10px]">${t.num}</span>
+                                        <h2 class="forced-heading-size text-slate-900 dark:text-slate-100">${t.titulo}</h2>
+                                    </div>
+                                    <span class="bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-bold px-2.5 py-0.5 rounded-full text-[9px] uppercase">${t.badge}</span>
+                                </div>
+
+                                <div class="border-l-4 border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900/50 p-3 rounded-r-lg mb-4">
+                                    <p class="text-slate-600 dark:text-slate-400 mb-0">${t.intro}</p>
+                                </div>
+
+                                ${t.bloques ? t.bloques.map((b, idx) => `
+                                    <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-100 dark:border-slate-700/50 mb-3">
+                                        <div class="bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-lg flex items-center justify-between mb-3">
+                                            <span class="title-13 text-emerald-800 dark:text-emerald-400 font-extrabold">${b.titulo}</span>
+                                        </div>
+                                        <p class="text-slate-500 italic mb-3">${b.subtexto}</p>
+                                        <div class="space-y-2 mb-4">
+                                            ${b.checklist.map((item, chIdx) => `
+                                                <div class="flex items-start gap-2.5">
+                                                    <input type="checkbox" id="${t.id}-cb-${idx}-${chIdx}" class="cb-checklist mt-0.5 rounded border-slate-300 text-red-600 h-3.5 w-3.5 shrink-0">
+                                                    <label for="${t.id}-cb-${idx}-${chIdx}" class="text-slate-600 dark:text-slate-400">${item}</label>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                        ${b.nota_alerta ? `<div class="bg-[#fffcf0] dark:bg-[#2d2a1a] p-3 rounded-lg text-yellow-800 dark:text-yellow-300 text-[10px]">${b.nota_alerta}</div>` : ''}
+                                    </div>
+                                `).join('') : ''}
+
+                                ${t.reglas_oro ? `
+                                    <div class="mt-5 bg-slate-900 dark:bg-slate-950 text-slate-100 p-4 rounded-xl border border-slate-800">
+                                        <h4 class="forced-heading-size text-white border-b border-slate-800 pb-1.5 mb-2.5">Reglas de Oro Obligatorias</h4>
+                                        <ul class="space-y-1.5">
+                                            ${t.reglas_oro.map(r => `<li class="flex items-start gap-2 text-slate-300"><i class="fa-solid fa-circle-check text-blue-400 mt-1"></i><span>${r}</span></li>`).join('')}
+                                        </ul>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            // Re-vincular eventos para guardar checklists dinámicos
+            document.querySelectorAll('.cb-checklist').forEach(cb => {
+                cb.addEventListener('change', () => localStorage.setItem(cb.id, cb.checked));
+            });
+        }
+
+        // Control de Colapsables
+        function toggleSection(id) {
+            const content = document.getElementById('content-' + id);
+            const arrow = document.getElementById('arrow-' + id);
+            const menuArrow = document.getElementById('menu-arrow-' + id);
+            const subMenu = document.getElementById('sub-menu-' + id);
+
+            if (!content) return;
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                if (arrow) arrow.className = 'fa-solid fa-chevron-up text-white text-xs';
+                if (menuArrow) menuArrow.className = 'fa-solid fa-chevron-up text-slate-400 text-[10px]';
+                if (subMenu) subMenu.classList.remove('hidden');
+            } else {
+                content.classList.add('hidden');
+                if (arrow) arrow.className = 'fa-solid fa-chevron-down text-white text-xs';
+                if (menuArrow) menuArrow.className = 'fa-solid fa-chevron-down text-slate-400 text-[10px]';
+                if (subMenu) subMenu.classList.add('hidden');
+            }
+        }
+
+        // Buscador Inteligente
+        function filterManual() {
+            const query = document.getElementById('manualSearch').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.searchable-card');
+            
+            datosManual.modulos.forEach(m => {
+                const content = document.getElementById('content-' + m.id);
+                if (query !== '' && content) content.classList.remove('hidden');
+            });
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.classList.remove('hidden');
+                    if (query !== '') card.classList.add('border-red-500', 'ring-1', 'ring-red-500');
+                    else card.classList.remove('border-red-500', 'ring-1', 'ring-red-500');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Guardado de persistencia local
+        function cargarEstadoCheckboxes() {
+            document.querySelectorAll('.cb-checklist').forEach(cb => {
+                const estado = localStorage.getItem(cb.id);
+                if (estado !== null) cb.checked = (estado === 'true');
+            });
+        }
+
+        function clearAllChecks() {
+            document.querySelectorAll('.cb-checklist').forEach(cb => {
+                cb.checked = false;
+                localStorage.removeItem(cb.id);
+            });
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark'); themeIcon.className = 'fa-solid fa-moon text-xs';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark'); themeIcon.className = 'fa-solid fa-sun text-xs';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        window.addEventListener('load', () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('themeIcon').className = 'fa-solid fa-sun text-xs';
+            }
+            inicializarApp();
+        });
+    </script>
+</body>
+</html>
