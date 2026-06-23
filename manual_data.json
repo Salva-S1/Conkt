@@ -13,32 +13,150 @@
           "titulo": "CLAVE DE ACCESO (N1)",
           "badge": "ACCESO CONSULTIVO",
           "intro": "La clave de acceso (CA) es una contraseña numérica que permite al cliente el acceso de carácter estrictamente consultivo a sus productos contratados mediante los canales a distancia.",
-          "reglas_oro": [
-            "<strong>Formato de la clave:</strong> Debe ser de exactamente 8 dígitos, solo números.",
-            "<strong>Restricciones:</strong> No puede ser una de sus últimas 6 claves, no puede contener números consecutivos o en orden ascendente (ej. 12345678), ni utilizar datos personales.",
-            "<strong>Compromiso FCR (Llamada de seguimiento):</strong> Es obligatorio agendar una llamada de seguimiento al cliente 15 minutos después de finalizar la atención."
-          ],
           "bloques": [
             {
               "tipo": "prioritario",
               "titulo": "ALTERNATIVA 1: VÍA PRINCIPAL (INSTRUIR AL CLIENTE POR LA APP)",
-              "subtexto": "Siempre debe ser nuestra primera opción para empoderar al cliente.",
+              "subtexto": "Siempre debe ser nuestra primera opción para empoderar al cliente en los canales digitales y fomentar la autogestión.",
               "checklist": [
                 "Guiar al cliente a la pantalla de inicio de la App de Banco Santander.",
                 "Indicarle que vaya a la parte inferior y pulse en la opción 'Recuperar clave de acceso'.",
                 "El cliente deberá resolver un recuadro de verificación humana (Captcha) en pantalla.",
                 "Solicitarle que introduzca su documento de identidad registrado (DNI / NIE / Pasaporte)."
               ],
-              "nota_alerta": "<strong>Paso de confirmación:</strong> Tras superar la validación elegida, el sistema enviará un código por SMS al teléfono móvil asociado para confirmar el proceso, que debe constar de 8 números."
+              "cards": [
+                {"titulo": "Por Biometría", "desc": "Reconocimiento facial o huella dactilar si el dispositivo está previamente vinculado.", "meta": "OPCIÓN A"},
+                {"titulo": "Por Tarjeta Activa", "desc": "Validar utilizando los datos de alguna de sus tarjetas activas actuales.", "meta": "OPCIÓN B"}
+              ],
+              "nota_alerta": "<strong>Paso de confirmación:</strong> Tras superar la validación elegida, el sistema enviará un código por SMS al teléfono móvil asociado para confirmar el proceso y proceder al establecimiento de su nueva clave, que debe constar de <strong>8 números</strong>."
             },
             {
               "tipo": "advertencia",
               "titulo": "ALTERNATIVA 2: SIN MÓVIL A MANO O ERROR EN LA APP",
-              "subtexto": "Si el cliente no puede realizar el proceso autónomamente, validaremos su identidad con los datos de su tarjeta física.",
+              "subtexto": "Si el cliente no puede realizar el proceso autónomamente, validaremos su identidad con los datos de su tarjeta física para derivarlo a la locución segura.",
               "checklist": [
                 "Solicitar al cliente el PAN (los 16 dígitos de la tarjeta) y el PIN (código de 4 dígitos para cajeros/compras)."
               ],
-              "nota_azul": "<strong>Nota técnica sobre el proceso:</strong> Una vez confirmes que posee estos datos, se le transferirá a la locución segura para que realice el cambio de contraseña de forma confidencial."
+              "nota_azul": "<strong>Nota técnica sobre el proceso:</strong> Una vez confirmes que posee estos datos, se le transferirá a la locución segura (el sistema automatizado que protege sus datos) para que realice el cambio de contraseña de forma confidencial."
+            },
+            {
+              "tipo": "estandar",
+              "titulo": "ALTERNATIVA 3: FILTRO POR PREGUNTAS DE SEGURIDAD",
+              "subtexto": "Si el cliente no dispone ni de PIN ni de PAN, es obligatorio realizar el cuestionario completo de seguridad. Debes formular las siguientes preguntas exactas:",
+              "checklist": [
+                "Fecha de nacimiento (Cumpleaños).",
+                "Últimos dígitos de su cuenta (IBAN).",
+                "¿Tiene contratado algún préstamo con el banco? (Sí / No).",
+                "¿Tiene tarjeta de Crédito? En caso afirmativo, solicitar los últimos 6 dígitos.",
+                "¿Tiene tarjeta de Débito? En caso afirmativo, solicitar los últimos 6 dígitos."
+              ],
+              "doble_resultado": {
+                "ko": "❌ Si NO supera el filtro: Se le deniega la gestión a distancia y se le remite obligatoriamente a una oficina física.",
+                "ok": "✔ Si supera el filtro: Se le transfiere de igual manera al sistema/agente seguro para que la locución automatizada le guíe."
+              }
+            }
+          ],
+          "reglas_oro": [
+            "<strong>Formato de la clave:</strong> Debe ser de exactamente 8 dígitos, solo números.",
+            "<strong>Restricciones:</strong> No puede ser una de sus últimas 6 claves, no puede contener números consecutivos o en orden ascendente (ej. 12345678), ni utilizar datos personales (como su fecha de nacimiento, DNI/NIE, etc.).",
+            "<strong>Compromiso FCR (Llamada de seguimiento):</strong> Es obligatorio agendar una llamada de seguimiento al cliente 15 minutos después de finalizar la atención para verificar si pudo cambiarla correctamente y evitar que se convierta en un cliente detractor."
+          ]
+        },
+        {
+          "id": "firma-electronica",
+          "num": "1.2",
+          "titulo": "Firma Electrónica (N2 / FE)",
+          "badge": "Nivel 2",
+          "intro": "La Firma Electrónica habilita la capacidad operativa transaccional completa del cliente en todos los entornos remotos del banco.",
+          "nota_alerta": "<strong>Verificación de Seguridad Obligatoria (E. Verificación de Seguridad):</strong> Antes de procesar nada, se siguen estos pasos en orden estricto:<ol class='mt-1.5 space-y-0.5 pl-4 list-decimal'><li><strong>Solicitar 2 números de la Clave de Acceso</strong> (N1) — primer paso siempre, antes de entrar a sistemas.</li><li>Verificar el número de teléfono del cliente en Santander Go, debe estar asociado a su contrato CMC.</li></ol><p class='mt-1.5 mb-0'>⚠️ Si el número de teléfono no es correcto, el cliente debe ir a oficina para cambiarlo, ya que el cambio de teléfono en el CMC requiere firma electrónica activa.</p>",
+          "bloques": [
+            {
+              "tipo": "estandar",
+              "titulo": "BLOQUE A: SOLICITAR / GENERAR UNA NUEVA FIRMA ELECTRÓNICA (Por bloqueo o pérdida)",
+              "subtexto": "Cuando el cliente no puede operar porque su firma está bloqueada, revocada o no la recuerda, se debe generar un envío de una FE provisional.",
+              "checklist": [
+                "<strong>Alternativa 1: Autogestión por App / NHB:</strong> Guiar al cliente en su App o Web (NHB) entrando a: Seguridad -> Cambio de claves -> Recuperar firma."
+              ]
+            },
+            {
+              "tipo": "estandar",
+              "titulo": "Alternativa 2: Gestión por el Agente en Sistemas (Si no puede por la App)",
+              "subtexto": "Sigue rigurosamente el orden del proceso completo:",
+              "proceso_ordenado": [
+                {"letra": "A", "titulo": "Verificar 2 números de la Clave de Acceso", "desc": "Antes de cualquier gestión, solicitar al cliente 2 posiciones concretas de su Clave de Acceso (N1)."},
+                {"letra": "B", "titulo": "Revisar si la Firma está activa en Santander Go", "desc": "Acceder a SanGo y comprobar el estado. Si el CMC está bloqueado en este punto, se remite obligatoriamente a oficina."},
+                {"letra": "C", "titulo": "Revisar el TPX", "desc": "Consultar la ruta <strong>9004 → 2 → 3 → 1 → 1</strong> para comprobar bloqueos adicionales en el CMC y validar el teléfono de la BBDD."},
+                {"letra": "D", "titulo": "Partenón — Mandar la Firma", "desc": "Acceder por ADN Operativo → Teleprocesos → Teleproceso SAN. Buscar cliente, seleccionar contrato (339...), meter usuario X, marcar 'Envío de Firma Electrónica', confirmar móvil con script interactivo y pulsar Aceptar. <br><strong>Script previo IVR:</strong> <em>'Ahora vas a hablar con un sistema automático... ¿estás listo?'</em>"},
+                {"letra": "E", "titulo": "Activación Definitiva", "desc": "La firma provisional caduca en 24 horas por SMS o 30 días por correo ordinario. El cliente debe cambiarla por la alfanumérica definitiva."}
+              ]
+            },
+            {
+              "tipo": "prioritario",
+              "titulo": "BLOQUE B: ACTIVACIÓN DE LA FIRMA ELECTRÓNICA (Modificar la provisional por la definitiva)",
+              "subtexto": "Transformación de la clave temporal en alfanumérica definitiva de 8 caracteres (letras + números + al menos un signo).",
+              "cards": [
+                {"meta": "CON SK (CANDADO VERDE)", "titulo": "Notificación Push", "desc": "El cliente pulsa en 'Activar Firma', autoriza mediante biometría en Santander Key, introduce las 4 posiciones provisionales y establece su clave alfanumérica."},
+                {"meta": "SIN SK (CANDADO ROJO)", "titulo": "Validación OTP", "desc": "El cliente pulsa en 'Activar Firma', introduce el código OTP completo recibido por SMS, mete las 4 posiciones provisionales y elige la definitiva."}
+              ]
+            },
+            {
+              "tipo": "advertencia",
+              "titulo": "Alternativa 2 de Activación: Con Gestor (Vía Banca Digital)",
+              "subtexto": "Scripts mandatorios de traspaso y recepción:",
+              "checklist": [
+                "<strong>1. Script del Gestor Inicial:</strong> <em>'Voy a transferir tu llamada con un responsable del servicio para que proceda a activar tu Firma Electrónica. Te informo que éste, por tu seguridad, solo dispondrá de tu apellido para poder dirigirse a ti'.</em> (Transferir a agenda -> Activación de Firma Electrónica).",
+                "<strong>2. Protocolo de Recepción (Nimbus):</strong> <em>'Te han transferido conmigo porque deseas activar tu firma electrónica. Es muy importante que recuerdes qué firma electrónica vas a elegir... Por favor, indícame la firma electrónica que deseas utilizar, teniendo en cuenta que debe tener 8 caracteres, formado por una combinación de letras y números'.</em>",
+                "<strong>3. Advertencia de Seguridad Final Obligatoria:</strong> <em>'Le recuerdo que, a partir de este momento, el Banco NUNCA le va a solicitar todas las posiciones de esta nueva Firma... así mismo, le recuerdo que, tras activar la Firma Electrónica, pasará a tener acceso operativo a todos los canales'.</em>"
+              ]
+            }
+          ],
+          "reglas_oro": [
+            "<strong>Formato FE:</strong> Exactamente 8 caracteres, combinación alfanumérica obligatoria de letras y números.",
+            "No puede coincidir con ninguna de sus últimas 6 claves, ni contener series numéricas secuenciales.",
+            "Caducidad estricta de la FE provisional: 24 horas recibida por SMS, 30 días por correo postal.",
+            "El Contrato Multicanal (CMC) bloquea la firma; si el propio CMC está bloqueado, derivación presencial irrevocable.",
+            "Llamada de seguimiento de control obligatoria a los 15 minutos."
+          ]
+        },
+        {
+          "id": "santander-key",
+          "num": "1.3",
+          "titulo": "Santander Key (SK)",
+          "badge": "Firma Biométrica",
+          "intro": "Santander Key es el método preferente de firma biométrica que permite autorizar operativas desde el smartphone mediante Huella o Face ID sin recordar contraseñas.",
+          "checklist": [
+            "<strong>Ubicación en App:</strong> Notificaciones, candado de inicio, o menú de seguridad superior derecho.",
+            "<strong>Funcionalidades del Cliente (App/NHB):</strong> Bizum, transferencias, recuperación de FE, desbloqueo de PIN y operativas avanzadas en Planeta Seguros.",
+            "<strong>Operaciones iniciadas por Agente para validación por SK:</strong> Transferencias Nacionales, Urgentes e Inmediatas, Reseteo de PIN, Cambio de domicilio de Tarjeta, Modificación de límites y operatividad del CMC, y Dinero Directo."
+          ],
+          "reglas_oro": [
+            "<strong>Validación Operativa por Operativa:</strong> Cada transacción envía un push independiente. No es una validación única para toda la llamada.",
+            "<strong>Exención de Filtro:</strong> Con SK validado por push, hay un margen de 5 minutos libre de preguntas de seguridad reforzada o validación de procedencia de teléfono.",
+            "<strong>Excepción Clave Firma:</strong> Si posee SK pero no tiene el móvil a mano, se usa 'Clave Firma' y es obligatorio realizar el cuestionario de seguridad completo.",
+            "<strong>Irreversibilidad:</strong> Una vez activo, el cliente no puede darse de baja. Si desiste, requiere la cancelación total de su CMC.",
+            "Métrica obligatoria del servicio: '¡Ningún cliente sin Santander Key!'."
+          ],
+          "bloques": [
+            {
+              "tipo": "advertencia",
+              "titulo": "Protocolo de Fraude por Denuncia del Cliente",
+              "subtexto": "Si el cliente pulsa 'Denunciar esta operación' en el push, aparecerá en consola: <em>'Operación Cancelada: La operación ha sido denunciada por el cliente'</em>. Aplicar de inmediato:",
+              "checklist": [
+                "<strong>Tratamiento al interlocutor:</strong> Cortar la llamada neutralmente diciendo: <em>'En estos momentos no podemos realizar la operativa'</em>.",
+                "<strong>Comprobación:</strong> Verificar de inmediato si el teléfono fue modificado en los últimos 15 días.",
+                "<strong>Llamada de Verificación:</strong> Emitir llamada saliente al teléfono CMC legítimo o alternativo de la BDP (2 intentos).",
+                "<strong>Aviso Urgente a Oficina:</strong> Si no hay contacto, enviar email o llamar de inmediato a su sucursal comercial para bloqueo preventivo total de tarjetas y CMC."
+              ]
+            },
+            {
+              "tipo": "estandar",
+              "titulo": "Consola de Estados de SK (Banca Digital)",
+              "subtexto": "Interpretación visual de candados y códigos de control:",
+              "cards": [
+                {"meta": "🟢 CANDADO VERDE", "titulo": "ACTIVE", "desc": "Integrado, activo y en vigor en el dispositivo móvil actual."},
+                {"meta": "🟠 CANDADO NARANJA", "titulo": "ONGOING_1 / _2", "desc": "Integrado pero no activo; alta iniciada en proceso de PIN (1) u OTP (2)."},
+                {"meta": "🔴 CANDADO ROJO", "titulo": "INACTIVE / KO_FRAUD", "desc": "No integrado, inactivo, cancelado por desistimiento o rechazado por sistemas de fraude."}
+              ]
             }
           ]
         }
@@ -56,7 +174,490 @@
           "num": "2.1",
           "titulo": "Naturaleza del CMC",
           "badge": "Banca Digital",
-          "intro": "El Contrato Multicanal (CMC) o Contrato de Banca Digital constituye el soporte contractual unificado que regula los canales de relación a distancia entre el cliente y la entidad."
+          "intro": "El Contrato Multicanal (CMC) regula los canales de relación a distancia entre el cliente (particular, Select o Empresa) y la entidad bancaria.",
+          "cards": [
+            {"meta": "VÍA OFICINA", "titulo": "Presencial", "desc": "Firma manuscrita tradicional de las condiciones en sucursal física."},
+            {"meta": "VÍA WEB", "titulo": "Banca Electrónica", "desc": "Contratación digital autónoma a través del portal online."},
+            {"meta": "VÍA APP", "titulo": "Banca Móvil", "desc": "Activación digital desde la aplicación del smartphone."}
+          ],
+          "checklist": [
+            "<strong>1. Modo Operativo (Completa):</strong> Permite consultas y operaciones financieras con movimientos de fondos.",
+            "<strong>2. Modo Consultivo (Limitada):</strong> Acceso restringido exclusivamente a visualización de información de productos.",
+            "<strong>3. Modo de Emergencia (Restringida):</strong> Estado transitorio preventivo por sospecha de fraude: permite consultas pero bloquea transferencias sensibles."
+          ]
+        },
+        {
+          "id": "gestion-datos-multicanal",
+          "num": "2.2",
+          "titulo": "Gestión de Datos Multicanal",
+          "badge": "Modificaciones",
+          "intro": "Normativa para el cambio seguro del teléfono de seguridad y ampliación de límites operativos transaccionales.",
+          "bloques": [
+            {
+              "tipo": "estandar",
+              "titulo": "Modificación de Número de Teléfono Asociado",
+              "subtexto": "Rutas y condicionantes técnicos:",
+              "checklist": [
+                "<strong>Ruta Web Cliente:</strong> Área Personal > Configuración > Seguridad > Cambiar Teléfono de Seguridad.",
+                "<strong>Ruta App Cliente:</strong> Menú Lateral > Mi Perfil > Mis Datos > Teléfono Móvil.",
+                "<strong>Requisitos obligatorios:</strong> Firma Electrónica activa y DNI digitalizado en vigor. Si no conserva el móvil anterior, requiere videoverificación biométrica facial frente a DNI."
+              ]
+            },
+            {
+              "tipo": "prioritario",
+              "titulo": "Límites de Transferencias Diarias",
+              "subtexto": "Umbrales preestablecidos modificables por sistema:",
+              "checklist": [
+                "<strong>Límite estándar diario de seguridad:</strong> Fijado por defecto en <strong>6.000 €</strong>.",
+                "<strong>Ampliación máxima permitida:</strong> Hasta un tope de <strong>30.000 €</strong> para particulares y <strong>60.101 €</strong> para segmentos Select o Empresas."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bloqueos-bajas-sistemas",
+          "num": "2.3",
+          "titulo": "Bloqueos y Bajas en Sistemas",
+          "badge": "Seguridad y Control",
+          "intro": "Protocolos técnicos de actuación ante alertas de ciberseguridad, bloqueos preventivos y cancelaciones contractuales.",
+          "cards": [
+            {"meta": "ESTADO U", "titulo": "Unlocked", "desc": "Contrato activo en situación operativa regularizada."},
+            {"meta": "ESTADO B", "titulo": "Blocked", "desc": "Acceso al entorno digital completamente suspendido por fraude o contraseñas."},
+            {"meta": "LISTA GRIS", "titulo": "Preventivo N3", "desc": "Bloqueo automático por movimientos extraños, impagos a los 15 días o PIN erróneo."}
+          ],
+          "checklist": [
+            "<strong>Principio de Irreversibilidad por Fraude (AERO):</strong> Si el estado B es por sospecha de fraude o ciberseguridad, el agente telefónico tiene <strong>estrictamente prohibido</strong> desbloquearlo.",
+            "<strong>Desbloqueo por Intentos Fallidos:</strong> Si el bloqueo es solo por contraseñas, el agente puede restablecerlo mediante un Blanqueo de Claves.",
+            "<strong>Políticas sobre Menores:</strong> No se realizan modificaciones contractuales, desbloqueos o cambios de límites telefónicamente para cuentas de menores. Derivar a oficina.",
+            "<strong>Acción Crítica:</strong> Ante sospecha de fraude en curso, aplicar fulminantemente el Protocolo de Bloqueo AERO."
+          ],
+          "bloques": [
+            {
+              "tipo": "estandar",
+              "titulo": "III. Procedimiento Operativo de Bajas y Bloqueos en Sistemas",
+              "subtexto": "Comandos técnicos según la plataforma utilizada:",
+              "terminal": [
+                "--- ALTERNATIVA 1: EMULADOR TPX (PARTICULARES) ---",
+                "1. Iniciar sesión en el emulador, teclear transacción TPX y pulsar INTRO.",
+                "2. Introducir opción 6 -> INTRO. Seleccionar opción 1 -> INTRO.",
+                "3. Seleccionar opción 11 para entrar en VER ANTIGUEDAD.",
+                "4. Introducir pantalla de control 9004 -> INTRO. Seleccionar opción 2 -> INTRO.",
+                "5. Seleccionar opción 3 (MULTICANAL) -> Opción 1 -> INTRO.",
+                "6. Seleccionar opción 1 e introducir el Documento del Cliente.",
+                "7. Para ejecutar la baja: Posicionarse sobre el cursor de estado y teclear la letra B."
+              ],
+              "checklist": [
+                "<strong>Alternativa 2: Gestión Visual en Partenón (Particulares):</strong> Ruta: CONTRATACION > MANTENIMIENTO Y CONSULTA DE CONTRATO. Pulsar Lupa, buscar DNI, seleccionar contrato (empieza por 339...), aceptar 3 veces, meter Usuario X, cerrar emergente y hacer clic en BLOQUEO DE CONTRATO.",
+                "<strong>Alternativa 3: Gestión de Baja en Empresas (DMX - Contrato 520):</strong> Iniciar DMX. Opción 61 (Banca Electrónica) -> ENTER. Opción 1 -> ENTER. Buscar contrato 520 y marcar con una X. Presionar opción 2 -> ENTER. Introducir Banco 0049, sucursal y contrato corporativo."
+              ]
+            }
+          ],
+          "reglas_oro": [
+            "<strong>REGLA DE CALIDAD CRÍTICA:</strong> El agente del Contact Center tiene terminantemente prohibido bloquear o dar de baja un Contrato Multicanal (CMC) de forma arbitraria o discrecional, salvo sospechas claras de fraude activo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seccion3",
+      "titulo": "3. APLICACIONES INTERNAS",
+      "tag_modulo": "SOFTWARE DE AGENTE",
+      "color": "teal",
+      "descripcion": "Control de sistemas internos de consultas, comandos rápidos, plataformas de gestión comercial y de seguridad de redes de datos.",
+      "tarjetas": [
+        {
+          "id": "partenon", "num": "3.1", "titulo": "Partenón (Red C)", "badge": "Core Visual",
+          "intro": "Plataforma visual corporativa para gestionar expedientes de clientes. Permite realizar consultas habituales, comprobar intervinientes y ejecutar el comando rápido de búsqueda <strong>339</strong> para la asignación y reendoso acelerado de Contratos Multicanales."
+        },
+        {
+          "id": "tpx", "num": "3.2", "titulo": "TPX (Emulador)", "badge": "Terminal",
+          "intro": "Emulador por comandos de teclado rápido. Comandos esenciales: tecla <strong>Tabulador</strong> para saltar campos, <strong>F3</strong> para deshacer o retroceder de ventana sin guardar variaciones, y <strong>F5</strong> para autorizar cambios y confirmar operaciones."
+        },
+        {
+          "id": "santander-go-sw", "num": "3.3", "titulo": "Santander Go & GoBot", "badge": "Incidencias",
+          "intro": "Aplicación dedicada a la resolución rápida de incidencias transaccionales (traspasos estancados, completar envíos o cancelar giros). Cuenta con la asistencia automatizada del bot de soporte técnico integrado <strong>GoBot</strong>."
+        },
+        {
+          "id": "adn", "num": "3.4", "titulo": "ADN Operativo", "badge": "Vista 360",
+          "intro": "Consola de visualización integral de relaciones comerciales. Ofrece análisis de liquidaciones en tiempo real de llamada y almacena la 'Huella del Cliente', que resume sus interacciones históricas con los canales del banco."
+        },
+        {
+          "id": "zeus", "num": "3.5", "titulo": "ZEUS", "badge": "Conciliación",
+          "intro": "Plataforma de alta seguridad para el control de transacciones. Utilizada para realizar el cruce de retenciones técnicas (holds) y verificar descuadres o cargos duplicados entre autorizaciones y movimientos contables finales."
+        },
+        {
+          "id": "portal-emisiones", "num": "3.6", "titulo": "Portal de Emisiones", "badge": "Prepago",
+          "intro": "Entorno específico de consulta para la gama de tarjetas prepago (monederos físicos y virtuales). Analiza estados de emisión, bloqueos de seguridad y reemisiones de claves para el segmento joven."
+        },
+        {
+          "id": "herramientas-externas", "num": "3.7", "titulo": "Herramientas Externas", "badge": "Soporte",
+          "intro": "Sistemas de uso diario del agente para el ejercicio de su actividad:<br>• <strong>Fortitoken:</strong> Generador de claves OTP de doble factor para logueo diario en la red corporativa.<br>• <strong>Kodin:</strong> Sistema oficial obligatorio para el fichaje y control del horario laboral."
+        }
+      ]
+    },
+    {
+      "id": "seccion4",
+      "titulo": "4. TARJETAS Y FINANZAS",
+      "tag_modulo": "MEDIOS DE PAGO",
+      "color": "emerald",
+      "descripcion": "Procedimientos de activación, modificación de formas de pago, tratamiento de retenciones contables, Pago Fácil, Dinero Directo e impagos.",
+      "tarjetas": [
+        {
+          "id": "activacion-tarjetas",
+          "num": "4.1",
+          "titulo": "Activación, Límites y Cancelación",
+          "badge": "Operativa",
+          "intro": "Regulaciones sobre el ciclo de vida operativo de las tarjetas de débito y crédito de la entidad.",
+          "checklist": [
+            "<strong>Activación física:</strong> El cliente debe realizar una primera operación con PIN físico (pago en comercio o consulta/retirada en cajero Santander) para activar el chip.",
+            "<strong>Límites comerciales:</strong> Límites de retirada diarios y mensuales gestionables en App mediante validación push de Santander Key."
+          ],
+          "bloques": [
+            {
+              "tipo": "advertencia",
+              "titulo": "BLOQUEO PREVENTIVO N3 Y PROTOCOLO DE EXCLUSIÓN",
+              "subtexto": "Actuación en Lista Gris ante movimientos extraños, impagos a los 15 días o PIN erróneo:",
+              "checklist": [
+                "<strong>Regla de Oro Operativa:</strong> Antes de proceder a una cancelación formal, es obligatorio <strong>primero bloquear la tarjeta</strong> desde el entorno de sistemas.",
+                "<strong>Ruta de Bloqueo:</strong> Operativa -> ADN Operativo -> Tarjetas Operaciones -> Tarjeta -> Bloqueo de Tarjeta -> Cancelación -> Bloquear por Robo o Extravío.",
+                "<strong>Alerta de Contrato Absoluto:</strong> Si seleccionas la cancelación completa del contrato en vez de la tarjeta independiente, se eliminarán fulminantemente <strong>todas las tarjetas asociadas</strong> de golpe.",
+                "<strong>Diferencia de Liquidación (Crédito vs Débito):</strong> En tarjetas de Crédito, revisa con prioridad absoluta en Santander Go si arrastra deuda acumulada. Si cancelas con deuda pendiente, el sistema cargará el importe de forma íntegra e instantánea en la cuenta corriente."
+              ],
+              "nota_azul": "<strong>📌 Obligaciones Ineludibles del Gestor:</strong><br>1. Es obligatorio avisar explícitamente al cliente de la deuda antes de actuar.<br>2. Preguntarle qué tarjeta específica desea cancelar de su cartera.<br>3. Preavisarle justo antes de ejecutar cada comando de bloqueo individual.<br>4. Realizar la cancelación definitiva tras los bloqueos y confirmárselo al instante."
+            }
+          ]
+        },
+        {
+          "id": "tarjetas-prepago",
+          "num": "4.2",
+          "titulo": "Crédito, Prepago, Pagolisto y Dinero Directo",
+          "badge": "Financiación",
+          "intro": "Modalidades de crédito y servicios de fraccionamiento de cuenta corriente.",
+          "checklist": [
+            "<strong>Prepago Joven:</strong> Diseñada para menores de 18 años. Control de recargas familiares y límites restringidos.",
+            "<strong>Tarjeta eCash:</strong> Tarjeta virtual para e-commerce. Cuota de mantenimiento anual gratuita sujeta a realizar un mínimo de operaciones virtuales al año.",
+            "<strong>Dinero Directo (Efectivo al Instante):</strong> Traslado de fondos desde el crédito disponible hacia la cuenta de débito. Mínimo 100 €, máximo condicionado por el disponible menos la comisión del 3%. Si el cliente fracciona la devolución en cuotas mensuales, se exime el cobro de la comisión; si NO fracciona, se repercute el 3%."
+          ],
+          "bloques": [
+            {
+              "tipo": "prioritario",
+              "titulo": "COMPONENTE OFICIAL DE PAGOLISTO",
+              "subtexto": "Fraccionamiento de movimientos y recibos cargados en cuenta corriente (transferencias, Bizums o recibos del hogar) mediante tarjeta de crédito virtual temporal sujeta a crédito preconcedido.",
+              "checklist": [
+                "<strong>⚠️ Restricción de Uso Exclusivo:</strong> Prohibido su uso para pagar en comercios físicos, virtuales o retiradas en cajeros. Solo aplica a movimientos de cuenta seleccionados hasta un máximo acumulado de 1.000 €.",
+                "<strong>Condiciones Financieras:</strong> Exento de intereses (0% TIN). Aplica una comisión fija de apertura cargada íntegramente en la primera cuota. Plazo de devolución fijo en <strong>3 cuotas mensuales</strong>."
+              ],
+              "tabla_comisiones": {
+                "columnas": ["Tramo de Importe", "Comisión Fija (Cargada en Mes 1)"],
+                "filas": [
+                  ["Hasta 200 €", "2 €"],
+                  ["De 200,01 € a 300 €", "5 €"],
+                  ["De 300,01 € a 500 €", "7 €"],
+                  ["De 500,01 € a 1.000 €", "12 €"]
+                ]
+              },
+              "nota_azul": "<strong>📖 Ejemplo Guía para Información Telefónica (Recibo de 450 €):</strong><br>• Comisión aplicable: 7 € (Tramo de 300 a 500).<br>• Primer pago (Mes 1): 157 € (150 € capital + 7 € comisión).<br>• Segundo pago (Mes 2): 150 €.<br>• Tercer pago (Mes 3): 150 €.<br>• Importe total adeudado final: 457 €. Con el último pago se cierra el Pagolisto."
+            }
+          ]
+        },
+        {
+          "id": "retenciones-saldo",
+          "num": "4.3",
+          "titulo": "Pago Fácil, Financiar Recibos y Retenciones",
+          "badge": "Gestión Cuenta",
+          "intro": "Herramientas de aplazamiento de cargos comerciales y retenciones técnicas.",
+          "checklist": [
+            "<strong>1. PAGO FÁCIL (Fraccionar Compra Crédito):</strong> Seleccionar una compra ya liquidada en la App y fraccionarla en plazos. Importe mínimo de compra: <strong>60 €</strong>; plazo mínimo: <strong>2 meses</strong>. Aplica el interés ordinario de la tarjeta sin afectar al resto de compras.",
+            "<strong>2. FINANCIAR RECIBOS DESDE LA CUENTA:</strong> Permite financiar recibos domiciliados cargados en cuenta. Mínimo a financiar: <strong>100 €</strong>, hasta el disponible de la tarjeta de crédito. Plazos: <strong>de 2 a 36 meses</strong>. Requiere modalidad 'Fraccionar Compra'. <strong>Ventaja clave: No se cobra la comisión de Efectivo al Instante (ahorro del 3%)</strong>.",
+            "<strong>3. Retenciones Pendientes:</strong> Plazos máximos de confirmación técnica: Débito (2 a 5 días laborables), Crédito (hasta liquidación mensual), Prepago (inmediato).",
+            "<strong>4. Ingreso contra Saldo en Crédito:</strong> El cliente amortiza deuda acumulada en la tarjeta por la App. ⚠️ <strong>Alerta Crítica:</strong> No amortiza ni liquida los planes aplazados de Pago Fácil. Esos deben cancelarse independientemente en sistemas."
+          ],
+          "nota_alerta": "<strong>Regla del Cierre de Extracto:</strong> Si el ingreso contra saldo se realiza después del cierre de extracto y antes del cobro en cuenta, el dinero se descuenta del recibo a cobrar y no figurará en el extracto del contrato actual (aparecerá en el siguiente mes)."
+        },
+        {
+          "id": "impagos-comisiones",
+          "num": "4.4",
+          "titulo": "Extractos, Impagos, Cuotas y Pago Luego",
+          "badge": "Liquidación",
+          "intro": "Tratamiento de comisiones por reclamación de posiciones deudoras y aplazamientos extraordinarios.",
+          "checklist": [
+            "<strong>Salvaguarda ante Excedidos:</strong> Si el cliente excede su límite (ej. gasta 800 € teniendo 500 €), si ingresa el exceso antes del cierre del extracto (día 30) se salva de penalizaciones por descubierto.",
+            "<strong>Comisión por Impagos (GRPD):</strong> Al llegar exactamente al <strong>sexto día natural</strong> de un saldo deudor impagado, se carga una comisión fija de <strong>49 €</strong> por reclamación de posición deudora dentro del extracto de la tarjeta.",
+            "<strong>IV. PAGO LUEGO / APLAZAR RECIBO:</strong> Aplazar el extracto total pagando solo la porción mínima (3% o 5%). El capital remanente pasa al mes siguiente como 'Refinanciación Deuda' (bloqueada para segundos aplazamientos). Plazos críticos en Nimbus (SPL-N1): Asegurado hasta el día anterior al corte a las 00:00h; el mismo día se graba pero nunca se garantiza."
+          ],
+          "nota_alerta": "<strong>🚨 Protocolo de Gestión de Quejas Recurrentes (Cuota Fija):</strong> Cuando un cliente con cuota fija (ej. 50 €/mes) reclama porque se le ha cobrado más, explícale asertivamente la <strong>Fórmula del Suelo del Pago Mínimo Obligatorio:</strong><br><div class='font-mono text-center my-2 text-red-500 bg-slate-100 dark:bg-slate-900 p-2 rounded'>Pago Mínimo = 3% del Dispuesto de Intereses + Comisiones + Excedidos + Impagos + Pago Fáciles Activos</div>El sistema aplica automáticamente este Pago Mínimo obligatorio si la suma de excedidos, comisiones o Pago Fácil actúa como suelo legal por encima de su cuota fija."
+        }
+      ]
+    },
+    {
+      "id": "seccion5",
+      "titulo": "5. CUENTAS BANCARIAS",
+      "tag_modulo": "MÓDULO DE PRODUCTOS",
+      "color": "blue",
+      "descripcion": "Guía completa de tipologías de cuentas de Banco Santander: requisitos, exenciones de comisiones, promociones de captación y tarifas por descubierto contable.",
+      "tarjetas": [
+        {
+          "id": "cuenta-santander-corp",
+          "num": "5.1",
+          "titulo": "Cuenta Santander Standard",
+          "badge": "Tradicional",
+          "intro": "Cuenta corriente para mayores de 18 años residentes y no residentes. Tarifa estándar de <strong>20 € al mes</strong> (240 €/año).",
+          "checklist": [
+            "<strong>Exención Total (0 €/mes) - Criterios:</strong><br>• Edad: De 18 a 28 años.<br>• Nuevos Clientes: Primeros 6 meses (carencia general de 2 meses).<br>• Grandes Ahorradores: Saldo &ge; 25.000 € en fondos, planes o seguros de ahorro.<br>• Accionistas: &ge; 1.000 acciones Santander.<br>• Combo Ingresos+Actividad: Nómina &ge; 600 € (o pensión &ge; 300 €) Y 3 recibos domiciliados o usar tarjeta 6 veces al trimestre.",
+            "<strong>Reducción Única (10 €/mes) - Criterios:</strong><br>• Cumplir ingresos pero fallar en actividad.<br>• Saldo entre 5.000 € y 25.000 € en fondos o planes.<br>• Tener al corriente hipoteca, préstamo consumo o renting.<br>• Seguros Santander Mediación con prima anual &ge; 120 €.<br>• Plan Santander One Senior activo.",
+            "<strong>Operativa Gratuita Incluida:</strong> Mantenimiento de tarjetas débito y crédito, retiradas gratis en 30.000 cajeros Santander del mundo, transferencias SEPA online gratis y Bizum a coste cero."
+          ]
+        },
+        {
+          "id": "cuenta-online-corp",
+          "num": "5.2",
+          "titulo": "Cuenta Online Santander",
+          "badge": "Sin Comisiones",
+          "intro": "Cuenta corriente 100% digital exclusiva para <strong>nuevos clientes</strong>. Coste de <strong>0 € de por vida</strong> sin condiciones.",
+          "checklist": [
+            "<strong>🎁 Promoción por Nómina (Hasta 840 € en 2 años):</strong> Sin permanencia ni penalización mensual.<br>• Paso 1 (Ingreso): Nómina 800 €-1.499 € = 10 €/mes // Nómina &ge; 1.500 € = 15 €/mes.<br>• Paso 2 (Bizum): Asociar Bizum y realizar mín. 3 envíos/mes = +10 €/mes.<br>• Paso 3 (Recibos): Domiciliar mín. 2 recibos mensuales = +10 €/mes.<br>• Máximo acumulable: 35 €/mes.",
+            "<strong>✈️ Operativa Especial en Viajes:</strong><br>• Menores de 30 años: Gratis comisiones en compras internacionales en divisa y 3 retiradas gratis al mes en cajeros del mundo.<br>• Mayores de 30 años (Programa Santander Viajes): Suscripción opcional de 3 €/mes para obtener los mismos beneficios y seguro de asistencia."
+          ]
+        },
+        {
+          "id": "cuenta-noresidente",
+          "num": "5.3",
+          "titulo": "Cuenta Online No Residentes",
+          "badge": "Genérica",
+          "intro": "Para nuevos clientes con residencia fiscal en el extranjero. Mantenimiento a <strong>0 € exenta de por vida</strong> sin vinculaciones.",
+          "checklist": [
+            "<strong>Países Autorizados:</strong> Alemania, Argentina, Austria, Bélgica, Brasil, Canadá, Chile, Dinamarca, Eslovaquia, Finlandia, Francia, Grecia, Hungría, Irlanda, Islandia, Italia, Lituania, Noruega, Países Bajos, Polonia, Portugal, Reino Unido, República Checa, Rumanía, Suecia, Suiza y Uruguay.",
+            "<strong>Operativa:</strong> Tarjeta de débito sin comisiones (virtual si no hay dirección en España), transferencias online en euros gratis, y transferencias a Reino Unido, Polonia y Portugal a 0 €. Verificación por videollamada con pasaporte."
+          ]
+        },
+        {
+          "id": "cuenta-menores",
+          "num": "5.4",
+          "titulo": "Cuenta Joven (Menores)",
+          "badge": "Menores",
+          "intro": "Niños y jóvenes de 0 a 17 años. 1 sola cuenta por menor. Apertura obligatoria por padre/madre/tutor cliente desde su App. Mantenimiento a <strong>0 € exenta</strong>.",
+          "checklist": [
+            "<strong>🎁 Promo Bienvenida (+20 € Regalo):</strong> Del 17 de junio al 15 de septiembre de 2026. Para cuentas nuevas con ingreso inicial &ge; 20 €.",
+            "<strong>Tramo 0 a 11 años:</strong> Ahorro parental, permite abrir fondos o carteras a nombre del menor.",
+            "<strong>Tramo 12 a 17 años:</strong> Claves propias de App bajo 'Control Parental'. <strong>Bizum Menores (desde 14 años):</strong> Límites estrictos de 50 €/operación, 150 €/día y 500 €/mes. Prohibido en e-commerce. Tarjeta Prepago Joven gratuita (carga mín 6 €, máx 900 €) con monitorización parental.",
+            "<strong>Viajes:</strong> Tarjeta exenta de comisiones por compras internacionales y 3 retiradas gratis/mes fuera de España."
+          ]
+        },
+        {
+          "id": "cuenta-pago-basica",
+          "num": "5.5",
+          "titulo": "Cuenta de Pago Básica",
+          "badge": "Regulada",
+          "intro": "Uso estrictamente particular para personas con residencia legal UE, solicitantes de asilo o no expulsables.",
+          "checklist": [
+            "<strong>❌ Criterio de Exclusión Absoluto:</strong> El solicitante no puede tener ninguna otra cuenta de pago en España.",
+            "<strong>Comisión y Límites:</strong> Coste fijo cerrado de <strong>3 € al mes</strong> (36 €/año). Incluye un máximo de <strong>120 operaciones de pago en euros al año</strong> en la UE. Excesos devengan tarifas estándar.",
+            "<strong>Contratación:</strong> Estrictamente presencial en oficinas aportando DNI, pasaporte o tarjeta de asilo."
+          ]
+        },
+        {
+          "id": "costes-descubierto",
+          "num": "5.6",
+          "titulo": "Costes por Descubierto y Condiciones Legales",
+          "badge": "Normativa",
+          "intro": "Tabla de tarifas reguladas aplicables a las cuentas 1, 2, 3 y 5 ante posiciones deudoras:",
+          "tabla_comisiones": {
+            "columnas": ["Concepto", "Coste Aplicable", "Detalle Técnico Regulado"],
+            "filas": [
+              ["Interés Deudor", "7,83% TIN (8,12% TAE)", "Se aplica sobre el saldo negativo y el tiempo exacto de la posición deudora."],
+              ["Comisión de Descubierto", "5% fijo (Mínimo 15 €)", "Se cobra sobre el mayor descubierto contable producido en el mes."],
+              ["Gastos de Reclamación", "49 € por posición", "Gasto único por comunicación de cobro. No superará el importe de la deuda."]
+            ]
+          },
+          "reglas_oro": [
+            "<strong>Fondo de Garantía de Depósitos (FGD):</strong> Garantizado hasta un máximo de 100.000 € por depositante.",
+            "<strong>Derecho de Desistimiento:</strong> En contratos digitales el cliente dispone de 14 días naturales para anular sin penalización, devolviendo saldos en un máximo de 30 días.",
+            "<strong>Modificación de Condiciones:</strong> El banco debe notificar cualquier cambio indefinido con un mínimo de 2 meses de antelación.",
+            "<strong>Traslado de Cuentas:</strong> Derecho legal regulado a solicitar el traslado de cuenta a otra entidad en España de forma ágil."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seccion6",
+      "titulo": "6. CALIDAD Y SCRIPT DE ATENCIÓN",
+      "tag_modulo": "CALIDAD DE SERVICIO",
+      "color": "slate",
+      "descripcion": "Estructura reglamentaria de la llamada, scripts oficiales de atención, indicadores clave de resolución y glosario técnico.",
+      "tarjetas": [
+        {
+          "id": "estructura-llamada",
+          "num": "6.1",
+          "titulo": "Estructura del Script",
+          "badge": "Obligatorio",
+          "intro": "Flujo de conversación obligatorio determinado para las interacciones telefónicas:",
+          "checklist": [
+            "<strong>🗣️ 1. APERTURA Y BIENVENIDA REGLAMENTARIA:</strong><br><em class='text-slate-700 dark:text-slate-300'>'Hola, ¿qué tal? Una disculpa por la demora, soy [Tu Nombre] de Banco Santander, ¿cuál es el motivo de tu consulta?'</em>",
+            "<strong>🔍 2. IDENTIFICACIÓN / IVR & DIAGNÓSTICO:</strong> Cursar validación de seguridad en Nimbus o ADN según corresponda.",
+            "<strong>🛠️ 3. RESOLUCIÓN OPERATIVA:</strong> Ejecución de procesos técnicos manteniendo el sondeo activo.",
+            "<strong>🚀 4. VENTA CRUZADA (CROSS-SELLING):</strong> Ofrecimiento de ventajas digitales, alta en Santander Key o promociones.",
+            "<strong>📌 5. CIERRE Y CONFIRMACIÓN IMPERATIVA (REGLA DE LA SOLUCIÓN):</strong> Regla crítica ineludible formulando la pregunta con la palabra <strong>'solución'</strong>:<br><em class='font-bold text-slate-800 dark:text-slate-200'>'¿Podría indicarme si su consulta ha sido solucionada?'</em><br>Tras el 'Sí', aplicar halago y preaviso de encuesta:<br><em class='text-slate-700 dark:text-slate-300'>'Perfecto [Nombre de pila], me alegro de haberlo resuelto. Bueno, ahora a continuación recibirá por email una encuesta de satisfacción de esta llamada, por mi parte, usted ha sido un 10 en todo este proceso.'</em>",
+            "<strong>👋 6. DESPEDIDA CORPORATIVA:</strong><br><em class='text-slate-700 dark:text-slate-300'>'Para cualquier otra consulta no dude en llamar. Tenga un buen día.'</em>"
+          ]
+        },
+        {
+          "id": "indicadores-calidad", "num": "6.2", "titulo": "Indicadores de Calidad", "badge": "Métricas",
+          "intro": "• <strong>FCR (First Contact Resolution):</strong> Resolución en el primer contacto para evitar reiteración de llamadas.<br>• <strong>Cliente 10 de 10:</strong> Enfoque orientado a conseguir la máxima puntuación promotora en las encuestas automáticas post-llamada."
+        },
+        {
+          "id": "gestion-citas", "num": "6.3", "titulo": "Gestión de Citas", "badge": "Oficinas",
+          "intro": "• <strong>No Clientes:</strong> Guiar al usuario para solicitar cita previa autónomamente en la web externa del banco.<br>• <strong>Clientes Identificados:</strong> El agente puede agendar directamente la cita presencial en su oficina de origen mediante la terminal."
+        },
+        {
+          "id": "glosario", "num": "6.4", "titulo": "Glosario de Términos", "badge": "Conceptos",
+          "intro": "• <strong>IVR:</strong> Locución automática inicial de clasificación.<br>• <strong>PAN:</strong> Los 16 dígitos impresos de la tarjeta.<br>• <strong>PIN:</strong> Clave secreta de 4 dígitos para cajeros/TPV.<br>• <strong>IBAN / BIC-SWIFT:</strong> Identificadores de cuenta nacionales e internacionales.<br>• <strong>Devolución de recibo / Encargo:</strong> Opciones para rechazar cargos domiciliados no autorizados."
+        }
+      ]
+    },
+    {
+      "id": "seccion7",
+      "titulo": "7. TRANSFERENCIAS Y SERVICIOS",
+      "tag_modulo": "OPERATIVA Y SERVICIOS",
+      "color": "indigo",
+      "descripcion": "Operativa de transferencias nacionales e internacionales, servicios especiales (Correo Cash, recarte urgente), avisos y bloqueos de cuenta, atención accesibilidad y clientes Select / Vivo Fácil.",
+      "tarjetas": [
+        {
+          "id": "transferencias",
+          "num": "7.1",
+          "titulo": "Transferencias",
+          "badge": "Transacciones",
+          "intro": "<strong>Verificación obligatoria previa:</strong> SK activo y/o verificado en N2, teléfono en BBDD actualizado, e identificación en llamada (Fecha Nacimiento + Caducidad DNI/NIE). Si falla -> 3 preguntas de seguridad.",
+          "bloques": [
+            {
+              "tipo": "estandar",
+              "titulo": "A. TRANSFERENCIAS SEPA (Euros, IBAN Europeo)",
+              "subtexto": "Condiciones operativas generales:",
+              "checklist": [
+                "<strong>Coste:</strong> 100% gratuitas (ordinaria e inmediata por normativa).",
+                "<strong>Plazo:</strong> 24-48 horas en ordinaria. Instantánea si es inmediata.",
+                "<strong>Preferencia:</strong> Fomentar uso por App/Web. Si la ejecuta el agente por Huella Digital es gratis; si se hace por otro medio de soporte técnico tiene coste de <strong>0,40% (mínimo 6 €)</strong>. Solo gestionar por agente ante error demostrado en App."
+              ],
+              "nota_azul": "<strong>Ruta agente:</strong> Canales Remotos → Ventana Operativa → Transferencias → Cuenta Origen → Datos Destinatario → Script de confirmación."
+            },
+            {
+              "tipo": "prioritario",
+              "titulo": "B. TRANSFERENCIAS INMEDIATAS",
+              "subtexto": "Límites y restricciones específicas:",
+              "checklist": [
+                "<strong>Canales:</strong> App, Web y Huella. <span class='text-red-600 font-bold'>Prohibido desde SanGo o Ventana Operativa estándar.</span>",
+                "<strong>Límites y Coste:</strong> Máximo de 30.000 € por transferencia. Totalmente gratuitas. Entrega instantánea 24/7 sin festivos.",
+                "<strong>Restricción Absoluta:</strong> Solo titulares. Los autorizados <strong>no pueden</strong> realizar transferencias inmediatas ni Bizum.",
+                "<strong>💡 Nota sobre Traspasos:</strong> Los movimientos entre cuentas de la misma persona son siempre inmediatos. La opción de transferencia en la App también procesa traspasos de forma nativa."
+              ]
+            },
+            {
+              "tipo": "estandar",
+              "titulo": "C. TRANSFERENCIAS PERIÓDICAS Y DIFERIDAS",
+              "subtexto": "Programaciones de envíos:",
+              "checklist": [
+                "<strong>Diferida:</strong> Envío único programado en fecha futura.",
+                "<strong>Periódica:</strong> Envío recurrente estructurado (semanal, mensual, etc.). Modificable desde App o por Huella (agente).",
+                "<strong>Aviso de Saldo:</strong> Si falta saldo, el banco reintenta durante 3-4 días. Avisar al cliente de no duplicarla manualmente."
+              ]
+            },
+            {
+              "tipo": "advertencia",
+              "titulo": "D. TRANSFERENCIAS INTERNACIONALES",
+              "subtexto": "Envíos fuera de zona SEPA o divisa extranjera:",
+              "checklist": [
+                "<strong>Plazos y costes en Web:</strong> 6 días hábiles. Sin comisión de emisión, solo cambio de moneda orientativo (fijado al ejecutar). Menos de 3.000 € se procesa al instante.",
+                "<strong>Coste por Agente (Súper Línea/Oficina):</strong> Envíos < 10.000 € -> <strong>20 €</strong>. Envíos > 10.000 € -> <strong>50 €</strong>. Priorizar autogestión.",
+                "<strong>Doble Moneda:</strong> Si el país destino usa euro y moneda local, el sistema prioriza local. Consultar al coordinador si ocurre."
+              ],
+              "terminal": [
+                "--- SEGUIMIENTO DE TRANSFERENCIA INTERNACIONAL EN TPX ---",
+                "1. En TPX introducir: 1044 → 17 → 1 → 2 o 3. Introducir el IBAN o cuenta de cargo.",
+                "2. Pulsar L para ver información detallada y tipo de cambio aplicado.",
+                "3. Pulsar E para buscar por fechas -> ir a la última -> pulsar C -> copiar código del campo 121 (UETR).",
+                "4. Ir a ADN Operativo → Operativa Internacional → 'Seguimiento de Transferencias Internacionales' → Consulta -> Pegar código UETR."
+              ]
+            }
+          ],
+          "nota_alerta": "<strong>Anulación de transferencias:</strong> No es posible cancelar transferencias emitidas por el Contact Center, salvo órdenes expresas por sospecha de fraude activo."
+        },
+        {
+          "id": "correo-cash",
+          "num": "7.2",
+          "titulo": "Correo Cash",
+          "badge": "Servicio Especial",
+          "intro": "Servicio para retirar o ingresar efectivo a través de las oficinas de Correos, gestionable desde la App.",
+          "tabla_comisiones": {
+            "columnas": ["Modalidad del Servicio Correo Cash", "Comisión Aplicable"],
+            "filas": [
+              ["Envío de dinero en efectivo a domicilio", "6,00 € fija por envío"],
+              ["Ingresar dinero en efectivo en oficina de Correos", "1,30 € por operación"],
+              ["Retirar dinero en efectivo en oficina de Correos", "1,80 € por operación"]
+            ]
+          },
+          "nota_azul": "<strong>Exención por territorio:</strong> El servicio se presta <strong>sin comisión</strong> si en el municipio de residencia del cliente no existe ninguna oficina física de Banco Santander."
+        },
+        {
+          "id": "recarte-urgente",
+          "num": "7.3",
+          "titulo": "Recarte Urgente",
+          "badge": "Envío Express",
+          "intro": "Envío urgente express de tarjetas de sustitución (no ofrecer de forma proactiva):",
+          "checklist": [
+            "<strong>Coste del servicio técnico:</strong> Tarifa plana fija de <strong>70 €</strong>.",
+            "<strong>Corte horario de entrega:</strong> Solicitado antes de las 14:00h, llega el <strong>mismo día</strong>; solicitado a partir de las 14:00h, llega el <strong>día siguiente</strong>."
+          ]
+        },
+        {
+          "id": "avisos-cuenta",
+          "num": "7.4",
+          "titulo": "FIOC, CRS / FATCA y TIN",
+          "badge": "Regulatorio",
+          "intro": "Bloqueos imperativos por normativas legales y fiscales de prevención de blanqueo de capitales.",
+          "checklist": [
+            "<strong>A. FIOC (Formulario de Información de Cliente):</strong> Bloqueo total preventivo de fondos (tanto abonos como cargos) para justificar actividad laboral. Preaviso legal de 90 días.",
+            "<strong>Niveles de documentación en FIOC según riesgo:</strong> Riesgo Bajo (Identidad) | Riesgo Medio (Identidad + Actividad Laboral) | Riesgo Alto (Identidad + Actividad Laboral + Domicilio).",
+            "<strong>Gestión:</strong> Cliente lo realiza en App/Web -> Área Personal -> Datos Personales -> Formulario FIOC. Desbloqueo en 24/48h hábiles. Obligatorio para todos los titulares (autorizados exentos).",
+            "<strong>Verificación ADN Agente:</strong> Gestión Documental → Herramienta de Gestión Documental para ver estados y faltas.",
+            "<strong>B. CRS / FATCA (Declaración Residencia Fiscal):</strong> Bloqueo de fondos hasta justificar residencia fiscal. Preaviso de 90 días. Ruta cliente: App/Web -> Datos Personales -> Datos de residencia fiscal -> Añadir.",
+            "<strong>C. TIN (Tax Identification Number):</strong> Número identificativo fiscal extranjero obligatorio si declara residencia fiscal fuera de España. Si no tiene, debe marcar la casilla de exención en el formulario."
+          ]
+        },
+        {
+          "id": "cancelacion-cuenta",
+          "num": "7.5",
+          "titulo": "Cancelación de Cuenta",
+          "badge": "Cierre",
+          "intro": "Procedimiento de resolución contractual diferido (no inmediato):",
+          "checklist": [
+            "<strong>Condición previa:</strong> Es obligatorio **cancelar primero todas las tarjetas** de débito y crédito vinculadas.",
+            "La cancelación se registra en formato de **solicitud en revisión**, no se ejecuta al instante.",
+            "<strong>Ruta en App Cliente:</strong> Entrar a su cuenta -> parte inferior 'Más opciones' -> 'Cancelar cuenta' -> Seleccionar contrato -> Cumplimentar datos -> Confirmar con formulario final."
+          ]
+        },
+        {
+          "id": "accesibilidad",
+          "num": "7.6",
+          "titulo": "Atención Accesibilidad",
+          "badge": "Especializado",
+          "intro": "Canal de soporte adaptado para clientes con discapacidades:",
+          "checklist": [
+            "Incluye servicio de intérprete de lengua de signos oficial mediante videollamada interactiva.",
+            "Opciones de cita previa especializada o atención directa preferente sin cita en sucursales comerciales.",
+            "<strong>Acceso:</strong> Desde el buscador web del banco introduciendo 'Accesibilidad' o diciendo la palabra clave 'accesibilidad' en la locución inicial de la IVR."
+          ]
+        },
+        {
+          "id": "clientes-select",
+          "num": "7.7",
+          "titulo": "Clientes Select / Vivo Fácil",
+          "badge": "Premium",
+          "intro": "Protocolos de atención para el segmento premium y servicios no financieros asociados.",
+          "checklist": [
+            "<strong>Clientes Select:</strong> Segmento Empresas debe transferirse obligatoriamente a su plataforma propia de trato comercial. Clientes Senior disfrutan de trato prioritario normativo.",
+            "Los clientes Select disponen de acceso a **ofertas no financieras** gestionadas por la plataforma externa Vivo Fácil.",
+            "<strong>Protocolo de derivación a Vivo Fácil:</strong> Solo transferir si el motivo de la consulta **es estrictamente de Vivo Fácil**. Consultas bancarias ordinarias las resolvemos nosotros.",
+            "Antes de transferir, es obligatorio revisar las alertas del usuario en consola. El cliente necesita su identificación + contraseña alfanumérica con un signo especial para el acceso a Vivo Fácil."
+          ]
         }
       ]
     }
